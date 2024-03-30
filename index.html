@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.cdnfonts.com/css/minecraft-4?styles=61009" rel="stylesheet">
+  <script src="script.js" type="module">
+    
+  </script>
+</head>
+
+<body>
+          <div class="logo">
+            <img src="imagens/logo.png" id="minedle">
+          </div>
+  
+      <div class="pricipal"> 
+
+        <div>
+          <h1>Qual é o Mob?</h1>
+        </div>
+        
+          <div>
+            <img src="imagens/oveia.png" id="mob">
+          </div>
+
+        <div class="dicas">
+          <h3 id="nome"></h3>
+          <!--<img src="imagens/acertou.png" id="acertou">
+          <img src="imagens/errou.png" id="errou"> -->
+        </div>
+
+      </div> 
+  
+      <form id="formulario" onsubmit="enviar(e)">
+     <div class="resposta">
+            <input type="search" class="respostas" name="resposta" placeholder="Digite o Nome do Mob...">
+           </div>
+          
+            <div class="botao">
+              <button id="resposta" class="enviar" onclick="teste()">
+                <img src="imagens/botao.png" id="botao">
+              </button>
+              
+            </div>
+
+      </form>
+</body>
+
+</html>
