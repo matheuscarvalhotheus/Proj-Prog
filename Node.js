@@ -1,3 +1,5 @@
+import express from express
+
 const express = require('express');
 const app = express();
 const PORT = 3000;
@@ -10,7 +12,7 @@ let dadosTemporarios = [];
 
 // Rota para obter todos os dados
 app.get('/dados', (req, res) => {
-  res.json(dadosTemporarios);
+ return res.send('qualquer cosisa'); 
 });
 
 // Rota para adicionar novos dados
@@ -28,5 +30,5 @@ app.delete('/dados', (req, res) => {
 
 // Iniciar o servidor
 app.listen(PORT, () => {
-  console.log(`Servidor está rodando em http://localhost:${8080}`);
+  console.log(`Servidor está rodando em http://localhost:3000`);
 });
