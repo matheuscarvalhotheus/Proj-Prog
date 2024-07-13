@@ -16,7 +16,7 @@ function teste(){
   document.getElementById("nome").innerHTML = mob.mobs[naleatorio].nome;
 }
 var naleatorio=Math.floor(Math.random() * 10);
-const response = await fetch('jsons/mob.json');
+const response = await fetch('mob.json');
 const mob = await response.json();
 document.getElementById("mob").src = mob.mobs[naleatorio].img;
 document.getElementById("nome").innerHTML = mob.mobs[naleatorio].nome;
