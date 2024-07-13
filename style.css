@@ -32,6 +32,10 @@
     color: #dedede;
     font-size: 10px;
   }
+
+  .acertou{
+    width: 100px;
+  }
   
   .respostas{
     width: 300px;

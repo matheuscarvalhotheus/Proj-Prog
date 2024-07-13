@@ -13,33 +13,51 @@
 </head>
 
 <body>
+        <!--Logo-->
           <div class="logo">
             <img src="imagens/logo.png" id="minedle">
           </div>
-  
-      <div class="pricipal"> 
 
-        <div>
-          <h1>Qual é o Mob?</h1>
-        </div>
+        <!-- Parte onde ficam os mobs-->
+        <div class="pricipal"> 
+
+          <div>
+            <h1>Qual é o Mob?</h1>
+          </div>
         
           <div>
             <img src="imagens/oveia.png" id="mob">
           </div>
 
-        <div class="dicas">
-          <h3 id="nome"></h3>
-          <!--<img src="imagens/acertou.png" id="acertou">
-          <img src="imagens/errou.png" id="errou"> -->
-        </div>
+        <!-- RETIRAR, APENAS TESTE-->
+          <div class="dicas">
+            <h3 id="nome"></h3>
+              <div class="acertou">
+                <img src="imagens/acertou.png" id="acertou">
+              </div>
 
-      </div> 
-  
-      <form id="formulario" onsubmit="enviar(e)">
-     <div class="resposta">
+              <div class="errou">
+                <img src="imagens/errou.png" id="errou">
+              </div>
+          </div>
+
+        </div> 
+
+        <!-- Formulario de resposta-->
+        <form id="formulario" onsubmit="enviar(e)">
+
+          <div class="resposta">
             <input type="search" class="respostas" name="resposta" placeholder="Digite o Nome do Mob...">
-           </div>
-          
+          </div>
+
+
+        <!-- Aqui ficam as tentativas do jogador-->
+        <div class="tentativas">
+
+        
+        </div>
+        
+        <!-- Botão de enviar-->
             <div class="botao">
               <button id="resposta" class="enviar" onclick="teste()">
                 <img src="imagens/botaomdle_enviar.png" id="botao">
