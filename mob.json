@@ -1,53 +1,43 @@
 {
     "mobs": [
     {
-    "nome":"Creeper",
-    "val": 1,
+    "nome":"creeper",
     "img":"https://drive.google.com/thumbnail?id=1vsWdo5btqbGHttMHi53Q7MKT-kWlyDUc"
     },
     {
-    "nome":"Zumbi",
-    "val": 2,
+    "nome":"zumbi",
     "img":"https://drive.google.com/thumbnail?id=17RQ70_jiTejSbdqFlUTs0ObVYDtkIOqC"
     },
     {
-    "nome":"Esqueleto",
-    "val": 3,
+    "nome":"esqueleto",
     "img":"https://drive.google.com/thumbnail?id=1q8hI5WU6E-Y97MCQOUBueXi7t8M2CxZw"
     },
     {
-    "nome":"Aranha",
-    "val": 4,
+    "nome":"aranha",
     "img":"https://drive.google.com/thumbnail?id=1JY1WHHVNuk0TaG3Q0etbkB_0W3QwLNQv"
     },
     {
-    "nome":"Enderman",
-    "val": 5,
+    "nome":"enderman",
     "img":"https://drive.google.com/thumbnail?id=1K43jBlhVNhjt7ctq9BuDa6hhlfA2BzqF"
     },
     {
-    "nome":"Golem de Ferro",
-    "val": 6,
+    "nome":"golemdeferro",
     "img":"https://drive.google.com/thumbnail?id=1jdsEI30v01mM1bvGnX54-JWNGwcGTOzc"
     },
     {
-    "nome":"Lobo",
-    "val": 7,
+    "nome":"lobo",
     "img":"https://drive.google.com/thumbnail?id=1Jz6r0E24iXjJum1uGSaSrQBzBXusQl93"
     },
     {
-    "nome":"Porco",
-    "val": 8,
+    "nome":"porco",
     "img":"https://drive.google.com/thumbnail?id=1Ok8mz5ZRoBie4Mz61ZcQjNAjh-w7bZVU"
     },    
     {
-    "nome":"Vaca",
-    "val": 9,
+    "nome":"vaca",
     "img":"https://drive.google.com/thumbnail?id=1Xb1AEnd3zXApylF6noFUyeo731Re9i8Y"
     },
     {
-    "nome":"Ovelha",
-    "val": 10,
+    "nome":"ovelha",
     "img":"https://drive.google.com/thumbnail?id=1FMgG1CzCTptfWKEd3B-SJp1btVb4B2LE"
     }
 ]
