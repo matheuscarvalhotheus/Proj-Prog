@@ -18,7 +18,7 @@
     width: 150px;
   }
   
-  #botao{
+  #botaoimg{
     width: 101%;
     opacity: 1;
   }
@@ -33,13 +33,13 @@
     font-size: 10px;
   }
   
-  .respostas{
+  #barra{
     width: 300px;
     padding: 5px;
     margin-top: 20px;
   }
   
-  .enviar{
+  #enviar{
     margin-top: 20px;
     width: 220px;
     background-color: #3f3b3b;
