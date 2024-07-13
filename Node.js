@@ -1,6 +1,6 @@
-import express from express
+import express from "express"
 
-const express = require('express');
+
 const app = express();
 const PORT = 3000;
 
@@ -12,7 +12,7 @@ let dadosTemporarios = [];
 
 // Rota para obter todos os dados
 app.get('/dados', (req, res) => {
- return res.send('qualquer cosisa'); 
+ return res.send(index.html); 
 });
 
 // Rota para adicionar novos dados
