@@ -1,4 +1,4 @@
-//detecta enter
+// filtra detecção de tecla para enter
 window.entermob = function (e,nal){
   if( e.which == 13 ){
     advinha_mob(nal);
