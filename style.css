@@ -48,3 +48,17 @@
     width: 220px;
     background-color: #3f3b3b;
   } 
+
+  .resultados{
+    color:aqua;
+    text-align:center;
+  }
+
+  ul{
+    list-style-type: none;
+    text-align:center;
+  }
+  li{
+    margin:0px auto;
+    padding:0px;
+  }
