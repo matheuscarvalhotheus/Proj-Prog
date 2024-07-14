@@ -1,0 +1,126 @@
+body{
+    background-image: url(Dirt_background_JE1\ 4.svg);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #logo{
+    width: 350px;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  
+  .logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .texto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .Corpo{
+    background-color: black;
+    opacity: 0.8;
+    width: 101%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    border-radius: 5px;
+    height: 500px;
+   
+  }
+  .scroll{
+    overflow-y: scroll;
+  }
+  
+  ::-webkit-scrollbar{
+    height: 30px;
+    width: 7px;
+  }
+  
+  ::-webkit-scrollbar-track{
+    box-shadow: 0 0 5px grey;
+  }
+  
+  ::-webkit-scrollbar-thumb{
+    background-color: white;
+    border-radius: 10px;
+    width: 10px;
+  }
+  
+  .Modo1{
+    background-color: #d6d6d6;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    margin-block: 10px;
+    border-radius: 5px;
+  }
+  
+  .img1{
+    width: 80px;  
+    margin-left: 30px;
+    margin-right: 40px;
+  }
+  
+  .img2{
+      width: 80px;  
+      margin-left: 30px;
+      margin-right: 40px;
+  }
+  
+  .img3{
+    width: 80px;  
+    margin-left: 30px;
+    margin-right: 40px;
+  }
+  
+  .img4{
+    width: 80px;  
+    margin-left: 30px;
+    margin-right: 40px;
+  }
+  
+  .img5{
+    width: 80px;  
+    margin-left: 30px;
+    margin-right: 40px;
+  }
+  
+  .botao{
+  
+    /* fica flexivel */
+    display: flex;
+    /* centraliza a div */
+    justify-content: center;
+    /* alinha os itens que estao dentro da div */
+    align-items: center;
+    margin-top: 35px;
+    box-shadow: 3px 5px 7px rgba(70, 67, 71, 0.27),
+    13px 21px 30px rgba(70, 67, 71, 0.20),
+    29px 48px 67px rgba(70, 67, 71, 0.14),
+    51px 85px 119px rgba(70, 67, 71, 0.07);
+    
+  }
+  buttom{
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5;
+    letter-spacing: 5px;
+    overflow: hidden;
+  }
+  
+  .descrição{
+    margin-right: 13px;
+    margin-bottom: 1px;
+  }
