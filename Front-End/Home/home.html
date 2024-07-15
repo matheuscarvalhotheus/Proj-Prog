@@ -28,7 +28,7 @@
   <div class="scroll">
     
   <!-- modos de jogo -->
-  <div class="Modo1" id="modo1">
+  <div class="Modo1" id="modo1" onclick="validar(1)">
     <img src="../Assets/imagens/home/lobopidao.png" class="img1">
 
   <!-- Textos, descrição do modo e nome do modo -->
@@ -44,7 +44,7 @@
   </div>
 
   
-  <div class="Modo1">
+  <div class="Modo1" id="modo2" onclick="validar(2)">
     <img src="../Assets/imagens/home/Potion.png" class="img2">
     
     <div class="etiqueta">
@@ -58,7 +58,7 @@
     </div>
   </div>
       
-  <div class="Modo1">
+  <div class="Modo1" id="modo3" onclick="validar(3)">
     <img src="../Assets/imagens/home/pedregulho.png" class="img3">
 
     <div class="etiqueta">
@@ -73,7 +73,7 @@
   </div>
 
     
-  <div class="Modo1">
+  <div class="Modo1" id="modo4" onclick="validar(4)">
     <img src="../Assets/imagens/home/roblox.png" class="img3">
     
     <div class="etiqueta">
@@ -88,7 +88,7 @@
   </div>
 
     
-    <div class="Modo1">
+    <div class="Modo1" id="modo5" onclick="validar(5)">
         <img src="../Assets/imagens/home/minecraft.png" class="img3">
     
     <div class="etiqueta">
@@ -108,6 +108,11 @@
 <div class="Botão" id= "btn">
   <a href="" id="caminho"><button>  Selecionar </button></a> 
 </div>
-
+<div class="Botão">
+  <p>Escolha limite de Tentativas:</p>
+  <input type="text" id="barra">
+</div>
+<div class="Botão"><input type="button" onclick="enviar()">
+</div>
 </body>
 </hmtl>
