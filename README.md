@@ -1,9 +1,9 @@
 # Projeto MinedleCraft
-Um minigame inspirado no Loldle
+Um minigame inspirado no Loldle.
 
 ### Descrição:
 
-    O projeto MinedleCraft consiste na criação de um mini game de adivinhação, inspirado no jogo Wordle. A ideia INICIAL é que os minigames mudem com base no dia, então por exemplo no mobs, um dia vai ser o creeper no outro o esqueleto, ao invés de gerar um desafio novo a cada vez que recarrega a página.
+O projeto MinedleCraft consiste na criação de um mini game de adivinhação, inspirado no jogo Wordle. A ideia INICIAL é que os minigames mudem com base no dia, então por exemplo no mobs, um dia vai ser o creeper no outro o esqueleto, ao invés de gerar um desafio novo a cada vez que recarrega a página.
 
 ## Índice
 
@@ -11,10 +11,13 @@ Um minigame inspirado no Loldle
 - <a href= "#rodar">Como rodar este projeto? </a>
 - <a href= "#tecnologias">Tecnologias Utilizadas </a>
 - <a href= "#autores">Pessoas Autores </a>
-- <a href= "#passos">Próximos Passos </a>
+
 ## Layout
+
 - Tela Home:
 ![![![alt text](image-1.png)](image-1.png)](image.png)
+- Tela Minigame:
+![image](https://github.com/user-attachments/assets/c95013f2-ba83-4aef-b031-de6898fabb2f)
 
 ## Como rodar este projeto?
 
@@ -39,9 +42,16 @@ $ npm install
 6. [NodeJs](https://nodejs.org/pt)
 
 ## Autores
+
 - ### [@KORINGAxz](https://github.com/KORINGAxz)
 - ### [@matheuscarvalhotheus](https://github.com/matheuscarvalhotheus)
 - ### [@Gtagusta](https://github.com/Gtagusta)
 - ### [@Endrel10](https://github.com/Endrel10)
+- 
+## Contato
 
-<img style="width:150px" src="destroçado.png" alt="Erick Hallysson">
+- Nome: Erick Hallysson Nascimento de Lima 
+- Email: erick.hallysson@academico.ifpb.edu.br
+- Numero: +55 (83) 993413948
+
+    <img style="width:150px" src="destroçado.png" alt="Erick Hallysson">
