@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <link href="Home.css" rel="stylesheet" type="text/css" />
+  <script src="botao.js"></script>
 </head>
 
 <body> 
@@ -12,7 +13,7 @@
   
   <!-- logo -->
   <div class="logo">
-    <img src="Group 1.svg" id="logo">
+    <img src="/projeto/Proj-Prog/imagens/logo.png" id="logo">
 
     </div>
   
@@ -28,10 +29,10 @@
     
   <!-- modos de jogo -->
   <div class="Modo1" id="modo1">
-    <img src="mob.png" class="img1">
+    <img src="/projeto/Proj-Prog/imagens-home/lobopidao.png" class="img1">
 
   <!-- Textos, descrição do modo e nome do modo -->
-    <div class="etiqueta">
+    <div class="etiqueta" onclick="validar(1)">
       <div class="titulo">
         <h1>Mob</h1>
       </div>
@@ -44,12 +45,12 @@
 
   
   <div class="Modo1">
-    <img src="pocao.png" class="img2">
+    <img src="Potion.png" class="img2">
     
     <div class="etiqueta">
       <div class="titulo">
         <h1>Poção</h1>
-      </div>
+      </div> 
 
       <div class="descrição">
         <p>Aparece uma silueta de um mob e o seu objetivo é acerta qual o mob.</p>
@@ -58,7 +59,7 @@
   </div>
       
   <div class="Modo1">
-    <img src="bloco.png" class="img3">
+    <img src="/projeto/Proj-Prog/imagens-home/pedregulho.png" class="img3">
 
     <div class="etiqueta">
       <div class="titulo">
@@ -73,7 +74,7 @@
 
     
   <div class="Modo1">
-    <img src="quebra.png" class="img3">
+    <img src="/projeto/Proj-Prog/imagens-home/roblox.png" class="img3">
     
     <div class="etiqueta">
       <div class="titulo">
@@ -88,7 +89,7 @@
 
     
     <div class="Modo1">
-        <img src="quiz.png" class="img3">
+        <img src="/projeto/Proj-Prog/imagens-home/minecraft.png" class="img3">
     
         <div class="etiqueta">
             <div class="titulo">
@@ -104,9 +105,8 @@
 </div>
   
 <!-- Botão para fazer a escolha -->
-<div class="botao">
-  <button>Selecionar
-  </button>
+<div class="Botão" id= "btn">
+  <a href="" id="caminho"><button>  Selecionar </button></a> 
 </div>
 
 </body>
