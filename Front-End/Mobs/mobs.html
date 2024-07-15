@@ -7,13 +7,13 @@
   <title>Mobs</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
   <link href="https://fonts.cdnfonts.com/css/minecraft-4?styles=61009" rel="stylesheet">
-  <script src="index.js" type="module"></script>
+  <script src="mobs.js" type="module"></script>
 </head>
 
 <body>
         <!--Logo-->
           <div class="logo">
-            <img src="imagens/logo.png" id="minedle">
+            <a id="caminho" href="/Front-End/Home/home.html"><img src="../Assets/imagens/Default/logo.png" id="minedle"></a>
           </div>
 
         <!-- Parte onde ficam os mobs-->
@@ -24,7 +24,7 @@
           </div>
         
           <div>
-            <img src="imagens/oveia.png" id="mob">
+            <img src="../Assets/imagens/mobs/oveia.png" id="mob">
           </div>
 
         <!-- RETIRAR, APENAS TESTE-->
@@ -54,7 +54,7 @@
        <!-- Botão de enviar-->
             <div class="botao">
               <button id="enviar" name="botao" type="button" onclick="advinha_mob()">
-                <img id="botaoimg" src="imagens/botaomdle_enviar.png">
+                <img id="botaoimg" src="../Assets/imagens/mobs/botaomdle_enviar.png">
               </button>
               
             </div>
@@ -63,6 +63,7 @@
 
           <!-- Aqui ficam as tentativas do jogador-->
           <div class="tentativas">
+            <div id="excedido"></div>
             <ul id="listatentativas">
               
             </ul>

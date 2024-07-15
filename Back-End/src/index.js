@@ -1,30 +1,29 @@
-import express from "express"
-import {mobs} from "mob-dados.js"
-import {mobs_tentativas} from "tentativa-dadosTemporarios.js"
+import express from "express";
+import cors from 'cors';
+import router from './routes.js';
 
-const app = express();
+const server = express();
 const PORT = 3000;
 
-app.use(express.json());
+//poder interagir com outros dominios
+server.use(
+  cors(
+    {
+  origin:'*',
+  methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+  preflightContinue: false,
+})
+);
 
-// Rota para obter todos os dados
-app.get('/mobs', (req, res) => {
- return res.send(mobs); 
-});
+//entradas vem como json
+server.use(express.json());
 
-// Rota para adicionar novos dados
-app.post('/mobs/tentativas', (req, res) => {
-  var novodado = req.body;
-  mobs_tentativas.push(novodado);
-  res.status(201).json(novodado);
-});
-
-// Rota para limpar todos os dados
-app.get('/mobs/tentativas', (req, res) => {
-  res.send(mobs_tentativas)
-});
+//rotas
+server.use(router);
 
 // Iniciar o servidor
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Servidor está rodando em http://localhost:3000`);
 });

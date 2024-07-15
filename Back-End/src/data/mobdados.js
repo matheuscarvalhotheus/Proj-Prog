@@ -46,6 +46,5 @@ var lista_mobs=[]
 for(let i =0; i<json.mobs.length; i++){
 lista_mobs[i]=JSON.stringify(json.mobs[i]);
 }
-console.log(lista_mobs);
 
 export const mobs = lista_mobs;

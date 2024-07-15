@@ -1,16 +1,36 @@
 //cria um numero aleatorio e manda ele para uma variavel global, puxa os dados do mob.json e dps usa os dois para carregar as imagens e texto dos mobs
 var naleatorio=Math.floor(Math.random() * 10);
 window.nal=naleatorio;
-const response = await fetch('mob.json');
-const mob = await response.json();
-var listanomes = jsonparray(mob.mobs);
+var mob = await dados("/mobs")
+for(let i=0;i<mob.length;i++){
+  mob[i]=JSON.parse(mob[i])
+}
+var tentativas = await dados("/mobs/tentativas")
+tentativas = tentativas[(tentativas.length)-1]
+
+var listanomes = jsonparray(mob);
 var opcoes = listanomes;
-document.getElementById("mob").src = mob.mobs[naleatorio].img;
+document.getElementById("mob").src = mob[naleatorio].img;
 var foco = false;
 var erros = [];
 var deletados = [];
 var primeiro = "";
 var virgula = ",";
+
+
+async function dados(local) {
+  const dominio = "http://localhost:3000";
+  const url = dominio+local
+  try {
+    const response = await fetch(url);
+    const json = await response.json();
+    console.log(json);
+    return json;
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
 
 function jsonparray(jason_a){
   var lista=[];
@@ -83,7 +103,7 @@ window.tratatex = (tex) => {
 //alerta acertou quando você acerta a resposta e errou quando erra, cria um novo numero aleatorio e recarrega a variavel global junto da imagem e texto dos mobs
 window.advinha_mob = function (){
   var r_barra = document.getElementById("barra").value;
-  if(r_barra.length > 0){
+  if(r_barra.length > 0 && erros.length<tentativas){
   r_barra = tratatex(r_barra);
   if (r_barra == listanomes[nal]) {
   erros.push(r_barra);
@@ -96,7 +116,7 @@ window.advinha_mob = function (){
     document.getElementById("listatentativas").innerHTML = "";
   }, 500);
   window.nal=Math.floor(Math.random() * 10);
-  document.getElementById("mob").src = mob.mobs[nal].img;
+  document.getElementById("mob").src = mob[nal].img;
   erros=[];
 }
   else {
@@ -108,9 +128,10 @@ window.advinha_mob = function (){
     document.getElementById("listatentativas").innerHTML = lista_p_li_erro(invertido,false);
   }
   document.getElementById("barra").value = "";
+  } else if(r_barra.length > 0){
+    document.getElementById("excedido").innerHTML="<p> Tentativas Excedidas </p>"
   }
 }
-
 
 function lista_p_li_erro(invertido,flag){
   invertido = invertido.filter((elemento)=>{
@@ -123,11 +144,11 @@ function lista_p_li_erro(invertido,flag){
   invertido.reverse();
   var i=0
   if(flag){
-    invertido[i] = "<li id=\"a_"+i+"\">    <div class=\"listaerro\">    <img src=\"imagens/oveia.png\" class=\"listaerroimgmob\">     <div>     <img src=\"imagens/acertou.png\" class=\"listaerroimgacertou\">   <p class=\"listerroacertop\">   era um: " + invertido[i] + "</p>  </div>   <div>  <p class=\"listaerrosair\" onclick=\"fechar(" + i+invertido[i]+ ")\">     X   </p>   </div>   </div>    </li>";
+    invertido[i] = "<li id=\"a_"+i+"\">    <div class=\"listaerro\">    <img src=\"../Assets/imagens/mobs/oveia.png\" class=\"listaerroimgmob\">     <div>     <img src=\"../Assets/imagens/mobs/acertou.png\" class=\"listaerroimgacertou\">   <p class=\"listerroacertop\">   era um: " + invertido[i] + "</p>  </div>   <div>  <p class=\"listaerrosair\" onclick=\"fechar(" +invertido[i]+i+ ")\">     X   </p>   </div>   </div>    </li>";
     i++;
   }
   for(;i<invertido.length;i++){
-    invertido[i] = "<li id=\"a_"+i+"\">   <div class=\"listaerro\">     <img src=\"imagens/oveia.png\" class=\"listaerroimgmob\">     <div>     <img src=\"imagens/errou.png\" class=\"listaerroimgerrou\">  <p class=\"listaerroerroup\">   não é um: " + invertido[i] + "   </p>   </div>   <div>   <p class=\"listaerrosair\" onclick=\"fechar(\'" + i+invertido[i]+ "\')\">    X    </p>  </div>   </div>    </li>";
+    invertido[i] = "<li id=\"a_"+i+"\">   <div class=\"listaerro\">     <img src=\"../Assets/imagens/mobs/oveia.png\" class=\"listaerroimgmob\">     <div>     <img src=\"../Assets/imagens/mobs/errou.png\" class=\"listaerroimgerrou\">  <p class=\"listaerroerroup\">   não é um: " + invertido[i] + "   </p>   </div>   <div>   <p class=\"listaerrosair\" onclick=\"fechar(\'" + invertido[i]+i+ "\')\">    X    </p>  </div>   </div>    </li>";
    }
    let texhtml = invertido.toString();
    texhtml = texhtml.replace(/,+/g,"\n");
@@ -135,8 +156,8 @@ function lista_p_li_erro(invertido,flag){
   }
 
 window.fechar = (valor) => {
-  let indice = valor.charAt(0);
-  let nome = valor.replace(valor.charAt(0),"");
+  let indice = valor.charAt(valor.length-1);
+  let nome = valor.replace(valor.charAt(valor.length-1),"");
   let ide="a_"+indice;
   document.getElementById(ide).innerHTML="";
   document.getElementById(ide).remove();

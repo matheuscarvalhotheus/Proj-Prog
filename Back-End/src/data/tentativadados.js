@@ -1,1 +1,1 @@
-export const mobs_tentativas = []
+export const mobs_tentativas = [];
