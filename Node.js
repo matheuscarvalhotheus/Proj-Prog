@@ -1,31 +1,27 @@
 import express from "express"
-
+import {mobs} from "mob-dados.js"
+import {mobs_tentativas} from "tentativa-dadosTemporarios.js"
 
 const app = express();
 const PORT = 3000;
 
-
 app.use(express.json());
 
-// Array para armazenar dados temporários
-let dadosTemporarios = [];
-
 // Rota para obter todos os dados
-app.get('/dados', (req, res) => {
- return res.send(index.html); 
+app.get('/mobs', (req, res) => {
+ return res.send(mobs); 
 });
 
 // Rota para adicionar novos dados
-app.post('/dados', (req, res) => {
-  const novoDado = req.body;
-  dadosTemporarios.push(novoDado);
-  res.status(201).json(novoDado);
+app.post('/mobs/tentativas', (req, res) => {
+  var novodado = req.body;
+  mobs_tentativas.push(novodado);
+  res.status(201).json(novodado);
 });
 
 // Rota para limpar todos os dados
-app.delete('/dados', (req, res) => {
-  dadosTemporarios = [];
-  res.status(204).end();
+app.get('/mobs/tentativas', (req, res) => {
+  res.send(mobs_tentativas)
 });
 
 // Iniciar o servidor
