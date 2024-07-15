@@ -49,7 +49,6 @@ window.enviar = async function(){
 async function dados(local,carga) {
     const dominio = "http://localhost:3000";
     const url = dominio+local
-    try {
       const response = await fetch(url,{
         method:"POST",
         mode: "cors",
@@ -57,10 +56,4 @@ async function dados(local,carga) {
       });
       const json = await response.json();
       console.log(json);
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-      }
-      // ...
-    } catch (error) {
-      console.error(error.message);
-  }}
+    }
