@@ -1,3 +1,4 @@
+
 var selecionar = "";
 
 window.validar = function(indice){
@@ -41,8 +42,8 @@ if(indice==1){
 }
 }
 window.enviar = async function(){
-    let x = "{ valor:"+document.getElementById("barra").value+"}";
-    dados("/mobs/tentativas",[x]);
+    let x = document.getElementById("barra").value;
+    dados("/mobs/tentativas",Number(x));
     document.getElementById("barra").value="";
 }
 
@@ -52,7 +53,8 @@ async function dados(local,carga) {
       const response = await fetch(url,{
         method:"POST",
         mode: "cors",
-        body: JSON.stringify(carga),
+        headers : {'Content-Type': 'application/json' },
+        body: JSON.stringify({ valor : carga}),
       });
       const json = await response.json();
       console.log(json);

@@ -30,8 +30,8 @@ class HTTPError extends Error {
   router.post('/mobs/tentativas', (req, res) => {
     var tentativa = req.body;
     if(tentativa){
-    mobs_tentativas.push(tentativa);
-    res.status(201).json(tentativa);
+    mobs_tentativas.push((tentativa.valor));
+    res.status(201).json((tentativa));
     }
   });
 
