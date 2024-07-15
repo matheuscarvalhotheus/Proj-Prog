@@ -1,5 +1,4 @@
 # Projeto MinedleCraft
-Um minigame inspirado no Loldle.
 
 ### Descrição:
 
