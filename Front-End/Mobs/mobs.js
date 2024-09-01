@@ -144,11 +144,11 @@ function lista_p_li_erro(invertido,flag){
   invertido.reverse();
   var i=0
   if(flag){
-    invertido[i] = "<li id=\"a_"+i+"\">    <div class=\"listaerro\">    <img src=\"../Assets/imagens/mobs/oveia.png\" class=\"listaerroimgmob\">     <div>     <img src=\"../Assets/imagens/mobs/acertou.png\" class=\"listaerroimgacertou\">   <p class=\"listerroacertop\">   era um: " + invertido[i] + "</p>  </div>   <div>  <p class=\"listaerrosair\" onclick=\"fechar(" +invertido[i]+i+ ")\">     X   </p>   </div>   </div>    </li>";
+    invertido[i] = "<li id=\"a_"+i+"\">    <div class=\"listaerro\">    <img src=\"../assets/imagens/mobs/oveia.png\" class=\"listaerroimgmob\">     <div>     <img src=\"../assets/imagens/mobs/acertou.png\" class=\"listaerroimgacertou\">   <p class=\"listerroacertop\">   era um: " + invertido[i] + "</p>  </div>   <div>  <p class=\"listaerrosair\" onclick=\"fechar(" +invertido[i]+i+ ")\">     X   </p>   </div>   </div>    </li>";
     i++;
   }
   for(;i<invertido.length;i++){
-    invertido[i] = "<li id=\"a_"+i+"\">   <div class=\"listaerro\">     <img src=\"../Assets/imagens/mobs/oveia.png\" class=\"listaerroimgmob\">     <div>     <img src=\"../Assets/imagens/mobs/errou.png\" class=\"listaerroimgerrou\">  <p class=\"listaerroerroup\">   não é um: " + invertido[i] + "   </p>   </div>   <div>   <p class=\"listaerrosair\" onclick=\"fechar(\'" + invertido[i]+i+ "\')\">    X    </p>  </div>   </div>    </li>";
+    invertido[i] = "<li id=\"a_"+i+"\">   <div class=\"listaerro\">     <img src=\"../assets/imagens/mobs/oveia.png\" class=\"listaerroimgmob\">     <div>     <img src=\"../assets/imagens/mobs/errou.png\" class=\"listaerroimgerrou\">  <p class=\"listaerroerroup\">   não é um: " + invertido[i] + "   </p>   </div>   <div>   <p class=\"listaerrosair\" onclick=\"fechar(\'" + invertido[i]+i+ "\')\">    X    </p>  </div>   </div>    </li>";
    }
    let texhtml = invertido.toString();
    texhtml = texhtml.replace(/,+/g,"\n");

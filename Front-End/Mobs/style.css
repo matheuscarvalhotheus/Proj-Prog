@@ -6,7 +6,7 @@
   body {
     font-family: Minecraftia;
     text-align: center;
-    background-image: url(../Assets/imagens/Default/Dirt_background_JE1.webp);
+    background-image: url(../assets/imagens/default/Dirt_background_JE1.webp);
   }
   
   #minedle{
@@ -14,7 +14,7 @@
     padding: 25px;
   }
   #minedle:hover{
-    content:url(../Assets/imagens/Default/Logo2.0.png);
+    content:url(../assets/imagens/default/Logo2.0.png);
     width: 300px;
     padding: 25px;
   }
