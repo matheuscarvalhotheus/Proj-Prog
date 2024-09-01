@@ -3,7 +3,7 @@ var selecionar = "";
 
 window.validar = function(indice){
 if(indice==1){
-    selecionar = "../Mobs/mobs.html"
+    selecionar = "../mobs/mobs.html"
     document.getElementById("caminho").href = selecionar
     document.getElementById("modo1").style.border = "inset 4px"
     document.getElementById("modo2").style.border = ""
