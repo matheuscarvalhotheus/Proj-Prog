@@ -2,6 +2,7 @@ import express from "express";
 import cors from 'cors';
 import router from './routes.js';
 
+
 const server = express();
 const PORT = 3000;
 
@@ -27,3 +28,4 @@ server.use(router);
 server.listen(PORT, () => {
   console.log(`Servidor está rodando em http://localhost:3000`);
 });
+

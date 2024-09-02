@@ -1,13 +1,13 @@
 //cria um numero aleatorio e manda ele para uma variavel global, puxa os dados do mob.json e dps usa os dois para carregar as imagens e texto dos mobs
 var naleatorio=Math.floor(Math.random() * 10);
 window.nal=naleatorio;
-var mob = await dados("/mobs")
-for(let i=0;i<mob.length;i++){
-  mob[i]=JSON.parse(mob[i])
-}
-var tentativas = await dados("/mobs/tentativas")
-tentativas = tentativas[(tentativas.length)-1]
-
+var recebe = await dados("/mobs/assets")
+var mob = JSON.parse(recebe.dados.replace("\\n"," "));
+mob = mob.mobs;
+var mjogo = localStorage.getItem("mjogo");
+var dificuldade = localStorage.getItem("dificuldade");
+var tentativas = set_dificuldade(mjogo,dificuldade);
+var mjogo = localStorage.getItem("mjogo");
 var listanomes = jsonparray(mob);
 var opcoes = listanomes;
 document.getElementById("mob").src = mob[naleatorio].img;
@@ -17,6 +17,26 @@ var deletados = [];
 var primeiro = "";
 var virgula = ",";
 
+function set_dificuldade(mjogo,dificuldade){
+if(mjogo){
+  if(mjogo=="criativo"){
+   return 999;
+  } else if(mjogo=="survival"){
+    if(dificuldade=="fácil"){
+      return 10;
+    } else if(dificuldade=="normal"){
+      return 5;
+  } else if(dificuldade=="difícil"){
+    return 3;
+  }
+} else if(mjogo=="hardcore"){
+  return 3;
+}
+} else {
+  localStorage.setItem("mjogo","criativo")
+  return 999;
+}
+}
 
 async function dados(local) {
   const dominio = "http://localhost:3000";
@@ -103,6 +123,9 @@ window.tratatex = (tex) => {
 //alerta acertou quando você acerta a resposta e errou quando erra, cria um novo numero aleatorio e recarrega a variavel global junto da imagem e texto dos mobs
 window.advinha_mob = function (){
   var r_barra = document.getElementById("barra").value;
+  if(mjogo=="hardcore" || mjogo=="criativo"){
+
+
   if(r_barra.length > 0 && erros.length<tentativas){
   r_barra = tratatex(r_barra);
   if (r_barra == listanomes[nal]) {
@@ -121,16 +144,66 @@ window.advinha_mob = function (){
 }
   else {
     erros.push(r_barra);
+    if(erros.length==tentativas){
+    document.getElementById("excedido").innerHTML="<p> Tentativas Excedidas </p>"
     let invertido = [];
     for(let i=0;i<erros.length;i++){
       invertido[i]=erros[i];
     }
     document.getElementById("listatentativas").innerHTML = lista_p_li_erro(invertido,false);
-  }
+  }}
   document.getElementById("barra").value = "";
   } else if(r_barra.length > 0){
     document.getElementById("excedido").innerHTML="<p> Tentativas Excedidas </p>"
   }
+
+
+} else if(mjogo=="survival"){
+
+
+  if(r_barra.length > 0 && erros.length<tentativas){
+    r_barra = tratatex(r_barra);
+    if (r_barra == listanomes[nal]) {
+    erros.push(r_barra);
+    let invertido=[];
+    for(let i=0;i<erros.length;i++){
+      invertido[i]=erros[i];
+    }
+    document.getElementById("listatentativas").innerHTML = lista_p_li_erro(invertido,true);
+    setTimeout(()=>{ 
+      document.getElementById("listatentativas").innerHTML = "";
+    }, 500);
+    window.nal=Math.floor(Math.random() * 10);
+    document.getElementById("mob").src = mob[nal].img;
+    erros=[];
+  }
+    else {
+      erros.push(r_barra);
+      if(erros.length==tentativas){
+        let invertido=[];
+        for(let i=0;i<erros.length;i++){
+          invertido[i]=erros[i];
+        }
+        document.getElementById("excedido").innerHTML="<p> Tentativas Excedidas </p>"
+        document.getElementById("listatentativas").innerHTML = lista_p_li_erro(invertido,true);
+        setTimeout(()=>{ 
+          document.getElementById("listatentativas").innerHTML = "";
+          document.getElementById("excedido").innerHTML="";
+        }, 500);
+        window.nal=Math.floor(Math.random() * 10);
+        document.getElementById("mob").src = mob[nal].img;
+        erros=[];
+      } else {
+      let invertido = [];
+      for(let i=0;i<erros.length;i++){
+        invertido[i]=erros[i];
+      }
+      document.getElementById("listatentativas").innerHTML = lista_p_li_erro(invertido,false);
+    }}
+    document.getElementById("barra").value = "";
+    }
+
+}
 }
 
 function lista_p_li_erro(invertido,flag){
