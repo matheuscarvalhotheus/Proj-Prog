@@ -46,21 +46,23 @@
   #enviar{
     margin-top: 20px;
     width: 220px;
-    border:none;
-    background-image: url(../assets/imagens/mobs/bt_vazio.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size:cover;
+    border:solid 3px;
+    border-image: url(../assets/imagens/mobs/bt_vazio.png);
+    border-image-slice: 8 9 8 9 fill;
+
     p{
       color:white;
       margin:3.2px 4.2px 5.2px 4.2px;
     }
   } 
   #enviar:hover{
+    cursor:pointer;
     filter:brightness(90%);
   } 
   #enviar:active{
-    background-image: url(../assets/imagens/mobs/bt_vazio-click.png);
+    border:solid 3px;
+    border-image: url(../assets/imagens/mobs/bt_vazio-click.png);
+    border-image-slice: 8 9 8 9 fill;
     filter:brightness(100%);
 
   } 
