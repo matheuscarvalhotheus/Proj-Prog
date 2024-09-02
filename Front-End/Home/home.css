@@ -1,5 +1,5 @@
 body{
-  background-image: url(../assets/imagens/default/Dirt_background_JE1.webp);
+  background-image: url(../assets/imagens/default/dirt_fundo.png);
   color: white;
   display: flex;
   flex-direction: column;
@@ -132,4 +132,17 @@ p{
   margin-right: 13px;
   margin-bottom: 1px;
   font-size: 30px;
+}
+
+#game-select-gui{
+  margin:30px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  div{
+    margin:5px 10px 5px 10px;
+    width:95%;
+    button{
+      width:100%;
+    }
+  }
 }

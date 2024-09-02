@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
+  <link href="../global.css" rel="stylesheet" type="text/css" />
   <link href="home.css" rel="stylesheet" type="text/css" />
   <script src="botao.js" type="module"></script>
 </head>
@@ -13,13 +14,13 @@
   
   <!-- logo -->
   <div class="logo">
-    <img src="../assets/imagens/default/logo.png" id="logo">
+    <img src="../assets/imagens/default/logo-terra.png" id="logo">
 
     </div>
   
   <!-- selecionar o modo-->
   <div class="texto">
-    <h2>Selecione o modo de jogo</h2>
+    <h2>Selecione o minigame</h2>
   </div>
   
                            
@@ -105,14 +106,22 @@
 </div>
   
 <!-- Botão para fazer a escolha -->
+<div id="game-select-gui">
 <div class="Botão" id= "btn">
-  <a href="" id="caminho"><button>  Selecionar </button></a> 
+  <button onclick="gamemode()">  Modo de Jogo: </button>
 </div>
-<div class="Botão">
-  <p>Escolha limite de Tentativas:</p>
-  <input type="number" id="barra">
+<div class="Botão" id= "btn">
+  <a href="" id="caminho"><button onclick="enviar()">  Jogar o minigame selecionado </button></a> 
 </div>
-<div class="Botão"><input type="button" onclick="enviar()">
+<div class="Botão" id= "btn">
+  <button onclick="dificulty()">  Dificuldade: </button> 
+</div>
+
+<div class="Botão" id= "btn">
+<button onclick="validar(0)">  Cancelar </button>
+</div>
+
+</div>
 </div>
 </body>
 </hmtl>
