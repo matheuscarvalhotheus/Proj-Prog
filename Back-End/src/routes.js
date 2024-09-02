@@ -1,6 +1,5 @@
 import express from "express";
-import {mobs} from './data/mobdados.js';
-import {mobs_tentativas} from './data/tentativadados.js';
+import minedle from './modos/minedle.js';
 
 class HTTPError extends Error {
     constructor(message, code) {
@@ -11,29 +10,26 @@ class HTTPError extends Error {
 
   const router=express.Router();
 
-  // Rota para obter todos os dados
-  router.get('/mobs', (req, res) => {
-    return res.send(mobs); 
+  // Rota para obter tabela minigames
+  router.get('/minigames', async (req, res) => {
+    const tabela = "minigame";
+    const resultado = await minedle.read_table(tabela)
+    return res.json(resultado); 
   });
   
-  // Rota para limpar todos os dados
-  router.get('/mobs/tentativas', (req, res) => {
-    if(mobs_tentativas.length>0){
-    return res.send(mobs_tentativas)
-  } else {
-    return res.send([999])
-  }
+  // Rota para obter tabela modo_jogo
+  router.get('/modos', async (req, res) => {
+    const tabela = "modo_jogo";
+    const resultado = await minedle.read_table(tabela)
+    return res.json(resultado);
+  });
+
+  // Rota para obter assets mobs
+  router.get('/mobs/assets', async (req, res) => {
+    const nome = "mobs"
+    const tabela = "minigame";
+    const resultado = await minedle.read_assets(nome,tabela)
+    return res.json(resultado); 
   });
       
-
-  // Rota para adicionar novos dados
-  router.post('/mobs/tentativas', (req, res) => {
-    var tentativa = req.body;
-    if(tentativa){
-    mobs_tentativas.push((tentativa.valor));
-    res.status(201).json((tentativa));
-    }
-  });
-
-
 export default router;
