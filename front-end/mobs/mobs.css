@@ -1,0 +1,89 @@
+  html {
+    font-family: Minecraftia;
+    text-align: center;
+    background-image: url(../assets/imagens/default/dirt_fundo.png);
+  }
+
+  body{
+    background:none;
+  }
+  
+  #minedle{
+    width: 300px;
+    padding: 25px;
+  }
+  #minedle:hover{
+    content:url(../assets/imagens/default/logo-portal.png);
+    width: 300px;
+    padding: 25px;
+  }
+
+  #mob{
+    width: 150px;
+  }
+  
+  #botaoimg{
+    width: 101%;
+    opacity: 1;
+  }
+  .pricipal{
+    background-color: rgba(2,2,2,0.8);
+    width: 290px;
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px #000000;
+    color: #dedede;
+    font-size: 10px;
+  }
+
+  .acertou{
+    width: 100px;
+  }
+  
+  #barra{
+    width: 300px;
+    padding: 5px;
+    margin-top: 20px;
+  }
+  
+  #enviar{
+    margin-top: 20px;
+    width: 220px;
+    border:solid 3px;
+    border-image: url(../assets/imagens/mobs/bt_vazio.png);
+    border-image-slice: 8 9 8 9 fill;
+
+    p{
+      color:white;
+      margin:3.2px 4.2px 5.2px 4.2px;
+    }
+  } 
+  #enviar:hover{
+    cursor:pointer;
+    filter:brightness(90%);
+  } 
+  #enviar:active{
+    border:solid 3px;
+    border-image: url(../assets/imagens/mobs/bt_vazio-click.png);
+    border-image-slice: 8 9 8 9 fill;
+    filter:brightness(100%);
+
+  } 
+
+  .resultados{
+    color:aqua;
+    text-align:center;
+  }
+
+  ul{
+    list-style-type: none;
+    text-align:center;
+  }
+  li{
+    margin:0px auto;
+    padding:0px;
+  }
+  .listaerrosair{
+    color:aqua;
+  }

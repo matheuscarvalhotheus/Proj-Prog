@@ -131,13 +131,13 @@ window.advinha_mob = function (){
   else {
     erros.push(r_barra);
     if(erros.length==tentativas){
-    document.getElementById("excedido").innerHTML="<p> Tentativas Excedidas </p>"
+    document.getElementById("excedido").innerHTML="<p> Tentativas Excedidas </p>"}
     let invertido = [];
     for(let i=0;i<erros.length;i++){
       invertido[i]=erros[i];
     }
     document.getElementById("listatentativas").innerHTML = lista_p_li_erro(invertido,false);
-  }}
+  }
   document.getElementById("barra").value = "";
   } else if(r_barra.length > 0){
     document.getElementById("excedido").innerHTML="<p> Tentativas Excedidas </p>"

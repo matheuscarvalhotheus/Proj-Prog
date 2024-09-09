@@ -138,11 +138,15 @@ p{
   margin:30px;
   display:grid;
   grid-template-columns: 1fr 1fr;
-  div{
-    margin:5px 10px 5px 10px;
-    width:95%;
-    button{
-      width:100%;
-    }
-  }
+ 
+}
+
+#game-select-gui>div{
+  margin:5px 10px 5px 10px;
+  width:95%;
+
+}
+
+#game-select-gui>div>button{
+  width:100%;
 }
