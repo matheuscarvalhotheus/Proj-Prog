@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width">
   <link href="../global.css" rel="stylesheet" type="text/css" />
   <link href="home.css" rel="stylesheet" type="text/css" />
-  <script src="botao.js" type="module"></script>
+  <script src="home.js" type="module"></script>
 </head>
 
 <body> 
@@ -29,7 +29,7 @@
   <div class="scroll">
     
   <!-- modos de jogo -->
-  <div class="Modo1" id="modo1" onclick="validar(1)">
+  <div class="Modo1" id="modo1" onclick="validar('mobs')">
     <img src="../assets/imagens/home/lobopidao.png" class="img1">
 
   <!-- Textos, descrição do modo e nome do modo -->
@@ -45,7 +45,7 @@
   </div>
 
   
-  <div class="Modo1" id="modo2" onclick="validar(2)">
+  <div class="Modo1" id="modo2" onclick="validar('pocao')">
     <img src="../assets/imagens/home/Potion.png" class="img2">
     
     <div class="etiqueta">
@@ -59,7 +59,7 @@
     </div>
   </div>
       
-  <div class="Modo1" id="modo3" onclick="validar(3)">
+  <div class="Modo1" id="modo3" onclick="validar('bloco')">
     <img src="../assets/imagens/home/pedregulho.png" class="img3">
 
     <div class="etiqueta">
@@ -74,7 +74,7 @@
   </div>
 
     
-  <div class="Modo1" id="modo4" onclick="validar(4)">
+  <div class="Modo1" id="modo4" onclick="validar('quebra-cabeca')">
     <img src="../assets/imagens/home/roblox.png" class="img3">
     
     <div class="etiqueta">
@@ -89,7 +89,7 @@
   </div>
 
     
-    <div class="Modo1" id="modo5" onclick="validar(5)">
+    <div class="Modo1" id="modo5" onclick="validar('quiz')">
         <img src="../assets/imagens/home/minecraft.png" class="img3">
     
     <div class="etiqueta">
@@ -108,17 +108,17 @@
 <!-- Botão para fazer a escolha -->
 <div id="game-select-gui">
 <div class="Botão" id= "btn">
-  <button onclick="gamemode()">  Modo de Jogo: </button>
+  <button onclick="gamemode()"><p id="modobt">  Modo de Jogo: </p></button>
 </div>
 <div class="Botão" id= "btn">
-  <a href="" id="caminho"><button onclick="enviar()">  Jogar o minigame selecionado </button></a> 
+  <a href="" id="caminho"><button onclick="enviar()"><p>  Jogar o minigame selecionado </p></button></a> 
 </div>
 <div class="Botão" id= "btn">
-  <button onclick="dificulty()">  Dificuldade: </button> 
+  <button onclick="dificulty()"><p id="difbt">  Dificuldade: </p></button> 
 </div>
 
 <div class="Botão" id= "btn">
-<button onclick="validar(0)">  Cancelar </button>
+<button onclick="validar('cancelar')"><p>  Cancelar </p></button>
 </div>
 
 </div>

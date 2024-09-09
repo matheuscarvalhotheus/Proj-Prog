@@ -1,42 +1,37 @@
-//cria um numero aleatorio e manda ele para uma variavel global, puxa os dados do mob.json e dps usa os dois para carregar as imagens e texto dos mobs
-var naleatorio=Math.floor(Math.random() * 10);
-window.nal=naleatorio;
+import set from "./apps/dificuldade.js"
+import filtro from "./apps/filtros.js"
+
+//escolhe o mob por meio de um número aleatório
+var nal=escolhermob();
+// puxa os dados do mob.json
 var recebe = await dados("/mobs/assets")
-var mob = JSON.parse(recebe.dados.replace("\\n"," "));
-mob = mob.mobs;
+//corrige os dados e acessa o array de JSONS
+var mob = JSON.parse(recebe.dados.replace("\\n"," ")).mobs;
+//cria uma lista de nomes dos mobs com base no array de JSONS
+var listanomes = filtro.mobnomes(mob);
+//altera a imagem
+document.getElementById("mob").src = mob[nal].img;
+
+//lê a dificuldade e modo de jogo no armazenamento local e define a quantidade de tentativas, se não houver usa a dificuldade e modo de jogo default
+var tentativas = set.dificuldade();
+//pega o valor do modo de jogo salvo no armazenamento local
 var mjogo = localStorage.getItem("mjogo");
-var dificuldade = localStorage.getItem("dificuldade");
-var tentativas = set_dificuldade(mjogo,dificuldade);
-var mjogo = localStorage.getItem("mjogo");
-var listanomes = jsonparray(mob);
-var opcoes = listanomes;
-document.getElementById("mob").src = mob[naleatorio].img;
+
 var foco = false;
 var erros = [];
 var deletados = [];
 var primeiro = "";
-var virgula = ",";
 
-function set_dificuldade(mjogo,dificuldade){
-if(mjogo){
-  if(mjogo=="criativo"){
-   return 999;
-  } else if(mjogo=="survival"){
-    if(dificuldade=="fácil"){
-      return 10;
-    } else if(dificuldade=="normal"){
-      return 5;
-  } else if(dificuldade=="difícil"){
-    return 3;
+function escolhermob(num){
+  let escolhido= Math.floor(Math.random() * 10);
+  if(num){
+    while(escolhido==num){
+      escolhido = Math.floor(Math.random() * 10);
+    }
   }
-} else if(mjogo=="hardcore"){
-  return 3;
+  return escolhido;
 }
-} else {
-  localStorage.setItem("mjogo","criativo")
-  return 999;
-}
-}
+
 
 async function dados(local) {
   const dominio = "http://localhost:3000";
@@ -51,15 +46,6 @@ async function dados(local) {
   }
 }
 
-
-function jsonparray(jason_a){
-  var lista=[];
-  for(let i = 0; i<jason_a.length; i++){
-  lista[i]=Object.values(jason_a[i])[0];
-  }
-  return lista;
-}
-
 function lista_p_li_pes(lista){
  for(let i=0;i<lista.length;i++){
   lista[i] = "<li onclick=\"escolher(\'"+lista[i]+"\')\" class=\"listapesquisa\">" + lista[i] + "</li>";
@@ -72,7 +58,7 @@ function lista_p_li_pes(lista){
 window.autopes = () => {
   var entrada=document.getElementById("barra").value;
   if(entrada) {
-    var resultado=opcoes.filter((nome)=>{
+    var resultado=listanomes.filter((nome)=>{
      if(nome.startsWith(tratatex(entrada)) && !erros.includes(nome) ){
       return true;
      } 
@@ -138,7 +124,7 @@ window.advinha_mob = function (){
   setTimeout(()=>{ 
     document.getElementById("listatentativas").innerHTML = "";
   }, 500);
-  window.nal=Math.floor(Math.random() * 10);
+  nal=escolhermob(nal);
   document.getElementById("mob").src = mob[nal].img;
   erros=[];
 }
@@ -173,7 +159,7 @@ window.advinha_mob = function (){
     setTimeout(()=>{ 
       document.getElementById("listatentativas").innerHTML = "";
     }, 500);
-    window.nal=Math.floor(Math.random() * 10);
+    nal=escolhermob(nal);
     document.getElementById("mob").src = mob[nal].img;
     erros=[];
   }
@@ -190,7 +176,7 @@ window.advinha_mob = function (){
           document.getElementById("listatentativas").innerHTML = "";
           document.getElementById("excedido").innerHTML="";
         }, 500);
-        window.nal=Math.floor(Math.random() * 10);
+        nal=escolhermob(nal);
         document.getElementById("mob").src = mob[nal].img;
         erros=[];
       } else {
