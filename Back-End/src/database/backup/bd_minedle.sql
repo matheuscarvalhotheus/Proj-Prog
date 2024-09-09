@@ -106,4 +106,4 @@ INSERT into assets(id,dados) values (NULL,'{
 ]
 }');
 INSERT into minigame(id,nome,id_assets) values (NULL,'mobs',1), (NULL,'poção',2), (NULL,'bloco',3), (NULL,'quebra-cabeça',4), (NULL,'quiz',5);
-INSERT into modo_jogo(id,nome,dif_opcoes,id_assets) values (NULL,'survival', '["fácil", "normal", "difícil"]', 6), (NULL,'hardcore', '["difícil"]', 7), (NULL,'criativo', '[""]', NULL);
+INSERT into modo_jogo(id,nome,dif_opcoes,id_assets) values (NULL,'survival', '["fácil", "normal", "difícil"]', 6), (NULL,'hardcore', '["difícil"]', 7), (NULL,'criativo', '["nenhum"]', NULL);
