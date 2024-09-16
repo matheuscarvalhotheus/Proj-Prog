@@ -1,15 +1,19 @@
 {
   "name": "minedle",
   "type": "module",
-  "scripts" : {
-  "server" : "node src/index.js",
-  "db:load": "node src/database/load.js"
+  "scripts": {
+    "server": "node src/index.js",
+    "db:load": "node src/database/load.js"
+  },
+  "prisma" : {
+    "seed" : "node prisma/seed.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "morgan": "^1.10.0",
     "node.js": "^0.0.1-security",
+    "prisma": "^5.19.1",
     "sqlite-async": "^1.2.0"
   }
 }
