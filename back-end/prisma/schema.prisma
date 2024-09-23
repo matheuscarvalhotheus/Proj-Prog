@@ -10,17 +10,99 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model gamemode{
+  id Int @id @default(autoincrement())
+  name String
+  hearts hearts[]
+  game game[]
+  gameSettings gameSettings[]
+}
+
+model hearts{
+  modeId Int
+  mode gamemode @relation(fields: [modeId], references: [id])
+  id Int @id @default(autoincrement())
+  img String
+  @@unique([modeId,id])
+}
+
+model difficulty{
+  id Int @id @default(autoincrement())
+  name String
+  game game[]
+  gameSettings gameSettings[]
+}
+
+model game{
+  modeId Int
+  mode gamemode @relation(fields: [modeId], references: [id])
+  difficultyId Int
+  difficulty difficulty @relation(fields: [difficultyId], references: [id])
+  @@id([modeId,difficultyId])
+}
+
+model gameSettings{
+  modeId Int
+  mode gamemode @relation(fields: [modeId], references: [id])
+  difficultyId Int
+  difficulty difficulty @relation(fields: [difficultyId], references: [id])
+  miniId Int
+  mini minigame @relation(fields: [miniId], references: [id])
+  tentativas Int
+  @@id([modeId,difficultyId,miniId])
+}
+
 model minigame{
   id Int @id @default(autoincrement())
-  nome String
-  id_assets Int
-  assets assets @relation(fields: [id_assets], references [id])
+  name String
+  description String
+  icon String
+  logo String
+  background String
+  border String
+  gameSettings gameSettings[]
+  solutions solutions[]
+  playerData playerData[]
+  }
+
+model solutions{
+  miniId Int
+  mini minigame @relation(fields: [miniId], references: [id])
+  id Int @id @default(autoincrement())
+  answer String
+  img String
+  @@unique([miniId,id])
+}
+
+model user{
+  email String @id
+  name String
+  password String
+  playerData playerData[]
+  typeId Int
+  type userType @relation(fields: [typeId], references: [id])
+  @@unique([email,typeId])
+}
+
+model userType{
+  id Int @id @default(autoincrement())
+  name String
+  user user[]
+}
+
+model playerData{
+  userEmail String
+  user user @relation(fields: [userEmail], references: [email])
+  miniId Int
+  mini minigame @relation(fields: [miniId], references: [id])
+  id Int @id @default(autoincrement())
+  points Int
+  @@unique([userEmail,miniId,id])
 }
 
 model assets{
   id Int @id @default(autoincrement())
   dados String
-  jogo minigame[]
 }
 
 
