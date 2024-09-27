@@ -15,7 +15,7 @@ model gamemode{
   name String
   hearts hearts[]
   game game[]
-  gameSettings gameSettings[]
+  playerData playerData[]
 }
 
 model hearts{
@@ -30,7 +30,6 @@ model difficulty{
   id Int @id @default(autoincrement())
   name String
   game game[]
-  gameSettings gameSettings[]
 }
 
 model game{
@@ -38,17 +37,17 @@ model game{
   mode gamemode @relation(fields: [modeId], references: [id])
   difficultyId Int
   difficulty difficulty @relation(fields: [difficultyId], references: [id])
+  gameSettings gameSettings[]
   @@id([modeId,difficultyId])
 }
 
 model gameSettings{
   modeId Int
-  mode gamemode @relation(fields: [modeId], references: [id])
   difficultyId Int
-  difficulty difficulty @relation(fields: [difficultyId], references: [id])
+  game game  @relation(fields: [modeId,difficultyId], references: [modeId,difficultyId])
   miniId Int
   mini minigame @relation(fields: [miniId], references: [id])
-  tentativas Int
+  tries Int
   @@id([modeId,difficultyId,miniId])
 }
 
@@ -62,7 +61,7 @@ model minigame{
   border String
   gameSettings gameSettings[]
   solutions solutions[]
-  playerData playerData[]
+  player player[]
   }
 
 model solutions{
@@ -78,7 +77,7 @@ model user{
   email String @id
   name String
   password String
-  playerData playerData[]
+  player player[]
   typeId Int
   type userType @relation(fields: [typeId], references: [id])
   @@unique([email,typeId])
@@ -90,32 +89,21 @@ model userType{
   user user[]
 }
 
-model playerData{
+model player{
   userEmail String
   user user @relation(fields: [userEmail], references: [email])
   miniId Int
   mini minigame @relation(fields: [miniId], references: [id])
-  id Int @id @default(autoincrement())
+  @@id([userEmail,miniId])
+  playerData playerData[]
+}
+
+model playerData{
+  userEmail String
+  miniId Int
+  player player @relation(fields: [userEmail,miniId], references: [userEmail,miniId])
+  modeId Int
+  mode gamemode @relation(fields: [modeId], references: [id])
   points Int
-  @@unique([userEmail,miniId,id])
+  @@id([userEmail,miniId,modeId])
 }
-
-model assets{
-  id Int @id @default(autoincrement())
-  dados String
-}
-
-
-
-
-//CREATE TABLE assets (
-//id INTEGER PRIMARY KEY, 
-//dados TEXT);
-
-//CREATE TABLE modo_jogo (
-//id INTEGER PRIMARY KEY, 
-//nome TEXT,
-//dif_opcoes TEXT,
-//id_assets INTEGER, 
-//FOREIGN KEY (id_assets) 
-//REFERENCES assets(id));

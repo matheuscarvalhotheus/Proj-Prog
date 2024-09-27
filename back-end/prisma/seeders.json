@@ -1,0 +1,27 @@
+{
+    "gamemode" : [
+        {
+            "name" : "survival"
+        },
+        {
+            "name" : "hardcore"
+        },
+        {
+            "name" : "creative"
+        }
+    ],
+    "hearts" : [
+        {},
+        {},
+        {}
+    ],
+    "difficulty" : [],
+    "game" : [],
+    "gameSettings" : [],
+    "minigame" : [],
+    "solutions" : [],
+    "user" : [],
+    "userType" : [],
+    "player" : [],
+    "playerData" : []
+}
