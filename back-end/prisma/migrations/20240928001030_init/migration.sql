@@ -8,6 +8,7 @@ CREATE TABLE "gamemode" (
 CREATE TABLE "hearts" (
     "modeId" INTEGER NOT NULL,
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL,
     "img" TEXT NOT NULL,
     CONSTRAINT "hearts_modeId_fkey" FOREIGN KEY ("modeId") REFERENCES "gamemode" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -22,21 +23,17 @@ CREATE TABLE "difficulty" (
 CREATE TABLE "game" (
     "modeId" INTEGER NOT NULL,
     "difficultyId" INTEGER NOT NULL,
-
-    PRIMARY KEY ("modeId", "difficultyId"),
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     CONSTRAINT "game_modeId_fkey" FOREIGN KEY ("modeId") REFERENCES "gamemode" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT "game_difficultyId_fkey" FOREIGN KEY ("difficultyId") REFERENCES "difficulty" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
 CREATE TABLE "gameSettings" (
-    "modeId" INTEGER NOT NULL,
-    "difficultyId" INTEGER NOT NULL,
+    "gameId" INTEGER NOT NULL,
     "miniId" INTEGER NOT NULL,
     "tries" INTEGER NOT NULL,
-
-    PRIMARY KEY ("modeId", "difficultyId", "miniId"),
-    CONSTRAINT "gameSettings_modeId_difficultyId_fkey" FOREIGN KEY ("modeId", "difficultyId") REFERENCES "game" ("modeId", "difficultyId") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "gameSettings_gameId_fkey" FOREIGN KEY ("gameId") REFERENCES "game" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT "gameSettings_miniId_fkey" FOREIGN KEY ("miniId") REFERENCES "minigame" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
@@ -99,6 +96,12 @@ CREATE TABLE "playerData" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "hearts_modeId_id_key" ON "hearts"("modeId", "id");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "game_modeId_difficultyId_id_key" ON "game"("modeId", "difficultyId", "id");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "gameSettings_gameId_miniId_key" ON "gameSettings"("gameId", "miniId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "solutions_miniId_id_key" ON "solutions"("miniId", "id");

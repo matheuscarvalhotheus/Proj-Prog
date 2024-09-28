@@ -11,17 +11,231 @@
         }
     ],
     "hearts" : [
-        {},
-        {},
-        {}
+        {
+            "modeId" : 1,
+            "name" : "cheio",
+            "img" : "https://drive.google.com/thumbnail?id=1AxTOm_kkRNoBV7SttpKuRU9FuROe7_Me"
+        },
+        {
+            "modeId" : 1,
+            "name" : "cheio_i",
+            "img" : "https://drive.google.com/thumbnail?id=1pXoicob0jjEZI7vn5l4ejYYO9yE0ni3s"
+
+        },
+        {
+            "modeId" : 1,
+            "name" : "vazio",
+            "img" : "https://drive.google.com/thumbnail?id=1LlKSczPm9i1cSLbCxelIp4sODrkEL3E2"
+        },
+        {
+            "modeId" : 1,
+            "name" : "vazio_i",
+            "img" : "https://drive.google.com/thumbnail?id=1gNniktil5bPkJvixEqS6xFUPE5w-9dol"
+
+        },
+        {
+            "modeId" : 2,
+            "name" : "cheio",
+            "img" : "https://drive.google.com/thumbnail?id=1HuK9vwBSMhq-nM0HGTKAyfcxF6Q3tROX"
+        },
+        {
+            "modeId" : 2,
+            "name" : "cheio_i",
+            "img" : "https://drive.google.com/thumbnail?id=1i6pKMnLGvynZAT6gbIuhqq3aWC6_p-1t"
+
+        },
+        {
+            "modeId" : 2,
+            "name" : "vazio",
+            "img" : "https://drive.google.com/thumbnail?id=1LlKSczPm9i1cSLbCxelIp4sODrkEL3E2"
+        },
+        {
+            "modeId" : 2,
+            "name" : "vazio_i",
+            "img" : "https://drive.google.com/thumbnail?id=1gNniktil5bPkJvixEqS6xFUPE5w-9dol"
+
+        }
     ],
-    "difficulty" : [],
-    "game" : [],
-    "gameSettings" : [],
-    "minigame" : [],
-    "solutions" : [],
+    "difficulty" : [
+        {
+            "name" : "fácil"
+        },
+        {
+            "name" : "normal"
+        },
+        {
+            "name" : "difícil"
+        },
+        {
+            "name" : "nenhum"
+        }
+    ],
+    "game" : [
+        {
+            "modeId" : 1,
+            "difficultyId" : 1
+        },
+        {
+            "modeId" : 1,
+            "difficultyId" : 2
+        },
+        {
+            "modeId" : 1,
+            "difficultyId" : 3
+        },
+        {
+            "modeId" : 2,
+            "difficultyId" : 3
+        },
+        {
+            "modeId" : 3,
+            "difficultyId" : 4
+        }
+    ],
+    "minigame" : [
+        {
+            "name" : "Mobs",
+            "description" : "Um jogo de advinhação, no qual o seu objetivo é advinhar qual o mob referente a silhueta dada.",
+            "icon" : "https://drive.google.com/thumbnail?id=1kjjE6-yeQspCvrGN2gYQJ2Ix79XsUImb",
+            "logo" : "template",
+            "background" : "template",
+            "border" : "template"
+        },
+        {
+            "name" : "Poção",
+            "description" : "template",
+            "icon" : "https://drive.google.com/thumbnail?id=19n5gvvqwc-AMTKxpJDRRUFDCOdmZcU2u",
+            "logo" : "template",
+            "background" : "template",
+            "border" : "template"
+        },
+        {
+            "name" : "Blocos",
+            "description" : "template",
+            "icon" : "https://drive.google.com/thumbnail?id=18vcxW9dIKNrq3zaRaeiy72PoGomBoF_o",
+            "logo" : "template",
+            "background" : "template",
+            "border" : "template"
+        },
+        {
+            "name" : "Puzzle",
+            "description" : "template",
+            "icon" : "https://drive.google.com/thumbnail?id=1-z4QcQOp-IzBm1AaIP9Z6kGbABXVBnhn",
+            "logo" : "template",
+            "background" : "template",
+            "border" : "template"
+        },
+        {
+            "name" : "Quiz",
+            "description" : "template",
+            "icon" : "https://drive.google.com/thumbnail?id=1NWdi5JFefpAnuhUjMmC474aUid_2KFRy",
+            "logo" : "template",
+            "background" : "template",
+            "border" : "template"
+        }
+    ],
+    "solutions" : [
+           {
+            "miniId" : 1,
+            "answer": "creeper",
+            "img": "https://drive.google.com/thumbnail?id=1RkwHiFhQNI65YKYDRAItjV-gfaQNupwm"
+           },
+           {
+            "miniId" : 1,
+            "answer": "zumbi",
+            "img": "https://drive.google.com/thumbnail?id=1ojFbDVcdlFSP94Up4tk8hTmyMr7M8CAY"
+           },
+           {
+            "miniId" : 1,
+            "answer": "esqueleto",
+            "img": "https://drive.google.com/thumbnail?id=159qDPZ-bbpW59qvvzpHfuIFiiwPLzOlO"
+           },
+           {
+            "miniId" : 1,
+            "answer": "aranha",
+            "img": "https://drive.google.com/thumbnail?id=1RvrRBkxW26i-JRNz2WeIyNDehB5Ekx9x"
+           },
+           {
+            "miniId" : 1,
+            "answer": "enderman",
+            "img": "https://drive.google.com/thumbnail?id=1AxvXX1oP6QVWODOsuF3lDGo98TvcVgMT"
+           },
+           {
+            "miniId" : 1,
+            "answer": "golem de ferro",
+            "img": "https://drive.google.com/thumbnail?id=1Ph4uCtV1SESAbSEk05aJ4T0r4t_PY7Xw"
+           },
+           {
+            "miniId" : 1,
+            "answer": "lobo",
+            "img": "https://drive.google.com/thumbnail?id=1925cHeotBIcEQqALw-ZWW3FctpIpXEiY"
+           },
+           {
+            "miniId" : 1,
+            "answer": "porco",
+            "img": "https://drive.google.com/thumbnail?id=1Y-h_rstl_Eci7fvruug9PAcJXfjZP9t1"
+           },
+           {
+            "miniId" : 1,
+            "answer": "vaca",
+            "img": "https://drive.google.com/thumbnail?id=12FYXpbMNzoIoHCQ29aL6IYsMSpY_6ihD"
+           },
+           {
+            "miniId" : 1,
+            "answer": "ovelha",
+            "img": "https://drive.google.com/thumbnail?id=1a7y8bAWk5U1SbnKMG0GsvYColM6gVETK"
+           }
+    ],
+    "gameSettings" : [
+        {
+            "gameId" : 1,
+            "miniId" : 1,
+            "tries" : 10 
+        },
+        {
+            "gameId" : 2,
+            "miniId" : 1,
+            "tries" : 5 
+        },
+        {
+            "gameId" : 3,
+            "miniId" : 1,
+            "tries" : 3 
+        },
+        {
+            "gameId" : 4,
+            "miniId" : 1,
+            "tries" : 3 
+        },
+        {
+            "gameId" : 5,
+            "miniId" : 1,
+            "tries" : 999 
+        }
+    ],
     "user" : [],
-    "userType" : [],
+    "userType" : [
+        {
+            "name" : "adm"
+        },
+        {
+            "name" : "usuário"
+        }
+    ],
     "player" : [],
-    "playerData" : []
+    "playerData" : [],
+    
+    "objects" : [ 
+    "gamemode",
+    "hearts",
+    "difficulty",
+    "game",
+    "minigame",
+    "solutions",
+    "gameSettings",
+    "userType",
+    "user",
+    "player",
+    "playerData"
+    ] 
 }

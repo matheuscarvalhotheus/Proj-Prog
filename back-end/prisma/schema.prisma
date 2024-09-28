@@ -22,6 +22,7 @@ model hearts{
   modeId Int
   mode gamemode @relation(fields: [modeId], references: [id])
   id Int @id @default(autoincrement())
+  name String
   img String
   @@unique([modeId,id])
 }
@@ -37,18 +38,18 @@ model game{
   mode gamemode @relation(fields: [modeId], references: [id])
   difficultyId Int
   difficulty difficulty @relation(fields: [difficultyId], references: [id])
+  id Int @id @default(autoincrement())
   gameSettings gameSettings[]
-  @@id([modeId,difficultyId])
+  @@unique([modeId,difficultyId])
 }
 
 model gameSettings{
-  modeId Int
-  difficultyId Int
-  game game  @relation(fields: [modeId,difficultyId], references: [modeId,difficultyId])
+  gameId Int
+  game game  @relation(fields: [gameId], references: [id])
   miniId Int
   mini minigame @relation(fields: [miniId], references: [id])
   tries Int
-  @@id([modeId,difficultyId,miniId])
+  @@id([gameId,miniId])
 }
 
 model minigame{
@@ -94,16 +95,17 @@ model player{
   user user @relation(fields: [userEmail], references: [email])
   miniId Int
   mini minigame @relation(fields: [miniId], references: [id])
-  @@id([userEmail,miniId])
+  id Int @id @default(autoincrement())
   playerData playerData[]
+  @@unique([userEmail,miniId])
+
 }
 
 model playerData{
-  userEmail String
-  miniId Int
-  player player @relation(fields: [userEmail,miniId], references: [userEmail,miniId])
+  playerId Int
+  player player @relation(fields: [playerId], references: [id])
   modeId Int
   mode gamemode @relation(fields: [modeId], references: [id])
   points Int
-  @@id([userEmail,miniId,modeId])
+  @@id([playerId,modeId])
 }
