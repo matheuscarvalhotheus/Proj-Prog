@@ -1,10 +1,5 @@
-import { resolve } from 'node:path';
-import { Database } from 'sqlite-async';
+import { PrismaClient } from '@prisma/client';
 
-const banco_arquivo = resolve('src','database','minedle.sqlite');
+const Prisma = new PrismaClient()
 
-async function chamar() {
-  return await Database.open(banco_arquivo);
-}
-
-export default { chamar };
+export default Prisma;
