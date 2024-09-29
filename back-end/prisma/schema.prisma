@@ -54,7 +54,7 @@ model gameSettings{
 
 model minigame{
   id Int @id @default(autoincrement())
-  name String
+  name String @unique
   description String
   icon String
   logo String
