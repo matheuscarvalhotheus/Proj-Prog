@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="../Cadastro/Cadastro.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+</head>
+
+<body> 
+
+  
+  <!-- logo -->
+  <div class="logo">
+    <img src="../assets/imagens/default/logo-terra.png" id="logo">
+  </div>
+  
+  <!-- Tela de Cadastro-->
+  <div class="texto">
+    <h1>Cadastro</h1>
+  </div>
+  
+                           
+<!-- Parte Princial -->
+  <div class="Corpo">
+<form class="Formulario">
+  
+   <ul> <p>Nome de Usuario:</p>
+     <input class="inputt" type="text" id="nome" placeholder="Digite seu nome de usuário" required> </ul>
+  
+    <ul><p>E-mail: </p>
+      <input class="inputt" type="text" id="email" placeholder="Digite seu e-mail"></ul>
+  
+    <ul><p>Senha: </p>
+      <input class="inputt" type="password" id="senha" placeholder="Digite sua senha"></ul>
+  
+</form>  
+  <!-- Botão para fazer o cadastro -->
+    <div class="botao">
+      <input type="button" onclick="cadastrar()" value="Cadastrar">
+    </div>
+      <div class="redirecionar">
+        Nao tem conta? <a href="../Login/Login.html">Faça o Cadastro</a>
+      </div>
+    
+  </div>
+</body>
+</hmtl>
