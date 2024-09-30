@@ -1,12 +1,6 @@
 import express from "express";
 import minedle from './modos/minedle.js';
 import register from '../middleware/registerauth/register.js'
-class HTTPError extends Error {
-    constructor(message, code) {
-      super(message);
-      this.code = code;
-    }
-  }
 
   const router=express.Router();
 
@@ -47,9 +41,12 @@ class HTTPError extends Error {
 });
   // Rota para cadastra novo usuário
     router.post('/newuser', async (req, res) => {
+    if(req.body){
     const newUser = req.body;
-    
-    return res.json()
+    const resultado=await register(newUser)
+    return res.status(resultado[0]).json(resultado[1])
+    }
+    return res.status(400).json({fail:"nenhum dado enviado"})
     })
       
 export default router;

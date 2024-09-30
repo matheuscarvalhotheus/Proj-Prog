@@ -9,7 +9,15 @@ async function read_table(tabela) {
 }
 }
 
-
+// procura se existe um usuário com o email dado
+async function search_user(email) {
+    const resultado = await prisma.user.findFirst({
+        where:{
+            email: email
+        }
+    });
+    return resultado;
+}
 
 // Função para ler todos os valores de uma tabela genérica associados ao valor dado do atributo "name" de "minigame"
 async function join_minigame(nome, tabela) {
@@ -87,4 +95,4 @@ async function read_gamemodes(game) {
     return obj;
 }
 
-export default { read_table, join_minigame, insert_into_table, read_gamemodes };
+export default { search_user, read_table, join_minigame, insert_into_table, read_gamemodes };
