@@ -12,7 +12,6 @@ document.getElementById("mob").src = mob[nal].img;
 
 //lê a dificuldade e modo de jogo no armazenamento local e define a quantidade de tentativas, se não houver usa a dificuldade e modo de jogo default
 var tentativas = await set.dificuldade();
-console.log(await tentativas);
 //pega o valor do modo de jogo salvo no armazenamento local
 var mjogo = localStorage.getItem("mjogo");
 

@@ -24,8 +24,8 @@ body{
   padding:2px;
 }
 .entrar>p>a:hover{
-  color:green;
-  border-bottom: solid 2px green ;
+  color:rgb(64, 140, 64);
+  border-bottom: solid 2px rgb(64, 140, 64) ;
   transition:color 500ms, border-bottom 500ms;
 }
 
