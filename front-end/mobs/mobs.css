@@ -78,11 +78,13 @@
     border-image: url(../assets/imagens/mobs/bt_vazio.png);
     border-image-slice: 8 9 8 9 fill;
 
-    p{
-      color:white;
-      margin:3.2px 4.2px 5.2px 4.2px;
-    }
-  } 
+  }
+  
+  #enviar>p{
+    color:white;
+    margin:3.2px 4.2px 5.2px 4.2px;
+  }
+
   #enviar:hover{
     cursor:pointer;
     filter:brightness(90%);
