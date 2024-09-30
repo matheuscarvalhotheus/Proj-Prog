@@ -8,6 +8,30 @@
     background:none;
   }
   
+
+.menu{
+  width:100%;
+  display:flex;
+  justify-content: space-between;
+  padding-bottom: 25px;
+
+}
+.entrar{
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.entrar>p>a{
+  color:white;
+  text-decoration: none;
+  border-bottom: 2px solid #ffffff;
+  padding-bottom:1px;
+}
+.entrar>p>a:hover{
+  filter:brightness(0.8);
+}
+
   #minedle{
     width: 300px;
     padding: 25px;

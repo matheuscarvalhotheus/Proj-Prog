@@ -1,12 +1,6 @@
 import express from "express";
 import minedle from './modos/minedle.js';
-
-class HTTPError extends Error {
-    constructor(message, code) {
-      super(message);
-      this.code = code;
-    }
-  }
+import register from '../middleware/registerauth/register.js'
 
   const router=express.Router();
 
@@ -14,22 +8,45 @@ class HTTPError extends Error {
   router.get('/minigames', async (req, res) => {
     const tabela = "minigame";
     const resultado = await minedle.read_table(tabela)
-    return res.json(resultado); 
-  });
-  
-  // Rota para obter tabela modo_jogo
-  router.get('/modos', async (req, res) => {
-    const tabela = "modo_jogo";
-    const resultado = await minedle.read_table(tabela)
     return res.json(resultado);
   });
-
-  // Rota para obter assets mobs
-  router.get('/mobs/assets', async (req, res) => {
-    const nome = "mobs"
-    const tabela = "minigame";
-    const resultado = await minedle.read_assets(nome,tabela)
-    return res.json(resultado); 
+  
+  // Rota para obter tabela os modos de jogo e dificuldades pela tabela games
+  router.get('/modos', async (req, res) => {
+    const resultado = await minedle.read_gamemodes()
+    return res.json(resultado)
   });
+
+  // Rota para obter as respostas de mobs
+    router.get('/mobs/solutions', async (req, res) => {
+    const nome = "Mobs"
+    const tabela = "solutions";
+    const resultado = await minedle.join_minigame(nome,tabela)
+    return res.json(resultado)
+});
+
+  // Rota para obter a quantidade de tentativas referentes a cada modo de jogo e suas dificuldades de Mobs
+    router.get('/mobs/gameSettings', async (req, res) => {
+    const nome = "Mobs"
+    const tabela = "gameSettings";
+    const resultado = await minedle.join_minigame(nome,tabela)
+
+    const valores = []
+    for(let each of resultado){
+      const obj = await minedle.read_gamemodes(each.gameId)
+      obj["tries"] = each.tries
+      valores.push(obj)
+    }
+    return res.json(valores)
+});
+  // Rota para cadastra novo usuário
+    router.post('/newuser', async (req, res) => {
+    if(req.body){
+    const newUser = req.body;
+    const resultado=await register(newUser)
+    return res.status(resultado[0]).json(resultado[1])
+    }
+    return res.status(400).json({fail:"nenhum dado enviado"})
+    })
       
 export default router;

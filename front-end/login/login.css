@@ -1,61 +1,85 @@
 body{
-    background-image: url(../assets/imagens/default/dirt_fundo.png);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Minecraft', sans-serif;
-  }
+  background-image: url(../assets/imagens/default/dirt_fundo.png);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.bold{
+  font-family: Minecraft;
+}
+
+#logo{
+  width: 350px;
+}
+
+#logo:hover{
+  content:url(../assets/imagens/default/logo-portal.png);
+  width: 350px;
+}
   
-  #logo{
-    width: 350px;
-  }
-  
-  .logo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .texto{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    font-size: 25px;
-    color: #c2c2c2;
-    text-shadow: black;
-  }
-  
-  .Corpo{
-    background-color: black;
-    opacity: 0.8;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 5px;
-    height: 60%;
-   
-  }
-  
-  ::placeholder{
-    color: white;
-    padding: 8px;
-  }
-  
-  .Formulario{
-    width: 70%;
-    
-  }
-  
-  .inputt{
-    width: 100%;
-    height: 35px;
-    border: 5px inset #827a85;
-    background-color: #40562f;
-  }
-  
-  .redirecionar{
-    margin-bottom: 20px;
-  }
+.texto{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 25px;
+  color: white;
+  text-shadow: black;
+}
+
+.Corpo{
+  padding:50px;
+  background-color: rgba(0,0,0,0.8);
+  width:30%;
+  height:60%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+ 
+}
+
+form{
+  display: flex;
+  justify-content: center;
+  width:100%;
+}
+ul{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width:50%;
+  list-style-type: none;
+  padding: 0px;
+}
+
+ul>div{
+  width:50%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+::placeholder{
+  color: white;
+  padding: 10px;
+}
+
+.inputt{
+  width:100%;
+  padding:5px;
+  height: 35px;
+  border: 5px inset #827a85;
+  background-color: #40562f;
+}
+
+.botao{
+  margin:30px;
+}
+
+.redirecionar{
+  margin-bottom: 20px;
+}
