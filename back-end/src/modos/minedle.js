@@ -1,5 +1,5 @@
 import prisma from "../database/database.js";
-
+import interprete from "../../middleware/interpretadores.js";
 
 // Função para ler todos os valores de uma tabela dada
 async function read_table(tabela) {
@@ -22,10 +22,11 @@ async function join_minigame(nome, tabela) {
                 id: true
             }
         });
+
         const resultado = await prisma[tabela].findMany({
             where:{
                 miniId: id.id
-            }
+            },
         });
         return resultado;
     }
@@ -45,54 +46,44 @@ async function insert_into_table(tabela, valores) {
 
 
 // Função para ler todos os modos de jogo e suas dificuldades, por meio da tabela "game"
-async function read_gamemodes() {
-    const relations = await prisma.game.findMany({
-        select: {
-            modeId: true,
-            difficultyId: true,
-        }
-    })
-
-    var modo = []
-    var dificuldade = []
-
-    for( let each of relations){
-      const obj1 =  await prisma.gamemode.findFirst({
-            where:{
-                id: each.modeId
-            },
-            select:{
-                name: true
-            }
-        })
-      const obj2 =  await prisma.difficulty.findFirst({
+async function read_gamemodes(game) {
+    let flag=true
+    //le o id de game e devolve os valores de dificuldade e modo de jogo
+    if(game){
+    const relations = await prisma.game.findFirst({
         where:{
-            id: each.difficultyId
+            id: game 
         },
         select:{
-            name: true
-        }
-    }) 
-      if(!(modo.includes(obj1.name))){
-        modo.push(obj1.name)
-        let index=modo.length-1
-        dificuldade[index]=[]
-        dificuldade[index].push(`"${obj2.name}"`)
-    }else{
-        let index = modo.indexOf(obj1.name)
-        dificuldade[index].push(`"${obj2.name}"`)
+        mode:{
+            select:{
+                name:true
+        }},
+        difficulty:{
+        select:{
+            name: true,
+        }}
     }
+    })
+    flag=false
+    const obj = interprete(relations,flag)
+    return obj
     }
-    let index = 0
-    var json = "{"
-    for(let each of modo){
-        json+=` "${each}":[${dificuldade[index]}],`
-        ++index
-    }
-    json = json.substring(0,json.length-1)
-    json+="}";
-    const obj=JSON.parse(json)
+    //se nao houver valor de id, lê a tabela toda e devolde todos os valores
+    const relations = await prisma.game.findMany({
+        select:{
+        mode:{
+        select:{
+            name: true,
+    }},
+        difficulty:{
+        select:{
+            name: true,
+    }}
 
+    }
+    });
+    const obj = interprete(relations,flag)
     return obj;
 }
 
