@@ -4,7 +4,6 @@ import minedle from "../../src/modos/minedle.js"
 
 async function register(newUser){
     try{
-
         const newName=newUser.name
         const newEmail=newUser.email
         const newPass=newUser.password

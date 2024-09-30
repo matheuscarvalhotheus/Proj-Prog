@@ -4,8 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
+  <link href="../global.css" rel="stylesheet" type="text/css" />
   <link href="../cadastro/cadastro.css" rel="stylesheet" type="text/css" />
-  <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet" type="text/css">
+  <script src="cadastro.js" type="module"></script>
 </head>
 
 <body> 
@@ -13,35 +15,61 @@
   
   <!-- logo -->
   <div class="logo">
-    <img src="../assets/imagens/default/logo-terra.png" id="logo">
+    <a id="caminho" href="/front-end/home/home.html"><img src="../assets/imagens/default/logo-terra.png" id="logo"></a>
   </div>
   
   <!-- Tela de Cadastro-->
   <div class="texto">
-    <h1>Cadastro</h1>
+    <h1 class="bold">Cadastro</h1>
   </div>
   
                            
 <!-- Parte Princial -->
   <div class="Corpo">
-<form class="Formulario">
-  
-   <ul> <p>Nome de Usuario:</p>
-     <input class="inputt" type="text" id="nome" placeholder="Digite seu nome de usuário" required> </ul>
-  
-    <ul><p>E-mail: </p>
-      <input class="inputt" type="text" id="email" placeholder="Digite seu e-mail"></ul>
-  
-    <ul><p>Senha: </p>
-      <input class="inputt" type="password" id="senha" placeholder="Digite sua senha"></ul>
-  
-</form>  
-  <!-- Botão para fazer o cadastro -->
-    <div class="botao">
-      <input type="button" onclick="cadastrar()" value="Cadastrar">
+<form onsubmit="return false">
+  <ul>
+   <li>
+    <div>
+        <p class="bold">Nome de Usuario:</p>
+        <input class="inputt" type="text" id="nome" placeholder="Digite seu nome de usuário" required>
+        <p class="erro" id="e_nome"></p>
     </div>
+   </li>
+  
+    <li>
+      <div>
+        <p class="bold">E-mail:</p>
+        <input class="inputt" type="text" id="email" placeholder="Digite seu e-mail">
+        <p class="erro" id="e_email"></p>
+      </div>
+    </li>
+  
+    <li>
+      <div>
+        <p class="bold">Senha: </p>
+        <input class="inputt" type="password" id="senha" placeholder="Digite sua senha">
+        <p class="erro" id="e_senha"></p>
+      </div>
+    </li>
+
+    <li>
+      <div>
+        <p class="bold">Confirmar Senha: </p>
+        <input class="inputt" type="password" id="csenha" placeholder="Digite sua senha novamente">
+        <p class="erro" id="e_csenha"></p>
+      </div>
+    </li>
+    <li>
+       <!-- Botão para fazer o cadastro -->
+       <div class="botao">
+        <input type="button" onclick="cadastro()" value="Cadastrar">
+      </div>
+    </li>
+  </ul>
+</form>  
+
       <div class="redirecionar">
-        Nao tem conta? <a href="../login/login.html">Faça o Cadastro</a>
+        <p>Já tem conta? <a href="../login/login.html"> Faça o Login</a></p>
       </div>
     
   </div>

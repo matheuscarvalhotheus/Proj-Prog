@@ -31,13 +31,14 @@ for( let each of relations){
 }
 
 let index = 0
-var json = "{"
+var json = '{ "valores" : ['
 for(let each of modo){
-    json+=` "${each}":[${dificuldade[index]}],`
+    json+=`{"nome": "${each}",
+    "dif_opcoes": [${dificuldade[index]}]},`
     ++index
 }
 json = json.substring(0,json.length-1)
-json+="}";
+json+="]}";
 const obj=JSON.parse(json)
 
 return obj

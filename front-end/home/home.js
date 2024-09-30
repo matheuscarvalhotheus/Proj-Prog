@@ -1,9 +1,10 @@
 var selecionar = "";
 
 var game_configs = await dados("/modos")
+console.log(game_configs)
 var modos = []
 var dificuldades = []
-for(let i of game_configs){
+for(let i of game_configs.valores){
     modos.push(i.nome);
     dificuldades.push(eval(i.dif_opcoes))
 }

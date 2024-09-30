@@ -4,16 +4,14 @@ import filtro from "./apps/filtros.js"
 //escolhe o mob por meio de um número aleatório
 var nal=escolhermob();
 // puxa os dados do mob.json
-var recebe = await dados("/mobs/assets")
-//corrige os dados e acessa o array de JSONS
-var mob = JSON.parse(recebe.dados.replace("\\n"," ")).mobs;
+var mob = await dados("/mobs/solutions")
 //cria uma lista de nomes dos mobs com base no array de JSONS
 var listanomes = filtro.mobnomes(mob);
 //altera a imagem
 document.getElementById("mob").src = mob[nal].img;
 
 //lê a dificuldade e modo de jogo no armazenamento local e define a quantidade de tentativas, se não houver usa a dificuldade e modo de jogo default
-var tentativas = set.dificuldade();
+var tentativas = await set.dificuldade();
 //pega o valor do modo de jogo salvo no armazenamento local
 var mjogo = localStorage.getItem("mjogo");
 
