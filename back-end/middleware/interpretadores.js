@@ -40,6 +40,5 @@ for(let each of modo){
 json = json.substring(0,json.length-1)
 json+="]}";
 const obj=JSON.parse(json)
-
 return obj
 }

@@ -3,7 +3,7 @@ function dificuldade(){
     var dificuldade = localStorage.getItem("dificuldade");
     
     if(mjogo){
-      if(mjogo=="criativo"){
+      if(mjogo=="creative"){
        return 999;
       } else if(mjogo=="survival"){
         if(dificuldade=="fácil"){
@@ -17,7 +17,7 @@ function dificuldade(){
       return 3;
     }
     } else {
-      localStorage.setItem("mjogo","criativo");
+      localStorage.setItem("mjogo","creative");
       return 999;
     }
     };

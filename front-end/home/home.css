@@ -20,12 +20,16 @@ body{
 .entrar>p>a{
   color:white;
   text-decoration: none;
-  border-bottom: 2px solid #ffffff;
-  padding-bottom:1px;
+  border-bottom: solid 2px white;
+  padding:2px;
 }
 .entrar>p>a:hover{
-  filter:brightness(0.8);
+  color:rgb(64, 140, 64);
+  border-bottom: solid 2px rgb(64, 140, 64) ;
+  transition:color 500ms, border-bottom 500ms;
 }
+
+
 #logo{
   width: 350px;
   margin-left: 10px;
@@ -166,6 +170,6 @@ p{
 
 }
 
-#game-select-gui>div>button{
+#game-select-gui>div button{
   width:100%;
 }
