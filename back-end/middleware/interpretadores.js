@@ -1,4 +1,3 @@
-import minedle from "../src/modos/minedle.js"
 export default function interprete(relations,flag){
 var modo = []
 var dificuldade = []

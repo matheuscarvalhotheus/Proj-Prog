@@ -213,7 +213,14 @@
             "tries" : 999 
         }
     ],
-    "user" : [],
+    "user" : [
+        {
+            "email" : "fariasmarquesgustavo@gmail.com",
+            "name" : "Gtagusta",
+            "password" : "$2b$10$WR6yOFMtF1qnvTS.n1FOx.kXHWihwPz3KQlg0tuhUweq6i7l/x8Va",
+            "typeId" : 1
+        }
+    ],
     "userType" : [
         {
             "name" : "adm"
