@@ -7,6 +7,11 @@
   <link href="../global.css" rel="stylesheet" type="text/css" />
   <link href="login.css" rel="stylesheet" type="text/css" />
   <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+  <script>
+        if(localStorage.getItem("token")){
+        window.location.href = "/front-end/home/home.html"
+        }
+  </script>
   <script src="login.js" type="module"></script>
 </head>
 
@@ -43,7 +48,7 @@
     </form>  
   <!-- Botão para fazer o login -->
     <div class="botao">
-      <input type="button" onclick="cadastrar()" value="Login">
+      <input type="button" onclick="handleform()" value="Login">
 
     </div>
     <div class="redirecionar">

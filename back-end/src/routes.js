@@ -1,4 +1,6 @@
 import express from "express";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import minedle from './modos/minedle.js';
 import register from '../middleware/registerauth/register.js'
 
@@ -47,6 +49,25 @@ import register from '../middleware/registerauth/register.js'
     return res.status(resultado[0]).json(resultado[1])
     }
     return res.status(400).json({fail:"nenhum dado enviado"})
+    })
+
+    router.post('/login', async (req,res) => {
+        if(req.body){
+        const {email, pass} = req.body;
+        const {email: useremail,password: userpass} = await minedle.search_user(email)
+        const valid = await bcrypt.compare(pass,userpass)
+
+        if(valid){
+        const token = jwt.sign(
+          {useremail},
+          process.env.DATABASE_KEY,{
+            expiresIn: 3600000}
+          );
+        
+        return res.json({flag:true,token: token})
+        } 
+      }
+        return res.status(401).json()
     })
       
 export default router;
