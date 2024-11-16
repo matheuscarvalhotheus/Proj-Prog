@@ -1,22 +1,28 @@
 export function emailval(userEmail){
-    const resultado=userEmail.match(/^[^\s]+@[^\s]+$/g)
+    if(userEmail.length>=3&&userEmail.length<=254){
+    const resultado=userEmail.match(/^.+@.+$/g)
     if(resultado){
       return true
+    }
     }
     return false
 }
 export function nameval(userName){
-  const resultado=userName.match(/^([^\s]+(.+[^\s]+)*){2,24}$/g)
-  if(resultado){
+  if(userName.length>=3&&userName.length<=24){
+    const resultado=userName.match(/^[^\s]+(.+[^\s]+)*$/g)
+    if(resultado){
       return true
     }
-    return false  
+    }
+    return false
 }
 
 export function passwordval(userPass){
-    const resultado=userPass.match(/^((?=.*[a-zA-Z])(?=.*[\d]).+){4,20}$/g)
+  if(userPass.length>=4&&userPass.length<=32){
+    const resultado=userPass.match(/^(?=.*[a-zA-Z])(?=.*[\d]).+$/g)
     if(resultado){
-        return true
-      }
-      return false  
+      return true
+    }
+    }
+    return false
 }

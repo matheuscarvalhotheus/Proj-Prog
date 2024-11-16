@@ -4,7 +4,7 @@ window.location.href = "/front-end/home/home.html"
 }
 
 function logout(){
-localStorage.removeItem("token",token)
+localStorage.removeItem("token")
 window.location.href = "/front-end/home/home.html"
 }
 

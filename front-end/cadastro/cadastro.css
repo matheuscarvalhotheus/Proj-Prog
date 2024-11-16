@@ -21,6 +21,7 @@
   .erro{
     color:rgb(177, 30, 30);
     font-size:12px;
+    transition:color 250ms;
   }
   .texto{
     display: flex;
@@ -89,3 +90,18 @@
   .redirecionar{
     margin-bottom: 20px;
   }
+
+  .link{
+    color:rgb(81, 165, 81);
+  }
+
+  .link:hover{
+    color:rgb(90, 224, 90);
+    transition:color 300ms;
+  }
+
+  .highlight{
+    color:rgb(248, 56, 56);
+    transition:color 250ms;
+  }
+  

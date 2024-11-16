@@ -24,9 +24,9 @@ body{
   padding:2px;
 }
 .entrar>p>a:hover{
-  color:rgb(64, 140, 64);
-  border-bottom: solid 2px rgb(64, 140, 64) ;
-  transition:color 500ms, border-bottom 500ms;
+  color:rgb(81, 165, 81);
+  border-bottom: solid 2px rgb(81, 165, 81);
+  transition:color 300ms, border-bottom 300ms;
 }
 
 
@@ -173,3 +173,4 @@ p{
 #game-select-gui>div button{
   width:100%;
 }
+

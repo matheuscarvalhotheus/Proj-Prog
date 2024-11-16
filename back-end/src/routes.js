@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import minedle from './modos/minedle.js';
 import register from '../middleware/registerauth/register.js'
+import validatoken from '../middleware/validatoken.js'
 
   const router=express.Router();
 
@@ -41,6 +42,22 @@ import register from '../middleware/registerauth/register.js'
     }
     return res.json(valores)
 });
+
+  router.get('/me', validatoken, async (req, res) => {
+  try {
+    const userdata = await minedle.search_user(req.useremail);
+    if (!userdata) {
+      return res.status(404).json({ message: 'usuário não encontrado' });
+    }
+  
+    const { password, ...safeuser } = userdata;
+
+    return res.status(200).json(safeuser);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json();
+  }})
+
   // Rota para cadastra novo usuário
     router.post('/newuser', async (req, res) => {
     if(req.body){
@@ -52,11 +69,11 @@ import register from '../middleware/registerauth/register.js'
     })
 
     router.post('/login', async (req,res) => {
+      try{
         if(req.body){
         const {email, pass} = req.body;
         const {email: useremail,password: userpass} = await minedle.search_user(email)
         const valid = await bcrypt.compare(pass,userpass)
-
         if(valid){
         const token = jwt.sign(
           {useremail},
@@ -66,8 +83,14 @@ import register from '../middleware/registerauth/register.js'
         
         return res.json({flag:true,token: token})
         } 
-      }
         return res.status(401).json()
-    })
+      }
+        return res.status(404).json()
+    }catch(err){
+      return res.status(401).json()
+    }
+  })
+  
       
+    
 export default router;
