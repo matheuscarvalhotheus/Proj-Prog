@@ -78,6 +78,7 @@ const pointsdisplay = document.getElementById("points")
 const triesdisplay = document.getElementById("tries")
 const modaldisplay = document.getElementById("modal")
 const overlaydisplay = document.getElementById("overlay")
+var inside=false
 var reseting = false
 var processing = false
 var removednotifications = []
@@ -293,6 +294,19 @@ input.oninput = (event) => {
 input.onfocus = (event) => {
     autoselect = search(input.value)
 }
+//desativando search bar
+input.addEventListener("click", (event) => {
+inside=true
+})
+searchlist.addEventListener("click", (event) => {
+    inside=true
+})
+document.addEventListener("click", (event) => {
+if(!inside){
+searchlist.innerHTML=''
+}
+inside=false
+})
 
 //submit do forms
 forms.onsubmit = (event) => {
