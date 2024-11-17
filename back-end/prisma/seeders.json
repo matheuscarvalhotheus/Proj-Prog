@@ -190,27 +190,32 @@
         {
             "gameId" : 1,
             "miniId" : 1,
-            "tries" : 10 
+            "tries" : 5,
+            "multiplier" : 1.0
         },
         {
             "gameId" : 2,
             "miniId" : 1,
-            "tries" : 5 
+            "tries" : 5,
+            "multiplier" : 1.25
         },
         {
             "gameId" : 3,
             "miniId" : 1,
-            "tries" : 3 
+            "tries" : 3,
+            "multiplier" : 1.5
         },
         {
             "gameId" : 4,
             "miniId" : 1,
-            "tries" : 3 
+            "tries" : 3,
+            "multiplier" : 2.0
         },
         {
             "gameId" : 5,
             "miniId" : 1,
-            "tries" : 999 
+            "tries" : 999,
+            "multiplier" : 1.0
         }
     ],
     "user" : [

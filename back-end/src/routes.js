@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import minedle from './modos/minedle.js';
 import register from '../middleware/registerauth/register.js'
 import validatoken from '../middleware/validatoken.js'
+import numbervalidation from '../middleware/highscorevalidation.js'
 
   const router=express.Router();
 
@@ -38,10 +39,39 @@ import validatoken from '../middleware/validatoken.js'
     for(let each of resultado){
       const obj = await minedle.read_gamemodes(each.gameId)
       obj["tries"] = each.tries
+      obj["multiplier"]=each.multiplier
       valores.push(obj)
     }
     return res.json(valores)
 });
+
+  router.post('/newhighscore', validatoken, async (req,res) => {
+    try{
+    if(req.body&&req.body.highscore){
+    var reasonable = numbervalidation(req.body.highscore);
+
+    if(reasonable){
+    var mininame = req.body.mini
+    var modename = req.body.mode
+
+    if(mininame&&modename){
+    const [miniid,modeid] = await minedle.minimodevalidation(mininame,modename)
+    
+    if(miniid&&modeid){
+    const result = await minedle.create_newhighscore(req.useremail,miniid.id,modeid.id,req.body.highscore)
+    return res.status(result[0]).json(result[1])
+    }
+    return res.status(409).json()
+    }
+    }
+    return res.status(400).json()
+    }
+    return res.status(409).json()
+     }catch(err){
+    console.log(err)
+    return res.status(500).json()
+    }
+  })
 
   router.get('/me', validatoken, async (req, res) => {
   try {

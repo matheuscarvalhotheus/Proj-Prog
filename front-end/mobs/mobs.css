@@ -7,8 +7,17 @@
   body{
     background:none;
   }
-  
 
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fundobr{
+  margin:20px;
+  width:300px
+}
 .menu{
   width:100%;
   display:flex;
@@ -23,9 +32,9 @@
   justify-content: space-evenly;
 }
 .entrar>p>a{
-  color:white;
+  color:#dedede;
   text-decoration: none;
-  border-bottom: solid 2px white;
+  border-bottom: solid 2px #dedede;
   padding:2px;
 }
 .entrar>p>a:hover{
@@ -33,6 +42,29 @@
   border-bottom: solid 2px rgb(64, 140, 64) ;
   transition:color 500ms, border-bottom 500ms;
 }
+
+.points{
+  width: 350px;
+  display: flex;
+  align-items: center;
+}
+
+.points>.statistics{
+  position:relative;
+  left:70px;
+  text-align: left;
+}
+
+#tries{
+  color:#dedede;
+}
+#points{
+  color:#dedede;
+}
+
+
+
+
 
 
   #minedle{
@@ -46,15 +78,17 @@
   }
 
   #mob{
-    width: 150px;
+   width:280px;
+   height:280px;
+   object-fit:contain;
   }
   
   #botaoimg{
     width: 101%;
     opacity: 1;
   }
-  .pricipal{
-    background-color: rgba(2,2,2,0.8);
+  .principal{
+    background-color: rgb(17, 16, 16);
     width: 290px;
     margin: auto;
     padding: 10px;
@@ -68,8 +102,12 @@
     width: 100px;
   }
   
+
   #barra{
-    width: 300px;
+    background-color:rgba(17, 16, 16);
+    border: #dedede 6px ridge;
+    color:#dedede;
+    width: 100%;
     padding: 5px;
     margin-top: 20px;
   }
@@ -84,7 +122,7 @@
   }
   
   #enviar>p{
-    color:white;
+    color:#dedede;
     margin:3.2px 4.2px 5.2px 4.2px;
   }
 
@@ -99,20 +137,398 @@
     filter:brightness(100%);
 
   } 
-
+  .resposta{
+    width:300px;
+  }
   .resultados{
-    color:aqua;
+    color:#dedede;
+    width:300px;
     text-align:center;
   }
+
+  .searchelement{
+    border: #7c7c7c 3px solid;
+    padding:10px;
+  }
+
+  .searchelement:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 100ms;
+  }
+
+  .searchelement:active{
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: background-color 100ms;
+  }
+
+  .searchelement:first-child{
+    border:#7c7c7c 3px solid;
+    border-top: 0px;
+  }
+  .searchelement:last-child{
+    border:#7c7c7c 3px solid;
+    border-bottom: #7c7c7c 5px solid;;
+  }
+
+  #listavalores{
+    background-color: rgba(17, 16, 16);
+    border: #7c7c7c 2px solid;
+    border-top: 0px;
+    border-bottom: 0px;
+    height:100%;
+    margin:0px;
+  }
+
 
   ul{
     list-style-type: none;
     text-align:center;
+    padding:0px;
   }
   li{
     margin:0px auto;
     padding:0px;
   }
-  .listaerrosair{
-    color:aqua;
+
+  .listatentativas{
+   display:Flex;
+   flex-direction: column;
+   align-items: center;
   }
+  .notifelement{
+    margin:20px;
+    display:Flex;
+    flex-direction: column;
+    align-items: center;
+   }
+
+  .notification{
+  background-color: rgba(17, 16, 16);
+  width: 320px;
+  border: #dedede 4px ridge;
+  display:Flex;
+  flex-direction:row;
+  justify-content: space-between;
+  }
+
+  .notification>div>p{
+    color:#dedede;
+    margin:0px;
+  }
+  .notificationp{
+    font-size: small;
+  }
+  
+  .notification>img{
+    width:75px;
+    height:75px;
+    padding:8px;
+  }
+  
+  .notificationtext{
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width:60%;
+    padding:5px 10px;
+  }
+  .notificationimg{
+    margin:5px 0px;
+    object-fit: scale-down;
+    height:20px;
+  }
+  .notificationclose{
+    width:10%;
+    text-align: right;
+  }
+  .notificationclose>p{
+    padding:4px 8px;
+  }
+
+  .modal{
+    visibility: hidden;
+    color:#dedede;
+    display:flex;
+    flex-direction: column;
+    align-items:stretch;
+    overflow: scroll;
+    position:Fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    border: #dedede 10px ridge;
+    background-color: rgb(17, 16, 16);
+    z-index: 20;
+    width:700px;
+    max-width:60%;
+    height:500px;
+    max-height: 50%;
+  }
+
+  .modalstats{
+    position: relative;
+    margin:auto auto 5% auto;
+  }
+  .modalbuttons{
+    position: relative;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin:8%;
+  }
+
+  .playagain>p{
+    color:#dedede;
+    margin:0;
+  }
+
+  .playagain{
+    width:35%;
+    padding:10px;
+    object-fit:contain;
+    border:solid 3px;
+    border-image: url(../assets/imagens/mobs/bt_vazio.png);
+    border-image-slice: 8 9 8 9 fill;
+
+  }
+
+  .playagain:hover{
+    cursor:pointer;
+    filter:brightness(90%);
+  } 
+  .playagain:active{
+    border:solid 3px;
+    border-image: url(../assets/imagens/mobs/bt_vazio-click.png);
+    border-image-slice: 8 9 8 9 fill;
+    filter:brightness(100%);
+  } 
+
+  .quit{
+    width:36%;
+    padding:10px;
+    color:#dedede;
+    object-fit:contain;
+    border:solid 3px;
+    border-image: url(../assets/imagens/mobs/bt_vazio.png);
+    border-image-slice: 8 9 8 9 fill;
+  }
+
+  .quit>p{
+    color:#dedede;
+    margin:0;
+  }
+
+  .quit:hover{
+    cursor:pointer;
+    filter:brightness(90%);
+  } 
+  .quit:active{
+    border:solid 3px;
+    border-image: url(../assets/imagens/mobs/bt_vazio-click.png);
+    border-image-slice: 8 9 8 9 fill;
+    filter:brightness(100%);
+  } 
+
+  .highscore{
+    position: relative;
+    margin:auto
+  }
+
+  .overlay{
+    visibility: hidden;
+    position:fixed;
+    background-color: rgba(0,0,0,0.3);
+    left:0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+  }
+
+  .open{
+    visibility: visible;
+  }
+
+  .redhighlight{
+    color: #dedede;
+    z-index: 1;
+    animation: redhigh 400ms ease-out;
+  }
+
+  @keyframes redhigh {
+    15%{
+      color:rgb(236, 126, 126)
+    }
+    50%{
+    color:rgb(255, 43, 43,1)
+    }
+    85%{
+      color:rgb(236, 126, 126)
+    }
+    100%{
+    color: #dedede;
+    }
+  }
+
+  .redhighlight::after{
+    content:'';
+    background:linear-gradient(to bottom,rgb(255, 43, 43,0.6),rgb(255, 43, 43,0.6)) bottom/100% 17%,
+    linear-gradient(to right,rgb(255, 43, 43,0.6),rgb(255, 43, 43,0.6)) right/5% 66%,
+    linear-gradient(to top,rgb(255, 43, 43,0.6),rgb(255, 43, 43,0.6)) top/100% 17%,
+    linear-gradient(to left ,rgb(255, 43, 43,0.6), rgb(255, 43, 43,0.6)) left/5% 66%;
+    background-repeat: no-repeat;
+    position:absolute;
+    top:22%;
+    bottom:60%;
+    left:2%;
+    right:2%;
+    z-index: -1;
+    animation: redpulse 400ms ease-out;
+  }
+
+  @keyframes redpulse {
+    30%{
+      background:linear-gradient(to bottom,rgb(255, 43, 43,0.4),rgb(255, 43, 43,0.4)) bottom/100% 17%,
+      linear-gradient(to right,rgb(255, 43, 43,0.4),rgb(255, 43, 43,0.4)) right/5% 66%,
+      linear-gradient(to top,rgb(255, 43, 43,0.4),rgb(255, 43, 43,0.4)) top/100% 17%,
+      linear-gradient(to left ,rgb(255, 43, 43,0.4), rgb(255, 43, 43,0.4)) left/5% 66%;
+      background-repeat: no-repeat;
+    }
+    60%{
+      background:linear-gradient(to bottom,rgb(255, 43, 43,0.2),rgb(255, 43, 43,0.2)) bottom/100% 17%,
+      linear-gradient(to right,rgb(255, 43, 43,0.2),rgb(255, 43, 43,0.2)) right/5% 66%,
+      linear-gradient(to top,rgb(255, 43, 43,0.2),rgb(255, 43, 43,0.2)) top/100% 17%,
+      linear-gradient(to left ,rgb(255, 43, 43,0.2), rgb(255, 43, 43,0.2)) left/5% 66%;
+      background-repeat: no-repeat;
+    }
+    80%{
+      background:linear-gradient(to bottom,rgb(115, 241, 115,0),rgb(115, 241, 115,0)) bottom/100% 17%,
+      linear-gradient(to right,rgb(115, 241, 115,0),rgb(115, 241, 115,0)) right/5% 66%,
+      linear-gradient(to top,rgb(115, 241, 115,0),rgb(115, 241, 115,0)) top/100% 17%,
+      linear-gradient(to left ,rgb(115, 241, 115,0), rgb(115, 241, 115,0)) left/5% 66%;
+      background-repeat: no-repeat;
+      position:absolute;
+      top:-10%;
+      bottom:30%;
+      left:-28%;
+      right:-27%;
+      z-index: -1;
+    }
+    100%{
+        background:linear-gradient(to bottom,rgb(115, 241, 115,0),rgb(115, 241, 115,0)) bottom/100% 17%,
+        linear-gradient(to right,rgb(115, 241, 115,0),rgb(115, 241, 115,0)) right/5% 66%,
+        linear-gradient(to top,rgb(115, 241, 115,0),rgb(115, 241, 115,0)) top/100% 17%,
+        linear-gradient(to left ,rgb(115, 241, 115,0), rgb(115, 241, 115,0)) left/5% 66%;
+        background-repeat: no-repeat;
+        position:absolute;
+        top:-10%;
+        bottom:30%;
+        left:-28%;
+        right:-27%;
+        z-index: -1;
+      
+    }
+  }
+
+  .greenhighlight{
+    color: #dedede;
+    z-index: 1;
+    animation: greenhigh 400ms ease-out;
+  }
+
+  @keyframes greenhigh {
+    15%{
+      color:rgb(169, 224, 169)
+    }
+    50%{
+    color:rgb(115, 241, 115,1)
+    }
+    85%{
+      color:rgb(169, 224, 169)
+    }
+    100%{
+    color: #dedede;
+    }
+  }
+
+  .greenhighlight::after{
+    content:'';
+    background:linear-gradient(to bottom,rgb(115, 241, 115,0.6),rgb(115, 241, 115,0.6)) bottom/100% 17%,
+    linear-gradient(to right,rgb(115, 241, 115,0.6),rgb(115, 241, 115,0.6)) right/5% 66%,
+    linear-gradient(to top,rgb(115, 241, 115,0.6),rgb(115, 241, 115,0.6)) top/100% 17%,
+    linear-gradient(to left ,rgb(115, 241, 115,0.6), rgb(115, 241, 115,0.6)) left/5% 66%;
+    background-repeat: no-repeat;
+    position:absolute;
+    top:65%;
+    bottom: 20%;
+    left:2%;
+    right:18%;
+    z-index: -1;
+    animation: greenpulse 400ms ease-out;
+  }
+
+  @keyframes greenpulse {
+    30%{
+      background:linear-gradient(to bottom,rgb(115, 241, 115,0.4),rgb(115, 241, 115,0.4)) bottom/100% 17%,
+      linear-gradient(to right,rgb(115, 241, 115,0.4),rgb(115, 241, 115,0.4)) right/5% 66%,
+      linear-gradient(to top,rgb(115, 241, 115,0.4),rgb(115, 241, 115,0.4)) top/100% 17%,
+      linear-gradient(to left ,rgb(115, 241, 115,0.4), rgb(115, 241, 115,0.4)) left/5% 66%;
+      background-repeat: no-repeat;
+    }
+    60%{
+      background:linear-gradient(to bottom,rgb(115, 241, 115,0.2),rgb(115, 241, 115,0.2)) bottom/100% 17%,
+      linear-gradient(to right,rgb(115, 241, 115,0.2),rgb(115, 241, 115,0.2)) right/5% 66%,
+      linear-gradient(to top,rgb(115, 241, 115,0.2),rgb(115, 241, 115,0.2)) top/100% 17%,
+      linear-gradient(to left ,rgb(115, 241, 115,0.2), rgb(115, 241, 115,0.2)) left/5% 66%;
+      background-repeat: no-repeat;
+    }
+    80%{
+      background:linear-gradient(to bottom,rgb(115, 241, 115,0),rgb(115, 241, 115,0)) bottom/100% 17%,
+      linear-gradient(to right,rgb(115, 241, 115,0),rgb(115, 241, 115,0)) right/5% 66%,
+      linear-gradient(to top,rgb(115, 241, 115,0),rgb(115, 241, 115,0)) top/100% 17%,
+      linear-gradient(to left ,rgb(115, 241, 115,0), rgb(115, 241, 115,0)) left/5% 66%;
+      background-repeat: no-repeat;
+      position:absolute;
+      top:33%;
+      bottom: -10%;
+      left:-28%;
+      right:-11%;
+      z-index: -1;
+    }
+    100%{
+        background:linear-gradient(to bottom,rgb(115, 241, 115,0),rgb(115, 241, 115,0)) bottom/100% 17%,
+        linear-gradient(to right,rgb(115, 241, 115,0),rgb(115, 241, 115,0)) right/5% 66%,
+        linear-gradient(to top,rgb(115, 241, 115,0),rgb(115, 241, 115,0)) top/100% 17%,
+        linear-gradient(to left ,rgb(115, 241, 115,0), rgb(115, 241, 115,0)) left/5% 66%;
+        background-repeat: no-repeat;
+        position:absolute;
+        top:33%;
+        bottom: -10%;
+        left:-28%;
+        right:-11%;
+        z-index: -1;
+      
+    }
+  }
+
+  .resethighlight{
+      color: #dedede;
+      z-index: 1;
+      animation: resethigh 400ms ease-out;
+    }
+  
+    @keyframes resethigh {
+      15%{
+        color:rgb(228, 201, 127);
+      }
+      50%{
+      color:rgb(255, 201, 53)
+      }
+      85%{
+        color:rgb(228, 201, 127);
+      }
+      100%{
+      color: #dedede;
+      }
+    }
+  
