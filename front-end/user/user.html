@@ -8,6 +8,8 @@
   <link href="../global.css" rel="stylesheet" type="text/css" />
   <link href="./user.css" rel="stylesheet" type="text/css" />
   <script>
+    tentativa();
+    async function tentativa(){
     if(!localStorage.getItem("token")){
     window.location.href = "/front-end/home/home.html"
     }
@@ -18,81 +20,75 @@
 })
     if(response.status!=200){
     window.location.href = "/front-end/home/home.html"
-    }
+    
+    }}
   </script>
   <script src="./user.js" type="module"></script>
 </head>
 
-<body>
-        <!--Logo-->
-          <div class="menu">
-                <p id="hidden" style="#hidden{visibility:hidden}"></p>
-              </div>
-            </div>
-            <div class="logo">
-              <a id="caminho" href="/front-end/home/home.html"><img src="../assets/imagens/default/logo-terra.png" id="minedle"></a>
-            </div>
-          <div class="entrar">
-            <p><a href="../login/login.html">Login</a></p>
-            
-            <p><a href="../cadastro/cadastro.html">Registrar-se</a></p>
-          </div>
-            </div>
-        <!-- Parte onde ficam os mobs-->
-        <div class="principal"> 
 
-          <div>
-            <h1>Qual é o Mob?</h1>
-          </div>
-        
-          <div>
-            <img src="../assets/imagens/mobs/oveia.png" id="mob">
-          </div>
+<body> 
 
-        <!-- RETIRAR, APENAS TESTE-->
-          <div class="dicas">
-            <h3 id="nome"></h3>
-              <!-- <div class="acertou">
-                <img src="imagens/acertou.png" id="acertou">
-              </div>
-              
-              <div class="errou">
-                <img src="imagens/errou.png" id="errou">
-              </div> -->
-          </div>
+  <!-- MENU P/ Login -->
 
-      </div> 
-      <!-- Formulario de resposta-->
-      <form id="formulario">
-        <div class="fundobr" id="modalpesquisa">
-        <div class="resposta" >
-        <input type="search" id="barra" name="barra" placeholder="Digite o Nome do Mob..." autocomplete="off">
-       </div>
-       <div class="resultados">
-          <ul id="listavalores">
-          </ul>
-       </div>
+  
+  <!-- logo -->
+  <div class="aaaaaaaa">
+    <div><p class="hidden" style=".hidden{visibility: hidden;}" ></p></div>
+  <div class="logo">
+    <a id="caminho" href="/front-end/home/home.html"><img src="../assets/imagens/default/logo-terra.png" id="logo"></a>
+
     </div>
-       <!-- Botão de enviar-->
-            <div class="botao">
-              <button id="enviar" name="botao" type="submit">
-                <p>Enviar</p>
-              </button>
-              
+    <div class="entrar"></div>
+  </div>
+  
+  <!-- Tela de Cadastro-->
+  <div class="texto">
+    <h1>Perfil</h1>
+  </div>
+  
+                           
+<!-- Parte Princial -->
+  <div class="Corpo">
+    <h2>Informações do Usuário</h2>
+       <section class="profile-info">
+          <div class="imagem-info">
+            <img src="../assets/imagens/default/HumanFace.png" class="user">
+          </div>
+     
+            <div class="user-details">
+                <p><strong>Nome:</strong> Brenno costa</p>
+                <p><strong>Email:</strong> bcgdacosta@gmail.com</p>
             </div>
 
-      </form>
-
-          <!-- Aqui ficam as tentativas do jogador-->
-          <div class="tentativas">
-            <div id="excedido"></div>
-            <ul id="listatentativas">
-              
-            </ul>
-        
-        </div>
-        <div class="modal" id="modal"></div>
-        <div id="overlay" class="overlay"></div>
+            <div class="profile-actions">
+                <button class="btn">Alterar Nome</button>
+                <button class="btn">Alterar Email</button>
+                <button class="btn">Alterar Senha</button>
+            </div>
+        </section>
+    <!-- scroll de estatistica -->
+        <section class="statistics">
+            <div class="estatisticas">
+                <h2>Jogo X</h2>
+                <p>150 Pontos</p>
+            </div>
+            <div class="estatisticas">
+                <h2>Jogo Y</h2>
+                <p>2.300 Pontos</p>
+            </div>
+          <div class="estatisticas">
+            <h2>Jogo X</h2>
+            <p>150 Pontos</p>
+          </div>
+          <div class="estatisticas">
+            <h2>Jogo Y</h2>
+            <p>2.300 Pontos</p>
+          </div>
+        </section>
+    
+     
 </body>
+</hmtl>
 
 </html>

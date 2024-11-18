@@ -34,6 +34,15 @@
 }
 
 #steve{
+  margin-left:40px;
   width:100px;
   height:100px;
+}
+
+#steve:hover{
+  filter:brightness(50%);
+}
+.usermenu{
+  display:flex;
+  flex-direction: row;
 }

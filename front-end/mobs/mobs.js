@@ -153,15 +153,15 @@ async function gethighscore(mini,mode){
     return true
     }
     if(json.fail == "esse usuário não possui nenhuma quantidade de pontos registrada neste minigame"||json.fail == "esse usuário não possui nenhuma quantidade de pontos registrada neste modo"){
-        highscore=0
+        highscore="zero"
         return false
     }
     return false
 }
-async function sethighscore(mini,mode){
+async function sethighscore(minivalue,modevalue){
     path=`/newhighscore`
-    const tokenvalue = `Bearer ${token.getToken()}`
-    const response = await fetch(dominio+path,{method:"POST", headers:{'Content-Type':'application/json', "Authorization": tokenvalue,},body:JSON.stringify({mini:mini,mode:mode,highscore:points}),})
+    const tokenvalue = "Bearer "+token.getToken();
+    const response = await fetch(dominio+path,{method:"POST", headers:{'Content-Type':'application/json', "Authorization": tokenvalue,},body:JSON.stringify({"mini":minivalue,"mode":modevalue,"highscore":points}),})
     const json = await response.json()
     console.log(response,json)
 }
@@ -182,11 +182,12 @@ async function gamereset(result){
         <button class="quit" onclick="win(false)"><p>Voltar para o Menu</p></button>
         </div>
         `
-        console.log(highscore)
         if(token.getToken()&&highscore){
+        if(highscore=="zero"){
+            highscore=0
+        }
         if(highscore<points){
-        console.log(highscore)
-        console.log(sethighscore("Mobs",modo));
+        sethighscore("Mobs",modo);
         }
         }
         highscore=''
@@ -206,10 +207,9 @@ async function gamereset(result){
     <button class="quit" onclick="loss(false)"><p>Voltar para o Menu</p></button>
     </div>
     `
-    console.log(highscore)
     if(token.getToken()&&highscore){
+    console.log(highscore)
     if(highscore<points){
-        console.log(highscore)
     sethighscore("Mobs",modo);
     }
     }
