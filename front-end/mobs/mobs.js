@@ -143,7 +143,10 @@ var highscore = ''
 async function gethighscore(mini,mode){
     path=`/score/${mini}/${mode}`
     const tokenvalue = `Bearer ${token.getToken()}`
-    const response = await fetch(dominio+path,{method:"GET", headers:{'Content-Type':'application/json', "Authorization":tokenvalue,},})
+    const response = await fetch(dominio+path,
+        {method:"GET",
+        headers:{'Content-Type':'application/json', "Authorization":tokenvalue,},
+    })
     const json = await response.json();
     if(json.pontos){
     highscore=json.pontos
