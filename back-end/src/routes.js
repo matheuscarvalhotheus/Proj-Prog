@@ -5,6 +5,7 @@ import minedle from './modos/minedle.js';
 import register from '../middleware/registerauth/register.js'
 import validatoken from '../middleware/validatoken.js'
 import numbervalidation from '../middleware/highscorevalidation.js'
+import GetUserScore from "./modos/getuserscore.js";
 
   const router=express.Router();
 
@@ -51,8 +52,8 @@ import numbervalidation from '../middleware/highscorevalidation.js'
     var reasonable = numbervalidation(req.body.highscore);
 
     if(reasonable){
-    var mininame = req.body.mini
-    var modename = req.body.mode
+    const mininame = req.body.mini
+    const modename = req.body.mode
 
     if(mininame&&modename){
     const [miniid,modeid] = await minedle.minimodevalidation(mininame,modename)
@@ -72,6 +73,22 @@ import numbervalidation from '../middleware/highscorevalidation.js'
     return res.status(500).json()
     }
   })
+
+  router.get("/score/:mini/:mode", validatoken, async(req, res)=>{
+    const mini = req.params.mini;
+    const mode = req.params.mode;
+    if(mini&&mode){
+      const [miniid,modeid] = await minedle.minimodevalidation(mini,mode)
+    //Assumindo que você estão pegando o email dele quando verificam a autenticação;
+    const email = req.useremail
+ 
+    const playerData = await GetUserScore.get_user_score(email, miniid.id, modeid.id)
+ 
+   return res.status(playerData[0]).json(playerData[1]);
+    }
+    return res.status(400).json()
+ })
+  
 
   router.get('/me', validatoken, async (req, res) => {
   try {

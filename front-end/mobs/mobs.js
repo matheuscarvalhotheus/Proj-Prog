@@ -1,3 +1,7 @@
+import token from "../tokenhandling.js"
+
+token.displaylogin();
+
 //Setup do jogo e suas configurações
 
 //pega as possíveis respostas do banco
@@ -134,8 +138,33 @@ return "correct";
 }
 return "wrong";
 }
+//performance passada
+var highscore = ''
+async function gethighscore(mini,mode){
+    path=`/score/${mini}/${mode}`
+    const tokenvalue = `Bearer ${token.getToken()}`
+    const response = await fetch(dominio+path,{method:"GET", headers:{'Content-Type':'application/json', "Authorization":tokenvalue,},})
+    const json = await response.json();
+    if(json.pontos){
+    highscore=json.pontos
+    return true
+    }
+    if(json.fail == "esse usuário não possui nenhuma quantidade de pontos registrada neste minigame"||json.fail == "esse usuário não possui nenhuma quantidade de pontos registrada neste modo"){
+        highscore=0
+        return false
+    }
+    return false
+}
+async function sethighscore(mini,mode){
+    path=`/newhighscore`
+    const tokenvalue = `Bearer ${token.getToken()}`
+    const response = await fetch(dominio+path,{method:"POST", headers:{'Content-Type':'application/json', "Authorization": tokenvalue,},body:JSON.stringify({mini:mini,mode:mode,highscore:points}),})
+    const json = await response.json()
+    console.log(response,json)
+}
+
 //Finalização
-function gamereset(result){
+async function gamereset(result){
     //ganhou o jogo
     if(result){
         modaldisplay.innerHTML=`
@@ -144,12 +173,20 @@ function gamereset(result){
         <p>Sobraram ${tentativas} tentativas!</p>
         <p>Você fez um total de ${points} pontos!</p>
         </div>
-        <p class="highscore">A sua melhor pontuação neste modo foi ${points}!</p>
+        <p class="highscore">${token.getToken()&&(await gethighscore("Mobs",modo))?"A sua melhor pontuação neste modo foi "+highscore+"!":"Não sabemos a sua performance passada"}</p>
         <div class="modalbuttons">
         <button class="playagain" onclick="win(true)"><p>Jogar de Novo</p></button>
         <button class="quit" onclick="win(false)"><p>Voltar para o Menu</p></button>
         </div>
         `
+        console.log(highscore)
+        if(token.getToken()&&highscore){
+        if(highscore<points){
+        console.log(highscore)
+        console.log(sethighscore("Mobs",modo));
+        }
+        }
+        highscore=''
         modaldisplay.classList.add("open")
         overlaydisplay.classList.add("open")
     } else {
@@ -160,12 +197,20 @@ function gamereset(result){
     <p>Você conseguiu adivinhar ${parseInt(points/(10*multiplier))}/${mobjson.length}!</p>
     <p>Você fez um total de ${points} pontos!</p>
     </div>
-    <p class="highscore">A sua melhor pontuação neste modo foi ${points}!</p>
+    <p class="highscore">${token.getToken()&&(await gethighscore("Mobs",modo))?"A sua melhor pontuação neste modo foi "+highscore+"!":"Não sabemos a sua performance passada"}</p>
     <div class="modalbuttons">
     <button  class="playagain" onclick="loss(true)"><p>Jogar de Novo</p></button>
     <button class="quit" onclick="loss(false)"><p>Voltar para o Menu</p></button>
     </div>
-    `        
+    `
+    console.log(highscore)
+    if(token.getToken()&&highscore){
+    if(highscore<points){
+        console.log(highscore)
+    sethighscore("Mobs",modo);
+    }
+    }
+    highscore=''     
     modaldisplay.classList.add("open")
     overlaydisplay.classList.add("open")
     }
@@ -189,7 +234,7 @@ function gamereset(result){
             processing=false
             reseting=false
         } else {
-            window.location.href="/front-end/home/home.html"
+            window.location.href="../home/home.html"
         }
     }
 
@@ -211,7 +256,7 @@ function gamereset(result){
             triesdisplay.innerHTML=`${tentativas} tentativas`
             notificationlist.innerHTML=''
         } else {
-            window.location.href="/front-end/home/home.html"
+            window.location.href="../home/home.html"
         }
     }
 
@@ -312,7 +357,6 @@ inside=false
 forms.onsubmit = (event) => {
 
 if(autoselect&&!processing){
-console.log(processing)
 var acertou=false
 const result = validation(autoselect,listamobs[nal])
 //acertou

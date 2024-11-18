@@ -1,3 +1,7 @@
+import token from "../tokenhandling.js"
+
+token.displaylogin();
+
 var selecionar = "";
 
 var game_configs = await dados("/modos")

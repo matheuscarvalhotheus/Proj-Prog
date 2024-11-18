@@ -120,8 +120,10 @@ async function create_newhighscore(email,miniid,modeid,score){
                 if(oldscore.points<score){
                     const result = await prisma.playerData.update({
                         where:{
+                            playerId_modeId: {
                             playerId: playerid.id,
                             modeId: modeid,
+                            }
                         },
                         data: {
                             points:score,
