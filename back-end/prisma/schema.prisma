@@ -49,6 +49,7 @@ model gameSettings{
   miniId Int
   mini minigame @relation(fields: [miniId], references: [id])
   tries Int
+  multiplier Float?
   @@id([gameId,miniId])
 }
 
@@ -75,13 +76,13 @@ model solutions{
 }
 
 model user{
-  email String @id
+  Id Int @id @default(autoincrement())
+  email String @unique
   name String
   password String
   player player[]
   typeId Int
   type userType @relation(fields: [typeId], references: [id])
-  @@unique([email,typeId])
 }
 
 model userType{

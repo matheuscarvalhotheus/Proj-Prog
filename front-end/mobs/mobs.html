@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html onclick="fecharpesquisa()">
+<html>
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Mobs</title>
   <link href="../global.css" rel="stylesheet" type="text/css" />
-  <link href="mobs.css" rel="stylesheet" type="text/css" />
-  <script src="mobs.js" type="module"></script>
+  <link href="./mobs.css" rel="stylesheet" type="text/css" />
+  <script src="./mobs.js" type="module"></script>
 </head>
 
 <body>
         <!--Logo-->
           <div class="menu">
-            <div style="width: 350px;">
-              <p class="shhh" style=".shhh{visibility: hidden;}"></p>
+            <div class="points">
+              <div class="statistics">
+                <p id="tries" class=""></p>
+                <p id="points" class="">0 pontos</p> 
+              </div>
             </div>
             <div class="logo">
               <a id="caminho" href="/front-end/home/home.html"><img src="../assets/imagens/default/logo-terra.png" id="minedle"></a>
@@ -26,7 +29,7 @@
           </div>
             </div>
         <!-- Parte onde ficam os mobs-->
-        <div class="pricipal"> 
+        <div class="principal"> 
 
           <div>
             <h1>Qual é o Mob?</h1>
@@ -50,19 +53,19 @@
 
       </div> 
       <!-- Formulario de resposta-->
-      <form id="formulario" onsubmit="return false">
-        <div class="fundobr" onclick="validafecha()">
+      <form id="formulario">
+        <div class="fundobr" id="modalpesquisa">
         <div class="resposta" >
-        <input type="search" id="barra" name="barra" placeholder="Digite o Nome do Mob..." onkeyup="entermob(event)" onfocus="autopes()" autocomplete="off">
+        <input type="search" id="barra" name="barra" placeholder="Digite o Nome do Mob..." autocomplete="off">
        </div>
        <div class="resultados">
           <ul id="listavalores">
           </ul>
        </div>
-      </div>
+    </div>
        <!-- Botão de enviar-->
             <div class="botao">
-              <button id="enviar" name="botao" type="button" onclick="advinha_mob()">
+              <button id="enviar" name="botao" type="submit">
                 <p>Enviar</p>
               </button>
               
@@ -78,7 +81,8 @@
             </ul>
         
         </div>
-
+        <div class="modal" id="modal"></div>
+        <div id="overlay" class="overlay"></div>
 </body>
 
 </html>

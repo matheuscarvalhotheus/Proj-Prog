@@ -1,3 +1,7 @@
+import token from "../tokenhandling.js"
+
+token.displaylogin();
+
 var selecionar = "";
 
 var game_configs = await dados("/modos")
@@ -26,7 +30,6 @@ document.getElementById("difbt").innerHTML = `Dificuldade: ${dificuldades[g_atua
 window.validar = function(indice){
 if(indice=="cancelar"){
     selecionar = ""
-    document.getElementById("caminho").href = selecionar;
     document.getElementById("modo1").style.border = "";
     document.getElementById("modo2").style.border = "";
     document.getElementById("modo3").style.border = "";
@@ -34,7 +37,6 @@ if(indice=="cancelar"){
     document.getElementById("modo5").style.border = "";
 }else if(indice=="mobs"){
     selecionar = "../mobs/mobs.html";
-    document.getElementById("caminho").href = selecionar;
     document.getElementById("modo1").style.border = "inset 4px";
     document.getElementById("modo2").style.border = "";
     document.getElementById("modo3").style.border = "";
@@ -42,7 +44,6 @@ if(indice=="cancelar"){
     document.getElementById("modo5").style.border = "";
 } else if(indice=="pocao"){
     selecionar = "";
-    document.getElementById("caminho").href = selecionar;
     document.getElementById("modo2").style.border = "inset 4px";
     document.getElementById("modo1").style.border = "";
     document.getElementById("modo3").style.border = "";
@@ -50,7 +51,6 @@ if(indice=="cancelar"){
     document.getElementById("modo5").style.border = "";
 }else if(indice=="bloco"){
     selecionar = "";
-    document.getElementById("caminho").href = selecionar;
     document.getElementById("modo3").style.border = "inset 4px";
     document.getElementById("modo2").style.border = "";
     document.getElementById("modo1").style.border = "";
@@ -58,7 +58,6 @@ if(indice=="cancelar"){
     document.getElementById("modo5").style.border = "";
 }else if(indice=="quebra-cabeca"){
     selecionar = "";
-    document.getElementById("caminho").href = selecionar;
     document.getElementById("modo4").style.border = "inset 4px";
     document.getElementById("modo2").style.border = "";
     document.getElementById("modo3").style.border = "";
@@ -66,7 +65,6 @@ if(indice=="cancelar"){
     document.getElementById("modo5").style.border = "";
 }else if(indice=="quiz"){
     selecionar = "";
-    document.getElementById("caminho").href = selecionar;
     document.getElementById("modo5").style.border = "inset 4px";
     document.getElementById("modo2").style.border = "";
     document.getElementById("modo3").style.border = "";
@@ -114,6 +112,8 @@ window.enviar =  function(){
     }else{
      localStorage.setItem("mjogo",`${modos[g_atual]}`)
      localStorage.setItem("dificuldade",`${dificuldades[g_atual][d_atual]}`)
+     document.getElementById("caminho").href = selecionar+`?modo=${modos[g_atual]}&dificuldade=${dificuldades[g_atual][d_atual]}`;
+
 }};
 
 async function dados(local) {

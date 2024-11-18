@@ -2,11 +2,17 @@
 <html>
 
 <head>
+  <title>Login</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <link href="../global.css" rel="stylesheet" type="text/css" />
   <link href="login.css" rel="stylesheet" type="text/css" />
   <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+  <script>
+        if(localStorage.getItem("token")){
+        window.location.href = "/front-end/home/home.html"
+        }
+  </script>
   <script src="login.js" type="module"></script>
 </head>
 
@@ -31,23 +37,25 @@
           <div>
           <p class="bold">E-mail: </p>
           <input class="inputt" type="text" id="email" placeholder="Digite seu e-mail">
+          <p class="erro"></p>
           </div>
         </li>
         <li>
         <div>
           <p class="bold">Senha: </p>
           <input class="inputt" type="password" id="senha" placeholder="Digite sua senha">
+          <p class="erro"></p>
         </div>
         </li>
       </ul>
     </form>  
   <!-- Botão para fazer o login -->
     <div class="botao">
-      <input type="button" onclick="cadastrar()" value="Login">
+      <input type="button" onclick="handleform()" value="Login">
 
     </div>
     <div class="redirecionar">
-      Nao tem conta? <a href="../cadastro/cadastro.html">Faça o Cadastro</a>
+      Nao tem conta? <a href="../cadastro/cadastro.html" class="link">Faça o Cadastro</a>
     </div>
       
   </div>

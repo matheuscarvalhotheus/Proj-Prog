@@ -16,7 +16,7 @@ async function register(newUser){
                 const{password, ...validnewUser} = resultado
                 return [200,validnewUser]
                 }
-                return [400,{fail : "usuário já existe"}]
+                return [409,{fail : "usuário já existe"}]
             }
             return [400,{fail : "nome, senha ou email inválidos"}]
     }catch(error){

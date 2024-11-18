@@ -190,34 +190,39 @@
         {
             "gameId" : 1,
             "miniId" : 1,
-            "tries" : 10 
+            "tries" : 5,
+            "multiplier" : 1.0
         },
         {
             "gameId" : 2,
             "miniId" : 1,
-            "tries" : 5 
+            "tries" : 5,
+            "multiplier" : 1.25
         },
         {
             "gameId" : 3,
             "miniId" : 1,
-            "tries" : 3 
+            "tries" : 3,
+            "multiplier" : 1.5
         },
         {
             "gameId" : 4,
             "miniId" : 1,
-            "tries" : 3 
+            "tries" : 3,
+            "multiplier" : 2.0
         },
         {
             "gameId" : 5,
             "miniId" : 1,
-            "tries" : 999 
+            "tries" : 999,
+            "multiplier" : 1.0
         }
     ],
     "user" : [
         {
             "email" : "fariasmarquesgustavo@gmail.com",
             "name" : "Gtagusta",
-            "password" : "$2b$10$WR6yOFMtF1qnvTS.n1FOx.kXHWihwPz3KQlg0tuhUweq6i7l/x8Va",
+            "password" : "$2b$10$S3xlhytzviTRDtBYv.Nt6u1QbkdHR.uEQDMDXcL4bkRAPxX3rBTsK",
             "typeId" : 1
         }
     ],

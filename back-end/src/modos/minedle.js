@@ -95,4 +95,92 @@ async function read_gamemodes(game) {
     return obj;
 }
 
-export default { search_user, read_table, join_minigame, insert_into_table, read_gamemodes };
+async function create_newhighscore(email,miniid,modeid,score){
+    if(email&&miniid){
+        const playerid= await prisma.player.findFirst({
+            where:{
+                userEmail: email,
+                miniId: miniid
+            },
+            select:{
+            id:true
+            }
+        })
+        if(playerid&&modeid){
+            const oldscore = await prisma.playerData.findFirst({
+                where:{
+                    playerId: playerid.id,
+                    modeId: modeid
+                },
+                select:{
+                points:true
+                }
+            })
+            if(oldscore){
+                if(oldscore.points<score){
+                    const result = await prisma.playerData.update({
+                        where:{
+                            playerId_modeId: {
+                            playerId: playerid.id,
+                            modeId: modeid,
+                            }
+                        },
+                        data: {
+                            points:score,
+                        }
+                    })
+                    return [200,result];
+                }
+                return [403,{fail : "não é um novo highscore"}]
+            }
+            const result = await prisma.playerData.create({
+                data:{
+                playerId:playerid.id,
+                modeId:modeid,
+                points: score
+                }
+            })
+            return [200,result];
+        } else if(modeid){
+            const newplayerid = await prisma.player.create({
+            data:{
+            userEmail:email,
+            miniId:miniid,
+            },
+            select:{
+                id: true
+            }
+        })
+            const result = await prisma.playerData.create({
+                data:{
+                playerId:newplayerid.id,
+                modeId:modeid,
+                points: score
+                }
+            })
+            return [200,result];
+        }
+
+    }
+}
+
+async function minimodevalidation(mininame,modename){
+    const miniid = await prisma.minigame.findFirst({
+        where:{
+            name:mininame
+        },
+        select:{
+            id:true
+        }
+    })
+    const modeid = await prisma.gamemode.findFirst({
+        where:{
+            name:modename
+        },
+        select:{
+            id:true
+        }
+    })
+    return [miniid,modeid]
+}
+export default { search_user, read_table, join_minigame, insert_into_table, read_gamemodes, create_newhighscore,minimodevalidation};

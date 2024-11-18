@@ -1,12 +1,55 @@
 import {emailval,nameval,passwordval} from "./datavalidation.js"
 
-window.cadastro = async function(){
-let nome=document.getElementById("nome").value
-let email=document.getElementById("email").value
-let senha=document.getElementById("senha").value
+const errormessages = ["Este campo não pode estar vazio!",]
+const erro = document.getElementsByClassName("erro")
+var lastinvalidemail= ""
+
+function classhighlight(classElements,highlight,timer){
+    for(let i=0; i<classElements.length; i++){
+        classElements[i].classList.add(highlight)
+        }
+        setTimeout(() => {
+            for(let i=0; i<classElements.length; i++){
+                classElements[i].classList.remove(highlight)
+            }}
+            , timer)
+    }
+
+function elementhighlight(element,highlight,timer){
+    element.classList.add(highlight)
+    setTimeout(() => {
+        element.classList.remove(highlight)
+        }
+        , timer)
+    }
+
+
+window.cadastro = async function(event){
+event.preventDefault();
+let flag=false
+let nome=document.getElementById("nome")
+flag = inputcheck(nome,erro[0],errormessages,nameval(nome.value),flag)
+let email=document.getElementById("email")
+if(lastinvalidemail!=email.value){
+flag = inputcheck(email,erro[1],errormessages,emailval(email.value),flag)
+}else{
+flag=true
+}
+let senha=document.getElementById("senha")
+flag = inputcheck(senha,erro[2],errormessages,passwordval(senha.value),flag)
 let csenha=document.getElementById("csenha").value
-if(tratatex(nome,email,senha,csenha)){
-    const dados = JSON.stringify({name:nome,email:email,password:senha})
+if(csenha&&csenha!=senha.value){
+    erro[3].innerHTML = "As senhas devem ser iguais!"
+    flag=true
+} else if(!csenha){
+    erro[3].innerHTML = errormessages[0]
+    flag=true
+} else {
+    erro[3].innerHTML = ""
+}
+
+if(!flag){
+    const dados = JSON.stringify({name:nome.value,email:email.value,password:senha.value})
     const url = "http://localhost:3000/newuser";
     try {
       const request = new Request(url,  {
@@ -15,70 +58,34 @@ if(tratatex(nome,email,senha,csenha)){
         body: dados,
     });
       const response = await fetch(request);
-      const json = await response.json();
-      console.log(json);
+      if(response.status == 409){
+        erro[1].innerHTML = "E-mail indisponível!"
+        lastinvalidemail=email.value
+        flag=true
+      } else if(response.status==200){
+        console.log("usuário criado")
+        setTimeout(()=>{
+            window.location.href = "../login/login.html"}
+            ,1000)
+      }
     } catch (error) {
       console.error(error.message);
     }
-  }    
+  } 
+  if(flag){
+    classhighlight(erro,"highlight",250)
+  }   
 }
 
-
-function tratatex(nome,email,senha,csenha){
-let flag=false
-if(!nome){
-    let erro="Este campo é Obrigatório!"
-    document.getElementById("e_nome").innerHTML=erro
-    flag=true
-} else if(!nameval(nome)){
-    let erro="Nome Inválido!"
-    document.getElementById("e_email").innerHTML=erro
-    flag=true
-} else{
-    document.getElementById("e_nome").innerHTML=""
+function inputcheck(input,error,errorlist,valresult,flag){
+    if(!input.value){
+        error.innerHTML=errorlist[0]
+        return true
+    }
+    if(valresult){
+    error.innerHTML=valresult
+    return true
+    }
+    error.innerHTML=""
+    return flag
 }
-if(!email){
-    let erro="Este campo é Obrigatório!"
-    document.getElementById("e_email").innerHTML=erro
-    flag=true
-} else if(!emailval(email)){
-    let erro="Email Inválido!"
-    document.getElementById("e_email").innerHTML=erro
-    flag=true
-}else{
-    document.getElementById("e_email").innerHTML=""
-}
-if(!senha){
-    let erro="Este campo é Obrigatório!"
-    document.getElementById("e_senha").innerHTML=erro
-    flag=true
-}else if(senha!=csenha){
-    let erro="As senhas devem ser iguais!"
-    document.getElementById("e_senha").innerHTML=erro  
-    document.getElementById("e_senha").innerHTML=erro
-    flag=true
-}else if(!passwordval(senha)){
-    let erro="Senha Inválida!"
-    document.getElementById("e_senha").innerHTML=erro
-    flag=true
-} else{
-    document.getElementById("e_senha").innerHTML=""
-}
-if(!csenha){
-    let erro="Este campo é Obrigatório!"
-    document.getElementById("e_csenha").innerHTML=erro
-    flag=true
-} else if(senha!=csenha){
-    let erro="As senhas devem ser iguais!"
-    document.getElementById("e_csenha").innerHTML=erro  
-    document.getElementById("e_csenha").innerHTML=erro 
-    flag=true  
-} else{
-    document.getElementById("e_csenha").innerHTML=""
-}
-if(flag){
-return false
-}
-return true
-}
-
