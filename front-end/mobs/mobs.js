@@ -101,7 +101,6 @@ function tratatex(texto){
 
 //modulo de pesquisa onfocus and oninput
 function search(conteudo){
-    if(conteudo){
         var resultado = listamobs.filter((nome)=>{
          if(nome.startsWith(tratatex(conteudo))&&!falhas.includes(nome)){
             return true;
@@ -119,9 +118,9 @@ function search(conteudo){
         searchlist.innerHTML = html;
         return temporario;
         } 
-    }
-    searchlist.innerHTML = '';
-    return '';
+        let html = `<li class="response">Isso não corresponde a uma resposta válida no momento</li>`
+        searchlist.innerHTML = html;
+        return '';
 }
 
 //modulo de seleção de elementos da lista de search

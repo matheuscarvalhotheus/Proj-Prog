@@ -30,11 +30,7 @@ let flag=false
 let nome=document.getElementById("nome")
 flag = inputcheck(nome,erro[0],errormessages,nameval(nome.value),flag)
 let email=document.getElementById("email")
-if(lastinvalidemail!=email.value){
 flag = inputcheck(email,erro[1],errormessages,emailval(email.value),flag)
-}else{
-flag=true
-}
 let senha=document.getElementById("senha")
 flag = inputcheck(senha,erro[2],errormessages,passwordval(senha.value),flag)
 let csenha=document.getElementById("csenha").value
