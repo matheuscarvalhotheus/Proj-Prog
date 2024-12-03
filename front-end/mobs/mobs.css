@@ -149,8 +149,24 @@ form{
   .searchelement{
     border: #7c7c7c 3px solid;
     padding:10px;
+    
   }
 
+  .response{
+    border: #7c7c7c 3px solid;
+    padding:10px;
+    font-size:13px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .response:first-child{
+    border:#7c7c7c 3px solid;
+    border-top: 0px;
+  }
+  .response:last-child{
+    border:#7c7c7c 3px solid;
+    border-bottom: #7c7c7c 5px solid;;
+  }
   .searchelement:hover{
     background-color: rgba(255, 255, 255, 0.1);
     transition: background-color 100ms;
@@ -175,8 +191,10 @@ form{
     border: #7c7c7c 2px solid;
     border-top: 0px;
     border-bottom: 0px;
-    height:100%;
     margin:0px;
+    height:fit-content;
+    max-height: 200px;
+    overflow-y:scroll;
   }
 
 

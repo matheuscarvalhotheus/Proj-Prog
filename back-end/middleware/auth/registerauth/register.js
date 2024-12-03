@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt"
 import { emailval, passwordval, nameval } from "./datavalidation.js"
-import minedle from "../../src/modos/minedle.js"
+import minedle from "../../../src/modos/minedle.js"
 
 async function register(newUser){
     try{

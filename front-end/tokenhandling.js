@@ -12,11 +12,13 @@ async function displaylogin(){
             username = JSON.parse(localStorage.getItem("userdata")).name;
         }
         document.getElementsByClassName("entrar")[0].innerHTML=`
+        <div class="usermenu">
         <div>
         <p id="username">${username}</p>
         <p id="exit" onclick="logout()">sair</p>  
         </div>
-        <img src="/front-end/assets/imagens/default/HumanFace.png" id="steve">
+        <a href="/front-end/user/user.html"><img src="/front-end/assets/imagens/default/HumanFace.png" id="steve"></a>
+        </div>
         `
     }
 }

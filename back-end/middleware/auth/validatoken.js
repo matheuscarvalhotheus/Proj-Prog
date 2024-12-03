@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-const validatoken = (req, res, next) => {
-
+  const validatoken = (req, res, next) => {
 
   const token = req.headers.authorization;
 
