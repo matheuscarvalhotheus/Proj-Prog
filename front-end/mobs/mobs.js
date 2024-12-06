@@ -101,7 +101,6 @@ function tratatex(texto){
 
 //modulo de pesquisa onfocus and oninput
 function search(conteudo){
-    if(conteudo){
         var resultado = listamobs.filter((nome)=>{
          if(nome.startsWith(tratatex(conteudo))&&!falhas.includes(nome)){
             return true;
@@ -119,9 +118,9 @@ function search(conteudo){
         searchlist.innerHTML = html;
         return temporario;
         } 
-    }
-    searchlist.innerHTML = '';
-    return '';
+        let html = `<li class="response">Isso não corresponde a uma resposta válida no momento</li>`
+        searchlist.innerHTML = html;
+        return '';
 }
 
 //modulo de seleção de elementos da lista de search
@@ -143,22 +142,25 @@ var highscore = ''
 async function gethighscore(mini,mode){
     path=`/score/${mini}/${mode}`
     const tokenvalue = `Bearer ${token.getToken()}`
-    const response = await fetch(dominio+path,{method:"GET", headers:{'Content-Type':'application/json', "Authorization":tokenvalue,},})
+    const response = await fetch(dominio+path,
+        {method:"GET",
+        headers:{'Content-Type':'application/json', "Authorization":tokenvalue,},
+    })
     const json = await response.json();
     if(json.pontos){
     highscore=json.pontos
     return true
     }
     if(json.fail == "esse usuário não possui nenhuma quantidade de pontos registrada neste minigame"||json.fail == "esse usuário não possui nenhuma quantidade de pontos registrada neste modo"){
-        highscore=0
+        highscore="zero"
         return false
     }
     return false
 }
-async function sethighscore(mini,mode){
+async function sethighscore(minivalue,modevalue){
     path=`/newhighscore`
-    const tokenvalue = `Bearer ${token.getToken()}`
-    const response = await fetch(dominio+path,{method:"POST", headers:{'Content-Type':'application/json', "Authorization": tokenvalue,},body:JSON.stringify({mini:mini,mode:mode,highscore:points}),})
+    const tokenvalue = "Bearer "+token.getToken();
+    const response = await fetch(dominio+path,{method:"POST", headers:{'Content-Type':'application/json', "Authorization": tokenvalue,},body:JSON.stringify({"mini":minivalue,"mode":modevalue,"highscore":points}),})
     const json = await response.json()
     console.log(response,json)
 }
@@ -179,11 +181,12 @@ async function gamereset(result){
         <button class="quit" onclick="win(false)"><p>Voltar para o Menu</p></button>
         </div>
         `
-        console.log(highscore)
         if(token.getToken()&&highscore){
+        if(highscore=="zero"){
+            highscore=0
+        }
         if(highscore<points){
-        console.log(highscore)
-        console.log(sethighscore("Mobs",modo));
+        sethighscore("Mobs",modo);
         }
         }
         highscore=''
@@ -203,10 +206,11 @@ async function gamereset(result){
     <button class="quit" onclick="loss(false)"><p>Voltar para o Menu</p></button>
     </div>
     `
-    console.log(highscore)
     if(token.getToken()&&highscore){
+    if(highscore=="zero"){
+        highscore=0
+    }
     if(highscore<points){
-        console.log(highscore)
     sethighscore("Mobs",modo);
     }
     }
@@ -255,6 +259,8 @@ async function gamereset(result){
             tentativas=triesreset
             triesdisplay.innerHTML=`${tentativas} tentativas`
             notificationlist.innerHTML=''
+            processing=false
+            reseting=false
         } else {
             window.location.href="../home/home.html"
         }
@@ -408,15 +414,20 @@ elementhighlight(triesdisplay,"redhighlight",380)
 falhas.push(autoselect)
 notificationlist.innerHTML = filterremoved(removednotifications,falhas,acertou)
 
+processing=true
 //acabou tentativas
 if(tentativas==0){
 gamereset(false)
+reseting=true
+}
+
+if(!reseting){
+processing=false
 }
 
 }
-autoselect=''
 input.value=''
-searchlist.innerHTML=''
+autoselect = search('')
 }
 event.preventDefault();
 };

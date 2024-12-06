@@ -1,11 +1,19 @@
 import express from "express";
+import {z} from "zod";
+import { datacheck } from "../middleware/validate.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import minedle from './modos/minedle.js';
-import register from '../middleware/registerauth/register.js'
-import validatoken from '../middleware/validatoken.js'
-import numbervalidation from '../middleware/highscorevalidation.js'
+import register from '../middleware/auth/registerauth/register.js'
+import validatoken from '../middleware/auth/validatoken.js'
 import GetUserScore from "./modos/getuserscore.js";
+
+const validateschema =  z.object({
+  headers: z.object({
+    authorization: z.string().optional()
+  })
+})
+
 
   const router=express.Router();
 
@@ -45,13 +53,20 @@ import GetUserScore from "./modos/getuserscore.js";
     }
     return res.json(valores)
 });
-
-  router.post('/newhighscore', validatoken, async (req,res) => {
+  //newhighscore validation DONE
+  router.post('/newhighscore',  
+  datacheck(validateschema)
+  , validatoken,
+     datacheck( z.object({
+      body: z.object({
+        mini: z.string(),
+        mode: z.string(),
+        highscore: z.number().max(10000)
+      })
+    }))
+    , async (req,res) => {
     try{
     if(req.body&&req.body.highscore){
-    var reasonable = numbervalidation(req.body.highscore);
-
-    if(reasonable){
     const mininame = req.body.mini
     const modename = req.body.mode
 
@@ -64,17 +79,28 @@ import GetUserScore from "./modos/getuserscore.js";
     }
     return res.status(409).json()
     }
+    return res.status(409).json()
     }
     return res.status(400).json()
-    }
-    return res.status(409).json()
      }catch(err){
     console.log(err)
     return res.status(500).json()
     }
   })
-
-  router.get("/score/:mini/:mode", validatoken, async(req, res)=>{
+  //
+  
+  //GET score DONE
+  router.get("/score/:mini/:mode"
+    , datacheck(validateschema)
+    , validatoken
+    , datacheck(z.object({
+      params: z.object({
+        mini: z.string(),
+        mode: z.string()
+      })
+    }
+    ))
+    , async(req, res)=>{
     const mini = req.params.mini;
     const mode = req.params.mode;
     if(mini&&mode){
@@ -88,9 +114,13 @@ import GetUserScore from "./modos/getuserscore.js";
     }
     return res.status(400).json()
  })
-  
+  //  
 
-  router.get('/me', validatoken, async (req, res) => {
+  //DONE
+  router.get('/me'
+  , datacheck(validateschema)
+  , validatoken
+  , async (req, res) => {
   try {
     const userdata = await minedle.search_user(req.useremail);
     if (!userdata) {
@@ -104,9 +134,19 @@ import GetUserScore from "./modos/getuserscore.js";
     console.error(err);
     return res.status(500).json();
   }})
+  //
 
+  //New user DONE
   // Rota para cadastra novo usuário
-    router.post('/newuser', async (req, res) => {
+    router.post('/newuser'
+    , datacheck(z.object({
+      body: z.object({
+        name: z.string(),
+        email: z.string(),
+        password: z.string()
+      })
+    }))  
+    , async (req, res) => {
     if(req.body){
     const newUser = req.body;
     const resultado=await register(newUser)
@@ -114,8 +154,17 @@ import GetUserScore from "./modos/getuserscore.js";
     }
     return res.status(400).json({fail:"nenhum dado enviado"})
     })
+    //
 
-    router.post('/login', async (req,res) => {
+    //DONE
+    router.post('/login'
+      , datacheck( z.object({
+        body: z.object({
+          email: z.string(), 
+          pass: z.string()
+        })
+      }))
+      , async (req,res) => {
       try{
         if(req.body){
         const {email, pass} = req.body;
@@ -137,7 +186,7 @@ import GetUserScore from "./modos/getuserscore.js";
       return res.status(401).json()
     }
   })
-  
+  //
       
     
 export default router;

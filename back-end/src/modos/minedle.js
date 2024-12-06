@@ -1,5 +1,5 @@
 import prisma from "../database/database.js";
-import interprete from "../../middleware/interpretadores.js";
+import interprete from "../../middleware/transcribe_gamemodes.js";
 
 // Função para ler todos os valores de uma tabela dada
 async function read_table(tabela) {

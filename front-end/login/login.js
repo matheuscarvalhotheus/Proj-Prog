@@ -1,25 +1,16 @@
+import {emailval,passwordval} from "./datavalidation.js"
 import Auth from "../tokenhandling.js"
 
 const erro=document.getElementsByClassName("erro")
-const errormessages= ["Este campo não pode estar vazio!","Email ou senha incorretos/inválidos!" ]
+const errormessages= ["Este campo não pode estar vazio!" ]
 window.handleform = async () => {
     let flag=false
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('senha').value;
-    if(!email){
-        erro[0].innerHTML = errormessages[0]
-        flag=true
-    } else {
-         erro[0].innerHTML = ""
-    }
-    if(!password){
-        erro[1].innerHTML = errormessages[0]
-        flag=true
-    } else {
-        erro[1].innerHTML = ""
-    }
+    const email = document.getElementById('email');
+    const password = document.getElementById('senha');
+    flag = inputcheck(email,erro[0],errormessages,emailval(email.value),flag)
+    flag = inputcheck(password,erro[1],errormessages,passwordval(password.value),flag)
     if(!flag){
-    const user = JSON.stringify({email: email, pass: password})
+    const user = JSON.stringify({email: email.value, pass: password.value})
     const url = "http://localhost:3000/login"
     try{
         const response=await fetch(url, {
@@ -59,3 +50,15 @@ function classhighlight(classElements,highlight,timer){
             , timer)
     }
 
+function inputcheck(input,error,errorlist,valresult,flag){
+    if(!input.value){
+        error.innerHTML=errorlist[0]
+        return true
+    }
+    if(valresult){
+        error.innerHTML=valresult
+        return true
+    }
+        error.innerHTML=""
+        return flag
+    }

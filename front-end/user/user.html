@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>User Settigns</title>
+  <link href="../global.css" rel="stylesheet" type="text/css" />
+  <link href="./user.css" rel="stylesheet" type="text/css" />
+  <script>
+    tentativa();
+    async function tentativa(){
+    if(!localStorage.getItem("token")){
+    window.location.href = "/front-end/home/home.html"
+    }
+    const token = "Bearer "+localStorage.getItem("token")
+    const response = await fetch("http://localhost:3000/me",
+    {method:"GET",
+    headers:{'Content-Type':'application/json', "Authorization":token,}
+})
+    if(response.status!=200){
+    window.location.href = "/front-end/home/home.html"
+    
+    }}
+  </script>
+  <script src="./user.js" type="module"></script>
+</head>
+
+
+<body> 
+
+  <!-- MENU P/ Login -->
+
+  
+  <!-- logo -->
+  <div class="aaaaaaaa">
+    <div><p class="hidden" style=".hidden{visibility: hidden;}" ></p></div>
+  <div class="logo">
+    <a id="caminho" href="/front-end/home/home.html"><img src="../assets/imagens/default/logo-terra.png" id="logo"></a>
+
+    </div>
+    <div class="entrar"></div>
+  </div>
+  
+  <!-- Tela de Cadastro-->
+  <div class="texto">
+    <h1>Perfil</h1>
+  </div>
+  
+                           
+<!-- Parte Princial -->
+  <div class="Corpo">
+    <h2>Informações do Usuário</h2>
+       <section class="profile-info">
+          <div class="imagem-info">
+            <img src="../assets/imagens/default/HumanFace.png" class="user">
+          </div>
+     
+            <div class="user-details">
+                <p><strong>Nome:</strong> Brenno costa</p>
+                <p><strong>Email:</strong> bcgdacosta@gmail.com</p>
+            </div>
+
+            <div class="profile-actions">
+                <button class="btn">Alterar Nome</button>
+                <button class="btn">Alterar Email</button>
+                <button class="btn">Alterar Senha</button>
+            </div>
+        </section>
+    <!-- scroll de estatistica -->
+        <section class="statistics">
+            <div class="estatisticas">
+                <h2>Jogo X</h2>
+                <p>150 Pontos</p>
+            </div>
+            <div class="estatisticas">
+                <h2>Jogo Y</h2>
+                <p>2.300 Pontos</p>
+            </div>
+          <div class="estatisticas">
+            <h2>Jogo X</h2>
+            <p>150 Pontos</p>
+          </div>
+          <div class="estatisticas">
+            <h2>Jogo Y</h2>
+            <p>2.300 Pontos</p>
+          </div>
+        </section>
+    
+     
+</body>
+</hmtl>
+
+</html>

@@ -1,0 +1,267 @@
+body{
+    background-image: url(../assets/imagens/default/dirt_fundo.png);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Minecraft', sans-serif;
+  }
+  
+  #logo{
+    width: 350px;
+  }
+  
+  .logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .texto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 25px;
+    color: #c2c2c2;
+    text-shadow: black;
+  }
+  
+  .Corpo{
+    background-color: black;
+    opacity: 0.8;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    height: 60%;
+   
+  }
+  
+  ::placeholder{
+    color: white;
+    padding: 10px;
+  }
+  
+  
+  
+  
+  .redirecionar{
+    margin-bottom: 20px;
+    margin-left: 25%;
+  }
+  
+  nav.menu{
+    width: 100px;
+    height: 30px;
+    background-color: #000000;
+    padding:  15px 0 15px 1%;
+  }
+  
+  .expandir{
+    width: 100%;
+    padding-left: 10px;
+  }
+  
+  .expandir > i{
+    width: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  
+  .imagem {
+    width: 300px;
+    height: auto;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  nav{
+    position:fixed;
+    top:0px;
+    left:0px;
+    
+  }
+  
+  nav li{
+    display: inline-block;
+  }
+  
+  nav li a{
+    display: inline-block;
+    text-decoration: none;
+    padding: 15px;
+  }
+  
+  .dropdown{
+    margin-left: 20px;
+  }
+  
+  .dropdown-sub{
+    margin-left: 10px;
+    color: #b5cb0b;
+    font-size: 15px;
+  }
+  
+  .dropdown-nome{
+    margin-bottom: 10px;
+    margin-left: 2px;
+    font-size: 27px;
+  }
+  
+  .dropdown-menu{
+    background-color: black;
+    opacity: 0.8;
+    position: absolute;
+    box-shadow: 0 0 2px black;
+    display: none;
+    height: 180px;
+    width: 300px;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+    border-radius: 5px;
+  }
+  
+  .dropdown-menu a{
+    display: block;
+    color: #a1a1a1;
+  }
+  
+  .dropdown:hover .dropdown-menu{
+    display: block;
+  }
+  
+  .img-user{
+    margin-top: 10px;
+    width: 60%;
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+  }
+  
+  @-moz-keyframes spin { 
+    100% { -moz-transform: rotate(360deg); } 
+  }
+  @-webkit-keyframes spin { 
+    100% { -webkit-transform: rotate(360deg); } 
+  }
+  @keyframes spin { 
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
+  }
+  
+  
+  .profile-container {
+    background-color: #000000;
+    width: 80%;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  
+  .profile-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  
+  .imagem-info {
+    width: 25%;
+    margin-top: 25px;
+  }
+  
+  .user-details {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-left: 10px;
+  }
+  
+  .profile-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  
+  .btn {
+    background-color: #4a4f4a;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px 0;
+    transition: background-color 0.3s;
+  }
+  
+  .btn:hover {
+    background-color: #717a71;
+  }
+  
+  .statistics {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .estatisticas {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    height: 100px;
+    width: 40%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .estatisticas h2 {
+      font-size: 1.5em;
+      color: #333;
+      margin-bottom: 10px;
+  }
+  
+  .estatisticas p {
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #000000;
+  }
+  
+  #logo:hover{
+    content:url(../assets/imagens/default/logo-portal.png);
+    padding: 25px;
+  }
+
+  #logo{
+    padding:25px;
+  }
+
+  .aaaaaaaa{
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .aaaaaaaa>div{
+    width:300px;
+  }

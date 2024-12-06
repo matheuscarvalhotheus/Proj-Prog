@@ -4,37 +4,31 @@ const errormessages = ["Este campo não pode estar vazio!",]
 const erro = document.getElementsByClassName("erro")
 var lastinvalidemail= ""
 
-function classhighlight(classElements,highlight,timer){
-    for(let i=0; i<classElements.length; i++){
-        classElements[i].classList.add(highlight)
-        }
-        setTimeout(() => {
-            for(let i=0; i<classElements.length; i++){
-                classElements[i].classList.remove(highlight)
-            }}
-            , timer)
-    }
+function inputcheck(input,error,errorlist,valresult,flag){
+  if(!input.value){
+      error.innerHTML=errorlist[0]
+      return true
+  }
+  if(valresult){
+  error.innerHTML=valresult
+  return true
+  }
+  error.innerHTML=""
+  return flag
+}
 
-function elementhighlight(element,highlight,timer){
-    element.classList.add(highlight)
-    setTimeout(() => {
-        element.classList.remove(highlight)
-        }
-        , timer)
-    }
+const envio = document.getElementById("envio")
 
+envio.onsubmit = (event) => {
+event.preventDefault();
+}
 
 window.cadastro = async function(event){
-event.preventDefault();
 let flag=false
 let nome=document.getElementById("nome")
 flag = inputcheck(nome,erro[0],errormessages,nameval(nome.value),flag)
 let email=document.getElementById("email")
-if(lastinvalidemail!=email.value){
 flag = inputcheck(email,erro[1],errormessages,emailval(email.value),flag)
-}else{
-flag=true
-}
 let senha=document.getElementById("senha")
 flag = inputcheck(senha,erro[2],errormessages,passwordval(senha.value),flag)
 let csenha=document.getElementById("csenha").value
@@ -64,9 +58,7 @@ if(!flag){
         flag=true
       } else if(response.status==200){
         console.log("usuário criado")
-        setTimeout(()=>{
-            window.location.href = "../login/login.html"}
-            ,1000)
+            window.location.href = ".././login/login.html"
       }
     } catch (error) {
       console.error(error.message);
@@ -77,15 +69,21 @@ if(!flag){
   }   
 }
 
-function inputcheck(input,error,errorlist,valresult,flag){
-    if(!input.value){
-        error.innerHTML=errorlist[0]
-        return true
-    }
-    if(valresult){
-    error.innerHTML=valresult
-    return true
-    }
-    error.innerHTML=""
-    return flag
-}
+function classhighlight(classElements,highlight,timer){
+  for(let i=0; i<classElements.length; i++){
+      classElements[i].classList.add(highlight)
+      }
+      setTimeout(() => {
+          for(let i=0; i<classElements.length; i++){
+              classElements[i].classList.remove(highlight)
+          }}
+          , timer)
+  }
+
+function elementhighlight(element,highlight,timer){
+  element.classList.add(highlight)
+  setTimeout(() => {
+      element.classList.remove(highlight)
+      }
+      , timer)
+  }
