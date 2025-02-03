@@ -76,11 +76,15 @@ model solutions{
 }
 
 model user{
-  Id Int @id @default(autoincrement())
+  Id String @id @default(uuid())
   email String @unique
   name String
   password String
   player player[]
+  auth Boolean
+  passcode String?
+  icon String?
+  background_img String?
   typeId Int
   type userType @relation(fields: [typeId], references: [id])
 }

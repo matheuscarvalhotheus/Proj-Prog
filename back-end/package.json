@@ -2,8 +2,7 @@
   "name": "minedle",
   "type": "module",
   "scripts": {
-    "server": "node src/index.js",
-    "db:load": "node src/database/load.js"
+    "server": "node src/index.js"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
@@ -14,9 +13,12 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "googleapis": "^144.0.0",
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
     "node.js": "^0.0.1-security",
+    "nodemailer": "^6.10.0",
     "prisma": "^5.19.1",
     "sqlite-async": "^1.2.0",
     "zod": "^3.23.8"

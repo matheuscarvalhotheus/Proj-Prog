@@ -223,6 +223,8 @@
             "email" : "fariasmarquesgustavo@gmail.com",
             "name" : "Gtagusta",
             "password" : "$2b$10$S3xlhytzviTRDtBYv.Nt6u1QbkdHR.uEQDMDXcL4bkRAPxX3rBTsK",
+            "auth" : true,
+            "passcode" : "",
             "typeId" : 1
         }
     ],
