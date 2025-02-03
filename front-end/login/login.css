@@ -71,9 +71,10 @@ ul>div{
 
 .inputt{
   color:white;
+  box-sizing: border-box;
   width:100%;
   padding:5px;
-  height: 35px;
+  height: 50px;
   border: 5px inset #827a85;
   background-color: #40562f;
 }
@@ -104,4 +105,31 @@ ul>div{
 .link:hover{
   color:rgb(90, 224, 90);
   transition:color 300ms;
+}
+
+.notification{
+  visibility: collapse;
+  background-color:rgb(117, 117, 117);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: solid #dedede;
+  border-radius: 8px;
+  justify-content: space-between;
+}
+
+#notification{
+  color: #dedede;
+  font-size:12px;
+  margin: 5px 10px;
+}
+
+#close{
+  color: #dedede;
+  font-size:14px;
+  margin:0px 10px;
+}
+
+.open{
+  visibility: visible;
 }

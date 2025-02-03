@@ -4,6 +4,7 @@ const errormessages = ["Este campo não pode estar vazio!",]
 const erro = document.getElementsByClassName("erro")
 var lastinvalidemail= ""
 
+
 function inputcheck(input,error,errorlist,valresult,flag){
   if(!input.value){
       error.innerHTML=errorlist[0]
@@ -22,6 +23,7 @@ const envio = document.getElementById("envio")
 envio.onsubmit = (event) => {
 event.preventDefault();
 }
+
 
 window.cadastro = async function(event){
 let flag=false
@@ -58,7 +60,8 @@ if(!flag){
         flag=true
       } else if(response.status==200){
         console.log("usuário criado")
-            window.location.href = ".././login/login.html"
+        document.querySelector(".notification").classList.add("open")
+
       }
     } catch (error) {
       console.error(error.message);
@@ -86,4 +89,8 @@ function elementhighlight(element,highlight,timer){
       element.classList.remove(highlight)
       }
       , timer)
+  }
+
+  window.fechar = () => {
+    document.querySelector(".notification").classList.remove("open")
   }

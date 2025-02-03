@@ -8,6 +8,7 @@
   <link href="../global.css" rel="stylesheet" type="text/css" />
   <link href="login.css" rel="stylesheet" type="text/css" />
   <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+  <link rel="icon" href="../assets/imagens/mobs/oveia.png">
   <script>
         if(localStorage.getItem("token")){
         window.location.href = "/front-end/home/home.html"
@@ -33,6 +34,14 @@
   <div class="Corpo">
     <form onsubmit="return false">
       <ul>
+
+        <li class="notification">
+          <div>
+            <p id="notification">Verifique o seu e-mail e valide a sua conta!</p>
+          </div>
+            <p id="close" onclick="fechar()">X</p>
+        </li>
+
         <li>
           <div>
           <p class="bold">E-mail: </p>

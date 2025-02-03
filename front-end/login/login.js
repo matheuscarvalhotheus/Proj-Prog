@@ -1,8 +1,36 @@
 import {emailval,passwordval} from "./datavalidation.js"
 import Auth from "../tokenhandling.js"
 
+const query = window.location.search
+const urlParams = new URLSearchParams(query)
+var validate = urlParams.get("validar")
+var validateend =urlParams.get("riYt7")
+
+window.fechar = () => {
+    document.querySelector(".notification").classList.remove("open")
+  }
+
+if(validate){
+    let url = "http://localhost:3000/validate-email"
+    try{
+        const answer = await fetch(url,{
+            method:"GET",
+            headers:{'Content-Type': 'application/json', "Authorization" : `Bearer ${validate+"#%$%#"+validateend}`},
+        })
+        if(answer.status===401){
+            document.getElementById("notification").innerHTML = "Token inválido ou email já validado" 
+            document.querySelector(".notification").classList.add("open")
+        } else if(answer.status===200){
+            document.getElementById("notification").innerHTML = "Parabéns! Email validado."
+            document.querySelector(".notification").classList.add("open")    
+        }
+    } catch (error) {
+        console.error(error.message);
+      }
+}
+
 const erro=document.getElementsByClassName("erro")
-const errormessages= ["Este campo não pode estar vazio!" ]
+const errormessages= ["Este campo não pode estar vazio!", "Senha ou e-mail errados!"]
 window.handleform = async () => {
     let flag=false
     const email = document.getElementById('email');
@@ -23,7 +51,12 @@ window.handleform = async () => {
             erro[i].innerHTML = errormessages[1]
            }
            flag=true
-        } else {
+        } else if(response.status === 403){
+            for(let i=0; i<erro.length; i++){
+             erro[i].innerHTML = "Cheque a caixa de entrada do seu gmail e valide o seu email!"
+            }
+            flag=true
+         } else {
         const result = await response.json();
         if(result.flag){
          Auth.login(result.token);

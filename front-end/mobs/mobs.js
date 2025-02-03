@@ -49,6 +49,7 @@ function triesidentifier(modo,dificuldade,json){
     if(!modo||!dificuldade){
         modo = "creative"
         dificuldade="nenhum"
+        console.log("nenhuma configuração encontrada, carregando padrão")
     }
     for(let i=0; i<json.length; i++){
         if(json[i]["valores"][0]["dif_opcoes"][0]!="nenhum"||modo!="creative"){
@@ -56,17 +57,8 @@ function triesidentifier(modo,dificuldade,json){
                 return [json[i]["tries"],modo,dificuldade,json[i]["multiplier"]]
         } 
         } else{
-            console.log("nenhuma configuração encontrada, carregando padrão")
-            return [json[i]["tries"],modo,dificuldade,["multiplier"]]
+            return [json[i]["tries"],modo,dificuldade,json[i]["multiplier"]]
         }
-    }
-    modo = "creative"
-    dificuldade="nenhum"
-    console.log("url válido sem sentido, carregando padrão")
-    for(let i=0; i<json.length; i++){
-        if(modo==json[i]["valores"][0]["nome"]&&dificuldade==json[i]["valores"][0]["dif_opcoes"][0]){
-            return [json[i]["tries"],modo,dificuldade,["multiplier"]]
-    } 
     }
 }
 
@@ -90,6 +82,7 @@ var falhas = []
 var autoselect = ''
 var points=0
 //carregar imagem do mob inicial
+imagerender("mob",dificuldade)
 display.src = listaimagens[nal]
 triesdisplay.innerHTML = `${tentativas} tentativas`
 //tratamento da entrada
@@ -432,6 +425,19 @@ autoselect = search('')
 event.preventDefault();
 };
 
+function imagerender(id,dificuldade){
+    let elemento = document.getElementById(id)
+    if(dificuldade=="nenhum"||dificuldade=="fácil"){
+        elemento.style.filter = "";
+        elemento.style.transform = "";
+    } else if(dificuldade=="normal"){
+        elemento.style.filter = "blur(5px)";
+        elemento.style.transform = "";
+    } else if(dificuldade=="difícil"){
+        elemento.style.filter = "blur(10px)";
+    }
+
+}
 
 console.log(tentativas)
 console.log(modo)

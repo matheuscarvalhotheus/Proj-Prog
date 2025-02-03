@@ -4,9 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>User Settigns</title>
+  <title>User Profile</title>
   <link href="../global.css" rel="stylesheet" type="text/css" />
   <link href="./user.css" rel="stylesheet" type="text/css" />
+  <link rel="icon" href="../assets/imagens/mobs/oveia.png">
   <script>
     tentativa();
     async function tentativa(){
@@ -29,65 +30,113 @@
 
 <body> 
 
-  <!-- MENU P/ Login -->
-
-  
-  <!-- logo -->
-  <div class="aaaaaaaa">
-    <div><p class="hidden" style=".hidden{visibility: hidden;}" ></p></div>
-  <div class="logo">
-    <a id="caminho" href="/front-end/home/home.html"><img src="../assets/imagens/default/logo-terra.png" id="logo"></a>
-
+  <!--header-->
+  <div class="menu">
+    <div style="width: 350px;">
+      <p class="shhh" style=".shhh{visibility: hidden;}"></p>
     </div>
-    <div class="entrar"></div>
+    <div class="logo">
+      <a id="caminho" href="/front-end/home/home.html"><img src="../assets/imagens/default/logo-terra.png" id="minedle"></a>
+    </div>
+  <div class="entrar">
   </div>
-  
-  <!-- Tela de Cadastro-->
-  <div class="texto">
+  </div>
+ 
+  <!--titulo-->
+  <div class="titulo">
     <h1>Perfil</h1>
   </div>
-  
                            
-<!-- Parte Princial -->
-  <div class="Corpo">
+  <!--conteudo-->
+  <div class="fundo">
+    <div class="conteudo">
+
+    <div class="side_1">
+
+    <div class="user">
+
+    <div class="user-title">
     <h2>Informações do Usuário</h2>
-       <section class="profile-info">
-          <div class="imagem-info">
-            <img src="../assets/imagens/default/HumanFace.png" class="user">
+    </div>
+
+    <div class="user-info">
+
+      <div class="user-icon-info">
+      <img src="../assets/imagens/default/HumanFace.png" class="user-icon">
+      </div>
+
+      <div class="user-id">
+          <div class="user-name">
+            <h4>Nome:</h4>
+            <p id="user-name">Template Nome</p>
           </div>
-     
-            <div class="user-details">
-                <p><strong>Nome:</strong> Brenno costa</p>
-                <p><strong>Email:</strong> bcgdacosta@gmail.com</p>
+
+          <div class="user-email">
+            <h4>Email:</h4>
+            <p id="user-email">template@gmail.com</p>
+          </div>
+      </div>
+
+    </div>
+  
+    </div>
+
+    <!-- scroll de estatistica -->
+        <div class="stats">
+
+          <div class="stats-title">
+            <h2>Estatísticas</h2>
+          </div>
+
+          <div class="stats-grid">
+
+          <div class="stats-grid-el">
+            <h4>Template nome jogo</h4>
+            <p>Template pontuação</p>
+            </div>
+          <div class="stats-grid-el">
+            <h4>Template nome jogo</h4>
+            <p>Template pontuação</p>
+            </div>
+          <div class="stats-grid-el">
+            <h4>Template nome jogo</h4>
+            <p>Template pontuação</p>
+          </div>
+          <div class="stats-grid-el">
+            <h4>Template nome jogo</h4>
+            <p>Template pontuação</p>
+          </div>
+          <div class="stats-grid-el">
+            <h4>Template nome jogo</h4>
+            <p>Template pontuação</p>
+            </div>
+          <div class="stats-grid-el">
+            <h4>Template nome jogo</h4>
+            <p>Template pontuação</p>
             </div>
 
-            <div class="profile-actions">
-                <button class="btn">Alterar Nome</button>
-                <button class="btn">Alterar Email</button>
-                <button class="btn">Alterar Senha</button>
-            </div>
-        </section>
-    <!-- scroll de estatistica -->
-        <section class="statistics">
-            <div class="estatisticas">
-                <h2>Jogo X</h2>
-                <p>150 Pontos</p>
-            </div>
-            <div class="estatisticas">
-                <h2>Jogo Y</h2>
-                <p>2.300 Pontos</p>
-            </div>
-          <div class="estatisticas">
-            <h2>Jogo X</h2>
-            <p>150 Pontos</p>
-          </div>
-          <div class="estatisticas">
-            <h2>Jogo Y</h2>
-            <p>2.300 Pontos</p>
-          </div>
-        </section>
-    
-     
+
+        </div>
+      
+      </div>
+
+    </div>
+    <div class="side_2">
+      <div class="user-settings">
+        <button class="button" id="icon">Trocar Ícone</button>
+        <button class="button" id="bckgrd">Trocar Imagem de Fundo</button>
+        <button class="button" id="name">Trocar Nome</button>
+        <button class="button" id="pass">Trocar Senha</button>
+        <button class="button" id="email">Trocar Email</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal" id="modal"></div>
+<div id="overlay" class="overlay"></div>
+
 </body>
 </hmtl>
 
