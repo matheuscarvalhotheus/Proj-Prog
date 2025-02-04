@@ -1,5 +1,8 @@
-body{
+html{
   background-image: url(../assets/imagens/default/dirt_fundo.png);
+}
+
+body{
   color: white;
   display: flex;
   flex-direction: column;

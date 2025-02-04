@@ -1,11 +1,22 @@
 import token from "../tokenhandling.js"
 
-token.displaylogin();
-
+var user=''
+while(true){
+user= await token.displaylogin()
+if(user){
+break
+}
+}
 const user_name = document.getElementById("user-name")
 const user_email = document.getElementById("user-email")
-user_name.innerHTML=JSON.parse(localStorage.getItem("userdata")).name
-user_email.innerHTML=JSON.parse(localStorage.getItem("userdata")).email
+const user_icon = document.getElementById("user-icon")
+user_name.innerHTML=user.name
+user_email.innerHTML=user.email
+if(user.icon){
+user_icon.src="http://localhost:5500/"+user.icon
+}
+
+
 
 const modaldisplay = document.getElementById("modal")
 const overlay = document.getElementById("overlay")
@@ -19,18 +30,19 @@ change_icon.onclick = (event) => {
 
     <div class="icon-int-preview">
      <h3>preview</h2>
-        <img src="../assets/imagens/default/HumanFace.png" class="user-icon"></img>
-    </div>
+        <img src="../assets/imagens/default/HumanFace.png" class="user-icon" id="preview"></img>
+    </div> 
 
     <div class="icon-int-select">
-        <h3>selecione o seu novo ícone</h2>
-    <input type="file" accept="image/* id="file" name="image">
+        <h3>selecione o seu</h3>
+        <h3>novo ícone</h3>
+    <input type="file" accept="image/*" id="file" name="image">
     </div>
 
     </div>
 
     <div class="icon-int-end">
-        <button id="confirm" onclick="confirmar()">Confirmar</button>
+        <button id="confirm" onclick="progredir('icon')">Confirmar</button>
         <button id="cancel" onclick="fechar()">Cancelar</button>
     </div>
 
@@ -39,9 +51,69 @@ change_icon.onclick = (event) => {
     `
     modaldisplay.classList.add("open")
     overlay.classList.add("open")
+
+    const file = document.getElementById("file")
+    
+    file.onchange = (event) => {
+        if(file.files[0]){
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById("preview").src = e.target.result
+            };
+            reader.readAsDataURL(file.files[0]);
+        } else {
+        document.getElementById("preview").src = "../assets/imagens/default/HumanFace.png"
+        }
+    }
 }
 
 
+const change_back = document.getElementById("bckgrd")
+
+change_back.onclick = (event) => {
+    modaldisplay.innerHTML = `
+    <div class="icon-int">
+
+    <div class="icon-int-data">
+
+    <div class="icon-int-preview">
+     <h3>preview</h2>
+        <img src="../assets/imagens/default/dirt_fundo.png" class="user-back" id="preview"></img>
+    </div>
+
+    <div class="icon-back-select">
+        <h3>selecione o seu</h3>
+         <h3>novo papel de parede</h3>
+    <input type="file" accept="image/*" id="file" name="image">
+    </div>
+
+    </div>
+
+    <div class="icon-int-end">
+        <button id="confirm" onclick="progredir('back')">Confirmar</button>
+        <button id="cancel" onclick="fechar()">Cancelar</button>
+    </div>
+
+    </div>
+
+    `
+    modaldisplay.classList.add("open")
+    overlay.classList.add("open")
+
+    const file = document.getElementById("file")
+    
+    file.onchange = (event) => {
+        if(file.files[0]){
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById("preview").src = e.target.result
+            };
+            reader.readAsDataURL(file.files[0]);
+        } else {
+        document.getElementById("preview").src = "../assets/imagens/default/dirt_fundo.png"
+        }
+    }
+}
 
 const change_pass = document.getElementById("pass")
 
@@ -82,6 +154,43 @@ window.fechar = () =>{
     overlay.classList.remove("open")
 }
 
-window.confirmar = () =>{
-    document.getElementById("file")
+window.progredir = async (type) =>{
+    const file = document.getElementById("file").files
+    if(file){
+        if(type=="icon"){
+            var url = "http://localhost:3000/newicon"
+        } else if(type=="back"){
+            var url = "http://localhost:3000/newbackground"
+        }
+        const usertoken = token.getToken()
+        const sendData = new FormData();
+
+        sendData.append('image', file[0])
+            try{
+                const response=await fetch(url, {
+                    method:"POST",
+                    headers: {'Authorization': `Bearer ${usertoken}`},
+                    body: sendData,
+                    });
+                if(response.status == 200){
+                    modaldisplay.innerHTML = `
+                    <div class="icon-int">
+                    <h3>sucesso!</h3>
+                    </div>
+                
+                    <div class="icon-int-end">
+                        <button id="cancel" onclick="fechar()">Cancelar</button>
+                    </div>
+                
+                    </div>
+                
+                    `
+                    setTimeout(() => {
+                    fechar()   
+                    }, 2000);
+                }
+            } catch (error) {
+                console.error(error.message);
+              }
+    }
 }

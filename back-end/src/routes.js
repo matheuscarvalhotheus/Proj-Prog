@@ -293,7 +293,7 @@ const validateschema =  z.object({
       const {Id:id} = await minedle.search_user(req.useremail)
       
       if(req.file){
-        const path = `/imgs/profile/${req.file.filename} `
+        const path = `back-end/public/imgs/${req.file.filename} `
         const resultado = await minedle.upload_img(id,path,"icon")
         res.status(resultado[0])
       }
@@ -312,7 +312,7 @@ router.post('/newbackground'
     const {Id:id} = await minedle.search_user(req.useremail)
     
     if(req.file){
-      const path = `/imgs/profile/${req.file.filename} `
+      const path = `back-end/public/imgs/${req.file.filename} `
       const resultado = await minedle.upload_img(id,path,"background")
       res.status(resultado[0])
     }

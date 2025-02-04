@@ -87,6 +87,11 @@ body{
   height:80px;
 }
 
+.user-back{
+  width:120px;
+  height:100px;
+}
+
 .user-id{
   display:flex;
   flex-direction: column;
@@ -220,7 +225,25 @@ body{
   margin:7%;
 }
 
+.icon-back-select>h3:first-of-type{
+  margin: 18px 0px 0px 0px
+}
 
+.icon-back-select>h3{
+  margin: 5px 0px 30px 0px
+}
+
+.icon-int-select>h3:first-of-type{
+  margin: 18px 0px 0px 0px
+}
+
+.icon-int-select>h3{
+  margin: 5px 0px 30px 0px
+}
+
+#file{
+  max-width: 480px;
+}
 
 #confirm{
   color:#dedede;
@@ -322,3 +345,4 @@ ul>li>div>p{
   margin:0px 0px 16px 0px;
   text-align: left;
 }
+
