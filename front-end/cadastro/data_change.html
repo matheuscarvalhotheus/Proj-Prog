@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>User Profile</title>
+  <link href="../global.css" rel="stylesheet" type="text/css" />
+  <link href="./data_change.css" rel="stylesheet" type="text/css" />
+  <link rel="icon" href="../assets/imagens/mobs/oveia.png">
+  <script>
+    tentativa();
+    async function tentativa(){
+    if(!localStorage.getItem("token")){
+    window.location.href = "/front-end/home/home.html"
+    }
+    const token = "Bearer "+localStorage.getItem("token")
+    const response = await fetch("http://localhost:3000/me",
+    {method:"GET",
+    headers:{'Content-Type':'application/json', "Authorization":token,}
+})
+    if(response.status!=200){
+    window.location.href = "/front-end/home/home.html"
+    
+    }}
+  </script>
+  <script src="./data_change.js" type="module"></script>
+</head>
+
+
+<body> 
+
+    <div class="menu">
+        <div style="width: 350px;">
+          <p class="shhh" style=".shhh{visibility: hidden;}"></p>
+        </div>
+        <div class="logo">
+            <a id="caminho" href="/front-end/home/home.html"><img src="../assets/imagens/default/logo-terra.png" id="minedle"></a>
+          </div>
+      <div class="entrar">
+        <p><a href="../login/login.html">Login</a></p>
+        
+        <p><a href="../cadastro/cadastro.html">Registrar-se</a></p>
+      </div>
+        </div>
+
+        <!-- Tela de Cadastro-->
+  <div class="texto">
+    <h1 class="bold">Troque sua senha</h1>
+  </div>
+
+  <!-- Parte Princial -->
+  <div class="Corpo">
+    <form onsubmit="return false">
+      <ul>
+
+        <li class="notification">
+            <div>
+              <p id="notification">Verifique o seu e-mail e valide a sua conta!</p>
+            </div>
+              <p id="close" onclick="fechar()">X</p>
+          </li>
+
+        <li>
+          <div>
+          <p class="bold">Senha: </p>
+          <input class="inputt" type="password" id="senha" placeholder="Digite sua senha">
+          <p class="erro"></p>
+          </div>
+        </li>
+        <li>
+        <div>
+          <p class="bold">Confirmar Senha: </p>
+          <input class="inputt" type="password" id="c_senha" placeholder="Confirme sua senha">
+          <p class="erro"></p>
+        </div>
+        </li>
+      </ul>
+    </form>  
+  <!-- Botão para fazer o login -->
+    <div class="botao">
+      <input type="button" onclick="handleform()" value="Trocar Senha">
+
+    </div>
+
+
+</body>
+</hmtl>
+
+</html>

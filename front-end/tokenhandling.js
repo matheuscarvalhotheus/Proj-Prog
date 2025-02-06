@@ -2,15 +2,26 @@ async function displaylogin(){
     if(getToken()){
         const token = "Bearer "+getToken()
         var username = ''
-        if(!localStorage.getItem("userdata")){
-            const response = await fetch("http://localhost:3000/me",{method:"GET",headers:{"Authorization" : token}})
-            const json = await response.json()
-            console.log(json)
-            username = json.name
-            localStorage.setItem("userdata",JSON.stringify(json))
+        var icon = ''
+        const response = await fetch("http://localhost:3000/me",{method:"GET",headers:{"Authorization" : token}})
+        const json = await response.json()
+        console.log(json)
+        username = json.name
+        icon =  json.icon
+        localStorage.setItem("userdata",JSON.stringify(json))
+
+        if(icon){
+            document.getElementsByClassName("entrar")[0].innerHTML=`
+            <div class="usermenu">
+            <div>
+            <p id="username">${username}</p>
+            <p id="exit" onclick="logout()">sair</p>  
+            </div>
+            <a href="/front-end/user/user.html"><img src="${"http://localhost:5500/"+icon}" id="steve"></a>
+            </div>
+            `
+    
         } else {
-            username = JSON.parse(localStorage.getItem("userdata")).name;
-        }
         document.getElementsByClassName("entrar")[0].innerHTML=`
         <div class="usermenu">
         <div>
@@ -20,6 +31,17 @@ async function displaylogin(){
         <a href="/front-end/user/user.html"><img src="/front-end/assets/imagens/default/HumanFace.png" id="steve"></a>
         </div>
         `
+        }
+        if(json.background_img){
+        document.documentElement.style.backgroundImage = `url(${"http://localhost:5500/"+json.background_img})`;
+        } 
+        return json
+    }
+}
+
+function getUserData(){
+    if(getToken()){
+        return JSON.parse(localStorage.getItem("userdata"))
     }
 }
 
@@ -38,4 +60,4 @@ function getToken(){
 return localStorage.getItem("token")
 }
 
-export default { login, logout, getToken, displaylogin }
+export default { getUserData, login, logout, getToken, displaylogin }

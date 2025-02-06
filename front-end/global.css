@@ -9,10 +9,12 @@
 }
 
 #username{
+  margin: 5px 0px;
   color:#dedede
 }
 
 #exit{
+  margin: 5px 0px;
   width:fit-content;
   height:fit-content;
   color:#dedede;
@@ -34,9 +36,9 @@
 }
 
 #steve{
-  margin-left:40px;
-  width:100px;
-  height:100px;
+  margin-left:35px;
+  width:80px;
+  height:80px;
 }
 
 #steve:hover{
@@ -45,4 +47,9 @@
 .usermenu{
   display:flex;
   flex-direction: row;
+}
+
+.usermenu>div{
+  display:flex;
+  flex-direction:column;
 }

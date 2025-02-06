@@ -1,5 +1,8 @@
+html{
+  background-image: url(../assets/imagens/default/dirt_fundo.png);
+}
+  
   body{
-    background-image: url(../assets/imagens/default/dirt_fundo.png);
     color: white;
     display: flex;
     flex-direction: column;
@@ -73,9 +76,10 @@
   
   .inputt{
     color:white;
+    box-sizing: border-box;
     width:100%;
     padding:5px;
-    height: 35px;
+    height: 50px;
     border: 5px inset #827a85;
     background-color: #40562f;
   }
@@ -105,3 +109,30 @@
     transition:color 250ms;
   }
   
+  .notification{
+    visibility: collapse;
+    background-color:rgb(77, 110, 77);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid rgb(90, 224, 90);
+    border-radius: 8px;
+    justify-content: space-between;
+  }
+  
+  #notification{
+    color: rgb(90, 224, 90);
+    font-size:12px;
+    margin: 5px 10px;
+  }
+
+  #close{
+    color: rgb(90, 224, 90);
+    font-size:14px;
+    margin:0px 10px;
+  }
+
+  .open{
+    visibility: visible;
+  }
+

@@ -183,4 +183,67 @@ async function minimodevalidation(mininame,modename){
     })
     return [miniid,modeid]
 }
-export default { search_user, read_table, join_minigame, insert_into_table, read_gamemodes, create_newhighscore,minimodevalidation};
+
+async function validateuser(id){
+    const resultado = await prisma.user.update({
+        where:{
+            Id:id
+        },
+        data: {
+            auth:true,
+        }
+    })
+    return resultado;
+}
+
+async function pass_change_init(id,passcode){
+    const resultado = await prisma.user.update({
+        where:{
+            Id:id
+        },
+        data: {
+            passcode:passcode,
+        }
+    })
+    return resultado;
+}
+
+async function pass_change(id,newpass){
+    const resultado = await prisma.user.update({
+        where:{
+            Id:id
+        },
+        data: {
+            password:newpass,
+            passcode:"",
+        }
+    })
+    return resultado;
+}
+
+async function upload_img(id,path,type){
+    if(type=="icon"){
+        const resultado = await prisma.user.update({
+            where:{
+                Id:id
+            },
+            data: {
+                icon:path,
+            }
+        })
+        return [200,resultado];;
+    } else if(type=="background"){
+        const resultado = await prisma.user.update({
+            where:{
+                Id:id
+            },
+            data: {
+                background_img:path,
+            }
+        })
+        return [200,resultado];
+    }
+    return 404;
+}
+
+export default { upload_img,pass_change, pass_change_init, search_user, read_table, join_minigame, insert_into_table, read_gamemodes, create_newhighscore,minimodevalidation, validateuser};

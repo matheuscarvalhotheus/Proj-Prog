@@ -7,6 +7,13 @@ import minedle from './modos/minedle.js';
 import register from '../middleware/auth/registerauth/register.js'
 import validatoken from '../middleware/auth/validatoken.js'
 import GetUserScore from "./modos/getuserscore.js";
+import mailConfig from "./config/mail.js";
+import nodemailer from "nodemailer";
+import { passwordval } from "../middleware/auth/registerauth/datavalidation.js";
+import multerconfig from "./config/multer.js";
+import multer from "multer";
+
+const upload=multer(multerconfig)
 
 const validateschema =  z.object({
   headers: z.object({
@@ -127,7 +134,7 @@ const validateschema =  z.object({
       return res.status(404).json({ message: 'usuário não encontrado' });
     }
   
-    const { password, ...safeuser } = userdata;
+    const { password,Id,passcode, ...safeuser } = userdata;
 
     return res.status(200).json(safeuser);
   } catch (err) {
@@ -168,7 +175,7 @@ const validateschema =  z.object({
       try{
         if(req.body){
         const {email, pass} = req.body;
-        const {email: useremail,password: userpass} = await minedle.search_user(email)
+        const {email: useremail,password: userpass,auth: auth} = await minedle.search_user(email)
         const valid = await bcrypt.compare(pass,userpass)
         if(valid){
         const token = jwt.sign(
@@ -176,7 +183,9 @@ const validateschema =  z.object({
           process.env.DATABASE_KEY,{
             expiresIn: 3600000}
           );
-        
+        if(!auth){
+          return res.status(403).json("Valide o seu Email");
+        }
         return res.json({flag:true,token: token})
         } 
         return res.status(401).json()
@@ -187,6 +196,131 @@ const validateschema =  z.object({
     }
   })
   //
+  router.get('/validate-email', 
+    datacheck(validateschema),
+    async (req,res) => {
+      const validatecode = req.headers.authorization;
+      if (!validatecode) {
+        return res.status(404).json({ message: 'token não encontrado' });
+      }
+
+      const [, emailtoken] = validatecode.split(' ');
+      const [token,email] = emailtoken.split('#%$%#');
+
+      const {Id: userid,auth:auth} = await minedle.search_user(email)
+      if(!auth){
+      const valid = await bcrypt.compare(userid,token)
+
+      if(valid){
+        minedle.validateuser(userid)
+        return res.status(200).json();
+      }
+      }
+      return res.status(401).json();
+  })
+
+  router.get('/pass-change-init', 
+    datacheck(validateschema), 
+    validatoken, 
+    async (req, res) => {
+      try{
+      const {Id: userid,auth: auth} = await minedle.search_user(req.useremail)
+      if(auth){
+      const validatecode = await bcrypt.hash(userid,10)
+      const e = await minedle.pass_change_init(userid,validatecode)
+
+      const config = await mailConfig()
+      const emissor = nodemailer.createTransport(config)
+      const info = await emissor.sendMail({
+          from: config.auth.user,
+          to: req.useremail,
+          subject:"Trocar Senha",
+          text:"Aperte o botão para iniciar o processo de trocar a sua senha:",
+          html:`<h2>Aperte o botão para iniciar o processo de trocar a sua senha:</h2><button><a href='http://127.0.0.1:5500/front-end/cadastro/data_change.html?validar=${validatecode}'>Validar<a></button>`,
+  
+        })
+      } 
+    }catch(err){
+      return res.status(401).json()
+    }
+    })
+
+    router.post('/pass-change'
+      ,  datacheck(validateschema), 
+      validatoken, datacheck( z.object({
+        body: z.object({
+          newpass: z.string(), 
+          passcode: z.string()
+        })
+      }))
+      , async (req,res) => {
+      try{
+        if(req.body){
+        const {newpass, passcode} = req.body;
+        const {Id: id,passcode: userpass,auth: auth} = await minedle.search_user(req.useremail)
+        if(userpass&&passcode){
+        if(passcode==userpass){
+          var valid=true
+        } else {
+          var valid=false}
+        } else {
+        var valid = false
+        }
+
+        if(valid){
+        if(passwordval(newpass)){
+
+        const hash = await bcrypt.hash(newpass,10)
+        const resultado = await minedle.pass_change(id,hash)
+        return res.status(200).json()
+        }
+        return res.status(400).json()
+        } 
+        return res.status(403).json()
+      }
+        return res.status(400).json()
+    }catch(err){
+      return res.status(401).json({erro:err})
+    }
+  })
+
+  router.post('/newicon'
+    ,  datacheck(validateschema), 
+    validatoken, upload.single('image')
+    , async (req,res) => {
+    try{
+      if(req.body){
+      const {Id:id} = await minedle.search_user(req.useremail)
+      
+      if(req.file){
+        const path = `back-end/public/imgs/${req.file.filename} `
+        const resultado = await minedle.upload_img(id,path,"icon")
+        res.status(resultado[0])
+      }
+    }
+  }catch(err){
+    return res.status(400).json({erro:err})
+  }
+})
+
+router.post('/newbackground'
+  ,  datacheck(validateschema), 
+  validatoken, upload.single('image')
+  , async (req,res) => {
+  try{
+    if(req.body){
+    const {Id:id} = await minedle.search_user(req.useremail)
+    
+    if(req.file){
+      const path = `back-end/public/imgs/${req.file.filename} `
+      const resultado = await minedle.upload_img(id,path,"background")
+      res.status(resultado[0])
+    }
+  }
+}catch(err){
+  return res.status(400).json({erro:err})
+}
+})
       
     
 export default router;

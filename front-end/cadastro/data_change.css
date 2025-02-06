@@ -1,0 +1,141 @@
+html {
+    font-family: Minecraftia;
+    text-align: center;
+    background-image: url(../assets/imagens/default/dirt_fundo.png);
+  }
+  body{
+    color: #dedede;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .menu{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    padding-bottom: 25px;
+  
+  }
+  #minedle{
+    width: 300px;
+    padding: 25px;
+  }
+  #minedle:hover{
+    content:url(../assets/imagens/default/logo-portal.png);
+    width: 300px;
+    padding: 25px;
+  }
+  .entrar{
+    width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .texto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 25px;
+    color: white;
+    text-shadow: black;
+  }
+  
+  .Corpo{
+    padding:50px;
+    background-color: rgba(0,0,0,0.8);
+    width:30%;
+    height:60%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+   
+  }
+  
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+  }
+  ul{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width:50%;
+    list-style-type: none;
+    padding: 0px;
+  }
+  
+  ul>div{
+    width:50%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  ul>li>div>p{
+    text-align: left;
+  }
+  
+  
+  ::placeholder{
+    color: white;
+    padding: 10px;
+  }
+  
+  .inputt{
+    color:white;
+    box-sizing: border-box;
+    width:100%;
+    padding:5px;
+    height: 50px;
+    border: 5px inset #827a85;
+    background-color: #40562f;
+  }
+  
+  .erro{
+    color:rgb(177, 30, 30);
+    font-size:12px;
+    transition:color 250ms;
+  }
+  
+  .highlight{
+    color:rgb(248, 56, 56);
+    transition:color 250ms;
+  }
+  
+  .botao{
+    margin:30px;
+  }
+  
+  .notification{
+    visibility: collapse;
+    background-color:rgb(117, 117, 117);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid #dedede;
+    border-radius: 8px;
+    justify-content: space-between;
+  }
+  
+  #notification{
+    color: #dedede;
+    font-size:12px;
+    margin: 5px 10px;
+  }
+  
+  #close{
+    color: #dedede;
+    font-size:14px;
+    margin:0px 10px;
+  }
+  
+  .open{
+    visibility: visible;
+  }
+  
