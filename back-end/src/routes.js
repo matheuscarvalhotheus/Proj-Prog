@@ -236,7 +236,8 @@ const validateschema =  z.object({
           to: req.useremail,
           subject:"Trocar Senha",
           text:"Aperte o botão para iniciar o processo de trocar a sua senha:",
-          html:`<h2>Aperte o botão para iniciar o processo de trocar a sua senha:</h2><button><a href='http://127.0.0.1:5500/front-end/cadastro/data_change.html?validar=${validatecode}'>Validar<a></button>`,
+          html:`<h2>Aperte o botão para iniciar o processo de trocar a sua senha:</h2>
+          <button><a href='http://127.0.0.1:5500/front-end/cadastro/data_change.html?validar=${validatecode}'>Validar<a></button>`,
   
         })
       } 

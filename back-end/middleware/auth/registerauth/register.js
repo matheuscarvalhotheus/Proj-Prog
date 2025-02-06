@@ -25,7 +25,9 @@ async function register(newUser){
                     to: user.email,
                     subject:"Validação da sua conta",
                     text:"Conta criada com sucesso.\nAperte o botão para validar a sua conta:",
-                    html:`<h2>Conta criada com sucesso.</h2><p>Aperte o botão para validar a sua conta:</p><button style='#envio{background-color: #669244;color: white;border: 0px ;border-radius: 5px;padding:15px;}#envio:hover{scale:1.05;filter:brightness(1.2);}#envio:active{scale:0.9;filter:brightness(0.85);}'><a href='http://127.0.0.1:5500/front-end/login/login.html?validar=${validatecode+"&riYt7="+user.email}'>Validar<a></button>`,
+                    html:`<h2>Conta criada com sucesso.</h2>
+                    <p>Aperte o botão para validar a sua conta:</p>
+                    <button><a href='http://127.0.0.1:5500/front-end/login/login.html?validar=${validatecode+"&riYt7="+user.email}'>Validar<a></button>`,
                 })
                 
                 return [200,validnewUser]

@@ -1,4 +1,3 @@
-import nodemailer from 'nodemailer';
 import {google} from 'googleapis';
 
 async function mailConfig() {
