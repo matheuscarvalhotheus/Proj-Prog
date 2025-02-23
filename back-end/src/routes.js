@@ -13,6 +13,26 @@ import { passwordval } from "../middleware/auth/registerauth/datavalidation.js";
 import multerconfig from "./config/multer.js";
 import multer from "multer";
 
+/*
+lista de rotas:
+
+/minigames -> GET -> Retorna informações básicas de todos os minigames
+/modos -> GET -> Retorna os modos de jogo e dificuldades de cada minigame
+/mobs/solutions -> GET -> Retorna as soluções do minigame mobs
+/mobs/gameSettigns -> GET -> Retorna a quantidade de tentativas referentes a cada modo de jogo e dificuldade de mobs
+/newhighscore -> POST -> Atualiza/Cria o registro da maior pontuação do usuário em um dado minigame
+/score/:mini/:mode -> GET -> Pega a atual maior pontuação do usuário em um dado minigame
+/me -> GET -> Pega informações básicas do usuário
+/newuser -> POST -> Cria um novo usuário com base nas informações enviadas
+/login -> POST -> tenta dar login
+/validate-email -> GET -> Valida o email, permitindo o login, com base no token gerado durante o registro
+/pass-change-init -> GET -> Gera o token necessário para a troca de senha e envia um email com ele
+/pass-change -> POST -> Valida o token da troca de senha para trocar a senha do usuário
+/newicon -> POST -> Armazena a imagem enviada pro usuário e associa ela ao usuário para ser usada como icone
+/newbackground -> POST -> Armazena a imagem enviada pro usuário e associa ela ao usuário para ser usada como fundo
+
+*/
+
 const upload=multer(multerconfig)
 
 const validateschema =  z.object({
@@ -186,7 +206,7 @@ const validateschema =  z.object({
         if(!auth){
           return res.status(403).json("Valide o seu Email");
         }
-        return res.json({flag:true,token: token})
+        return res.status(200).json({flag:true,token: token})
         } 
         return res.status(401).json()
       }
@@ -237,7 +257,7 @@ const validateschema =  z.object({
           subject:"Trocar Senha",
           text:"Aperte o botão para iniciar o processo de trocar a sua senha:",
           html:`<h2>Aperte o botão para iniciar o processo de trocar a sua senha:</h2>
-          <button><a href='http://127.0.0.1:5500/front-end/cadastro/data_change.html?validar=${validatecode}'>Validar<a></button>`,
+            <button><a href='http://127.0.0.1:5500/front-end/cadastro/data_change.html?validar=${validatecode}'>Validar<a></button>`,
   
         })
       } 

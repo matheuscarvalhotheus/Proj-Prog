@@ -21,6 +21,7 @@
     "nodemailer": "^6.10.0",
     "prisma": "^5.19.1",
     "sqlite-async": "^1.2.0",
+    "supertest": "^7.0.0",
     "zod": "^3.23.8"
   }
 }

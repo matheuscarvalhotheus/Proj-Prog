@@ -29,3 +29,5 @@ server.listen(PORT, () => {
   console.log(`Servidor está rodando em http://localhost:3000`);
 });
 
+export default {server};
+
