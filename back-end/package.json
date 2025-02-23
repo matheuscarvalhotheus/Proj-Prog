@@ -2,7 +2,8 @@
   "name": "minedle",
   "type": "module",
   "scripts": {
-    "server": "node src/index.js"
+    "server": "node src/index.js",
+    "teste" : "node src/routes.test.js"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
